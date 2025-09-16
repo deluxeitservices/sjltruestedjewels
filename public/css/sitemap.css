@@ -1,0 +1,105 @@
+.sitemap-page .common-banner-section {
+    background-image: url('../assets/image/sitemap-3.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: inherit;
+    display: flex;
+    justify-content: center;
+    background-position-x: 75%;
+    min-height: 380px;
+    height: 100%;
+    max-height: 650px;
+    border-radius: 0;
+}
+
+.sitemap-page .common-banner-section .common-banner-content {
+    color: var(--white);
+    text-align: center;
+    background-color: #33333397;
+    width: 100%;
+    padding: 20px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0;
+}
+
+.sitemap-page .sitemap-content {
+    width: 100%;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    padding: 50px 40px;
+    border-top: 5px solid var(--primary-color);
+}
+
+.sitemap-page .sitemap-content h6 {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.sitemap-page .sitemap-content a {
+    font-size: 14px;
+    color: var(--light-black);
+    font-weight: 400;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+.sitemap-page .sitemap-content a:hover
+{
+    color: var(--primary-color);
+}
+.sitemap-page .sitemap-list ul {
+    list-style: none;
+    padding-left: 20px;
+    position: relative;
+}
+
+.sitemap-page .sitemap-list ul.main-sitemap-menu::before {
+    content: "";
+    border-left: 2px solid var(--primary-color);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.sitemap-page .sitemap-list li {
+    margin: 12px 0;
+    padding-left: 15px;
+    position: relative;
+        color: var(--primary-color);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.sitemap-page .sitemap-list ul.main-sitemap-menu li::before {
+    content: "";
+    border-top: 2px solid var(--primary-color);
+    position: absolute;
+    top:10px;
+    left: -18px;
+    width: 27px;
+}
+.sitemap-page .sitemap-list ul.main-sitemap-menu ul li::before {
+    width: 20px;
+    content: "";
+    position: absolute;
+    top: 13px;
+    bottom: 0;
+    left: -12px;
+    border-left: 0;
+}
+@media (max-width:767px) {
+    .sitemap-page .common-banner-section {
+        min-height: 200px;
+    }
+    .sitemap-page .sitemap-content{
+        padding: 30px 20px;
+    }
+}

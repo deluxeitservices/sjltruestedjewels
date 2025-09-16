@@ -1,0 +1,365 @@
+/* .forgot-passwrod-page{
+        margin: 40px 0;
+}
+.forgot-passwrod-page .common-title {
+    font-size: 58px;
+    position: relative;
+    margin-bottom: 30px;
+}
+.forgot-passwrod-page .common-title::after {
+    bottom: -4px;
+    content: "";
+    position: absolute;
+    width: 228px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, #F9E7C1 8%, #B48A3E 47%, #F9E7C1 93%);
+    border-image-slice: 1;
+    padding-bottom: 36px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-8.col-12 {
+    justify-content: center;
+}
+
+.forgot-passwrod-page .needs-validation.forgot-passwrod-form {
+    width: 100%;
+}
+
+.forgot-passwrod-page p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.forgot-passwrod-page .forgot-password-img {
+    width: 100%;
+    background: url('../assets/image/forggot.jpg') no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.forgot-passwrod-row {
+    background: var(--white);
+    border: 1px solid var(--light-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-5.col-12 {
+    padding: 0;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-7.col-12 {
+    padding: 30px 20px;
+    background: var(--white);
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-7.col-12 {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .forgot-password-form .form-outline {
+    margin-bottom: 10px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .forgot-password-form .form-outline .form-control {
+    padding: 10px 12px 10px 12px;
+    color: var(--light-black);
+    font-size: 14px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .forgot-password-form .form-outline .form-control~.form-label {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.forgot-passwrod-page .form-control~.form-notch div {
+    border: 1px solid var(--primary-color);
+}
+
+.forgot-passwrod-page button {
+    max-width: 100%;
+    min-width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: center;
+}
+
+.forgot-passwrod-page button:hover {
+    color: var(--primary-color);
+}
+
+.forgot-passwrod-page .form-check .form-check-label {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.forgot-passwrod-page .form-check .form-check-label a {
+    color: var(--primary-color);
+}
+
+.forgot-passwrod-page .form-check-input[type=checkbox]:checked {
+    background-image: none;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.forgot-passwrod-page .forgot-password-link p a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+.forgot-passwrod-page .forgot-passwrod-row {
+    max-height: 500px;
+    min-height: 500px;
+}
+
+.forgot-passwrod-page .forgot-password-form .input-icon i,
+.forgot-passwrod-page .common-user i {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+@media (max-width:991px) {
+    .forgot-passwrod-page .forgot-passwrod-row{
+        max-height: 300px;
+        min-height: 300px;
+    }
+} */
+
+
+
+/* .forgot-passwrod-page .forgot-passwrod-row col.md-7.col-12{
+    padding: 0;
+}
+.forgot-passwrod-page .forgot-passwrod-row col.md-5.col-12{
+    padding: 30px 20px;
+    background: var(--light-black);
+} */
+.forgot-passwrod-page {
+    margin: 40px 0;
+}
+
+.forgot-passwrod-page .common-title {
+    font-size: 58px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.forgot-passwrod-page .common-title:after {
+    bottom: -6px;
+    content: "";
+    position: absolute;
+    width: 228px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, #F9E7C1 8%, #B48A3E 47%, #F9E7C1 93%);
+    border-image-slice: 1;
+    padding-bottom: 36px;
+}
+
+.forgot-passwrod-page p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.forgot-passwrod-page .forgot-password-img {
+    width: 100%;
+    /* background: url('../assets/image/7.png') no-repeat; */
+    background: url('../assets/image/goldbar-forgot.jpg') no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.forgot-passwrod-row {
+    background: var(--white);
+    border: 1px solid var(--light-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-5.col-12 {
+    padding: 0;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-7.col-12 {
+    padding: 30px 20px;
+    background: var(--white);
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .col-md-7.col-12 {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .form-outline {
+    margin-bottom: 0;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .forgot-password-form .form-outline .form-control {
+    padding: 10px 12px 10px 12px;
+    color: var(--light-black);
+    font-size: 14px;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row .forgot-password-form .form-outline .form-control~.form-label {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.forgot-passwrod-page .form-control~.form-notch div {
+    border: 1px solid var(--primary-color);
+}
+
+.forgot-passwrod-page button {
+    max-width: 100%;
+    min-width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: center;
+}
+
+.forgot-passwrod-page button:hover {
+    color: var(--primary-color);
+}
+
+.forgot-passwrod-page .form-check .form-check-label {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.forgot-passwrod-page .form-check .form-check-label a {
+    color: var(--primary-color);
+}
+
+.forgot-passwrod-page .form-check-input[type=checkbox]:checked {
+    background-image: none;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.forgot-passwrod-page .forgot-password-link p a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+
+.needs-validation.forgot-password-form .row {
+    justify-content: center;
+}
+
+
+.forgot-passwrod-page .forgot-password-link a {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.forgot-passwrod-page .forgot-passwrod-row {
+    max-height: 500px;
+    min-height: 500px;
+}
+
+.desktop-view-forgot {
+    display: block;
+}
+
+.mobile-view-forgot {
+    display: none;
+}
+
+.forgot-passwrod-page .forgot-password-form {
+    width: 100%;
+}
+.forgot-passwrod-page .forgot-password-form .input-icon i,
+.forgot-passwrod-page .common-user i {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+@media (max-width:1024px) {
+    .forgot-passwrod-page {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width:991px) {
+    .forgot-passwrod-page .forgot-passwrod-row {
+        max-height: 250px;
+        min-height: 250px;
+    }
+    .login-check-input .forgot-password-link a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:767px) {
+    .forgot-passwrod-page .forgot-passwrod-row .col-md-4.col-12 {
+        display: none;
+
+    }
+
+    .forgot-passwrod-page .password-link {
+        margin-top: 20px;
+    }
+
+    .desktop-view-forgot {
+        display: none;
+    }
+
+    .mobile-view-forgot {
+        display: block;
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    .forgot-passwrod-page p {
+        font-size: 14px;
+    }
+
+    .forgot-passwrod-page .forgot-passwrod-row .col-md-5.col-12 {
+        display: none;
+    }
+
+    .forgot-passwrod-page .common-title {
+        font-size: 40px;
+    }
+    .forgot-passwrod-page .forgot-password-link a{
+        font-size: 14px;
+    }
+}
+
+@media (max-width:576px) {
+    .forgot-passwrod-page .common-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width:320px) {
+    .forgot-passwrod-row {
+        margin: 10px 4px;
+    }
+}

@@ -1,0 +1,43 @@
+.faq-page-main .common-banner-section {
+    background-image: url(../assets/image/golden-rmb-coins-cloth-bag.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    background-position-x: 75%;
+    min-height: 380px;
+    height: 100%;
+    max-height: 650px;
+    border-radius: 0;
+}
+
+.faq-page-main .common-banner-section .common-banner-content {
+    color: var(--white);
+    text-align: center;
+    background-color: #33333397;
+    width: 100%;
+    padding: 20px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0;
+}
+
+.faq-page-main .common-banner-content h2 {
+    margin: 0;
+    font-size: 50px;
+    letter-spacing: 6px;
+}
+
+@media (max-width:767px){
+    .faq-page-main .common-banner-section{
+            min-height: 240px;
+    }
+    .faq-page-main .common-banner-content h2 {
+        font-size: 30px;
+    }
+}

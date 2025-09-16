@@ -1,0 +1,24 @@
+:root {
+    --linear: linear-gradient(to right, #FFFFFF 0%, #1C1B19 100%);
+    --liner-light-color: linear-gradient(149deg, #FFE7B9 -8.31%, #CAA969 50%);
+    --white: #fff;
+    --light-white: #eee;
+    --black: #000;
+    --light-black: #1C1B19;
+    --medium-black:#1E1E1E;
+    --primary-color: #002E55;
+    --light-yellow: #fdf8e3;
+    --gold-color:#B38D22;;
+    --secondary-color: #002e5533;
+    --red-color: #FF0000;
+    --light-gold: #ae851317;
+    --dark-black: #333;
+    --light-gray: #474747;
+    --dark-gray: #959191;
+    --medium-gray: #e0e0e0;
+    --check-box-color: #e9e9e9;
+    --light-dark-gray: #555;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+
+}

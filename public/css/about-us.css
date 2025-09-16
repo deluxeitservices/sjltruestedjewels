@@ -1,0 +1,16 @@
+.about-us-page .common-banner-section {
+    /* background-image: url('../assets/image/about-us-gold.jpg'); */
+    background-image: url('../assets/image/ab-2.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media (max-width:767px) {
+    .about-us-page .common-banner-section {
+        min-height: 300px;
+    }
+    .about-us-page .common-banner-section{
+        background-position: right;
+    }
+}

@@ -1,0 +1,343 @@
+    .footer {
+      background-color: var(--primary-color);
+    }
+
+    .footer a img {
+      width: 130px;
+      height: auto;
+    }
+
+    /* devlop libk */
+    .footer .devlop-link {
+      text-align: end;
+    }
+
+    .footer .devlop-link a {
+      text-decoration: underline;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    /* desktop-view */
+    .footer h5,
+    .footer h6 {
+      color: var(--medium-gray);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--white);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .footer a:hover,
+    a:hover {
+      color: var(--gold-color);
+      /* Accent color */
+    }
+
+    footer ul li a:hover {
+      color: var(--primary-color);
+    }
+
+    .social-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .footer .contact-info {
+      margin-top: 30px;
+    }
+
+    .footer p {
+      margin-top: 30px;
+    }
+
+    .footer h6 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .footer .social-media {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-top: 30px;
+      flex-direction: row;
+      list-style: none;
+    }
+
+    .footer .list-unstyled {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer .social-media a {
+      margin: 0;
+    }
+
+    .footer .social-media a {
+      width: 34px;
+      height: 34px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      border-radius: 4px;
+      transition: 0.5s;
+    }
+
+    .footer .social-media a:hover {
+      transform: translateY(-5px);
+    }
+
+    .footer .social-media a:hover li a i {
+      color: var(--white);
+    }
+
+    .footer .social-media a i {
+      font-size: 20px;
+    }
+
+    .footer .social-media li:first-child a i {
+      color: #1877F2;
+    }
+
+    .footer .social-media li:nth-child(2) a i {
+      color: #ee2a7b;
+    }
+
+    .footer .social-media li:nth-child(3) a i {
+      color: #25d366;
+    }
+
+    .subscribe-section p {
+      margin: 0;
+    }
+
+    .contact-info ul {
+      list-style: none;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-info ul li a {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .subscribe-div {
+      margin-top: 20px;
+      min-height: 47px;
+      max-height: 47px;
+    }
+
+    .subscribe-div button {
+      background-color: var(--gold-color);
+      border-radius: 0 5px 5px 0px;
+      color: var(--white);
+      min-height: 47px;
+      max-height: 47px;
+      transition: all 0.90s ease;
+      position: relative;
+    }
+
+    .subscribe-div button:hover {
+      background-color: transparent;
+      border: 1px solid var(--primary-color);
+      transform: scale(0.96);
+      color: var(--white);
+    }
+
+    .subscribe-div button:hover:before {
+      top: -70%;
+      background-image: radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 20%, var(--gold-color) 20%, transparent 30%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--primary-color) 15%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%);
+      background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+        10% 10%, 18% 18%;
+      background-position: 50% 120%;
+      animation: greentopBubbles 0.6s ease;
+    }
+
+    @keyframes greentopBubbles {
+      0% {
+        background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+          40% 90%, 55% 90%, 70% 90%;
+      }
+
+      50% {
+        background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+          50% 50%, 65% 20%, 90% 30%;
+      }
+
+      100% {
+        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+          50% 40%, 65% 10%, 90% 20%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+      }
+    }
+
+    .subscribe-div button:hover::after {
+      bottom: -70%;
+      background-image: radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, transparent 10%, var(--gold-color) 15%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%),
+        radial-gradient(circle, var(--gold-color) 20%, transparent 20%);
+      background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+      background-position: 50% 0%;
+      animation: greenbottomBubbles 0.6s ease;
+    }
+
+    @keyframes greenbottomBubbles {
+      0% {
+        background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+          70% -10%, 70% 0%;
+      }
+
+      50% {
+        background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+          105% 0%;
+      }
+
+      100% {
+        background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+          110% 10%;
+        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+      }
+    }
+
+    .subscribe-div button:active {
+      transform: scale(0.96);
+    }
+
+    .subscribe-div button:before,
+    .subscribe-div button:after {
+      position: absolute;
+      content: "";
+      width: 150%;
+      left: 50%;
+      height: 100%;
+      transform: translateX(-50%);
+      z-index: -1000;
+      background-repeat: no-repeat;
+    }
+
+    .subscribe-div button:hover {
+      background: var(--white);
+      color: var(--primary-color);
+    }
+
+    .subscribe-div .form-control {
+      border-radius: 5px 0px 0px 5px;
+      padding: 5px 14px;
+      border: 0;
+    }
+
+    .subscribe-div .form-control::placeholder {
+      color: var(--primary-color);
+    }
+
+    .footer-bottom-text {
+      color: var(--white);
+    }
+
+
+    /* mobile-view footer */
+
+    .desktop-view-footer {
+      display: block;
+    }
+
+    .mobile-view-footer {
+      display: none;
+    }
+
+    .mobile-view-footer .accordion .accordion-item,
+    .mobile-view-footer .accordion-header,
+    .mobile-view-footer .accordion-button {
+      background-color: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: unset;
+    }
+
+    .mobile-view-footer .accordion .accordion-button {
+      font-size: 14px;
+      color: var(--white);
+      font-weight: 600;
+      padding: 12px 14px;
+    }
+
+    .accordion-button:after {
+      color: var(--primary-color);
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z'/%3E%3C/svg%3E");
+      ;
+
+    }
+
+    @media (max-width:1024px) {
+      footer .footer-logo {
+        width: 120px;
+      }
+    }
+
+    @media (max-width:767px) {
+      .footer {
+        text-align: center;
+      }
+
+      .footer .social-media {
+        justify-content: center;
+      }
+
+      .footer p {
+        font-size: 14px;
+      }
+
+      .contact-info ul {
+        align-items: center;
+      }
+
+      .footer h6 {
+        font-size: 18px;
+      }
+
+      .desktop-view-footer {
+        display: none;
+      }
+
+      .mobile-view-footer {
+        display: block;
+      }
+
+      .footer ul li {
+        margin-bottom: 10px;
+      }
+
+      footer .accordion-button:not(.collapsed):after {
+        filter: invert(1) brightness(1000%);
+      }
+         .footer .devlop-link{
+          text-align: center;
+         }
+        .footer .devlop-link a{
+          font-size: 14px;
+         }
+    }

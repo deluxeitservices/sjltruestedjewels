@@ -1,0 +1,93 @@
+.blog-page .common-banner-section {
+    /* background-image: url('../assets/image/luxury-jewellery-display.jpg'); */
+     background-image: url('../assets/image/blog-banner-3.svg'); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.blog-section .blog-detial-box {
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.blog-section .blog-detial-box .blog-img {
+    width: 100%;
+    height: 350px;
+}
+
+.blog-section .blog-detial-box .blog-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0px;
+}
+
+.blog-section .blog-detial-box .blog-content {
+    padding: 20px;
+}
+
+.blog-section .blog-detial-box .blog-content h6 {
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+    min-height: 30px;
+    max-height: 30px;
+    margin-bottom: 10px;
+}
+
+.blog-section .blog-detial-box .blog-content p {
+    font-size: 14px;
+    color: var(--light-black);
+    font-weight: 400;
+    margin-bottom:20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    /* number of lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: justify;
+}
+
+.blog-section .blog-detial-box .blog-content .common-primary-btn {
+    min-width: 80px;
+    height: 40px;
+    font-size: 14px
+}
+
+.blog-section .pagination {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+@media (max-width:991px) {
+    .blog-section .blog-detial-box .blog-content .common-primary-btn {
+        min-width: 140px;
+    }
+
+    .blog-section .blog-detial-box .blog-content h6 {
+        font-size: 18px;
+    }
+
+    .blog-section .blog-detial-box .blog-content {
+        padding: 20px 16px;
+    }
+    .blog-section .blog-detial-box .blog-img{
+        height: 230px;
+    }
+}
+
+@media (max-width:767px) {
+    .blog-page .common-banner-section{
+        background-position: left;
+    }
+    .blog-section .blog-detial-box .blog-content h6 {
+        font-size: 16px;
+    }
+    .blog-section .pagination{
+        margin-top: 10px;
+    }
+    
+}

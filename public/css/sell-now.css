@@ -1,0 +1,273 @@
+.sell-now-page-main .common-banner-section {
+    /* background-image: url('../assets/image/diece-sell.jpg'); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.common-faq-section .common-title,
+.sell-now-section .common-title {
+    position: relative;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+}
+
+.common-faq-section .common-title::after,
+.sell-now-section .common-title:after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    width: 228px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, #F9E7C1 8%, #B48A3E 47%, #F9E7C1 93%);
+    border-image-slice: 1;
+    padding-bottom: 36px;
+}
+
+.common-faq-section .faq-section-content,
+.sell-now-section .sell-now-content {
+    font-size: 16px;
+    color: var(--light-gray);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* sell now section page */
+.sell-now-section .table th {
+    border: 0;
+    padding: 0;
+}
+
+.sell-now-section .common-primary-btn {
+    font-size: 16px;
+    min-width: 190px;
+    max-width: 190px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+
+}
+
+.sell-now-section .common-primary-btn:hover {
+    color: var(--primary-color);
+}
+
+.sell-now-section form .table-responsive {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.sell-now-section .sell-now-table tr th {
+    font-size: 14px;
+    color: var(--dark-gray);
+}
+
+.sell-now-section .sell-now-table tr th:first-child {
+    width: 35%;
+}
+
+.sell-now-section .sell-now-table tr th:nth-child(2) {
+    width: 20%;
+}
+
+.sell-now-section .sell-now-table tr th:nth-child(3) {
+    width: 15%;
+}
+
+.sell-now-section .sell-now-table tr th:nth-child(4) {
+    width: 10%;
+}
+
+.sell-now-section .sell-now-table tr th:nth-child(5) {
+    width: 10%;
+}
+
+.sell-now-section .sell-now-table tr th:last-child(5) {
+    width: 10%;
+}
+
+.sell-now-section .sell-now-table tr td {
+    border: 0;
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.sell-now-section .sell-now-table tr td:first-child {
+    max-width: 300px;
+    min-width: 300px;
+}
+
+.sell-now-section .sell-now-table tr td:nth-child(2) {
+    max-width: 250px;
+    min-width: 250px;
+}
+
+.sell-now-section .sell-now-table tr td:nth-child(3) {
+    max-width: 180px;
+    min-width: 180px;
+}
+
+.sell-now-section .sell-now-table tr td:nth-child(4) {
+    max-width: 150px;
+    min-width: 150px;
+}
+
+.sell-now-section .sell-now-table tr td:nth-child(5) {
+    max-width: 120px;
+    min-width: 120px;
+}
+
+.sell-now-section .sell-now-table tr td:nth-child(6) {
+    max-width: 80px;
+    min-width: 80px;
+}
+
+.sell-now-section .sell-now-table tr td:last-child {
+    max-width: 50px;
+    min-width: 50px;
+}
+
+.sell-now-section .price-box {
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.sell-now-section .form-control {
+    border-color: var(--primary-color);
+    padding: 10px;
+}
+
+.sell-now-section .minusBtn,
+.sell-now-section .plusBtn {
+    width: 24px;
+    height: 40px;
+    background: var(--primary-color);
+    text-align: center;
+    font-size: 16px;
+    line-height: 36px;
+    color: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+
+}
+
+.sell-now-section .quantity {
+    width: 60px;
+    border: 1px solid var(--primary-color);
+    min-height: 40px;
+    color: var(--light-black);
+    font-weight: 400;
+    font-size: 16px;
+    max-height: 50px;
+}
+
+.sell-now-section .form-select {
+    color: var(--light-black);
+    font-size: 14px;
+    padding: 14px;
+}
+
+.sell-now-content .delete-icon i {
+    font-size: 16px;
+}
+
+.sell-now-section .sell-now-check-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sell-now-section .sell-now-check-btn a label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--light-gray);
+}
+
+.sell-now-section .form-check-input[type=checkbox]:checked {
+    background-image: none;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.sell-now-section .add-item-btn {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+
+
+.sell-now-section .delete-icon .deleteBtn {
+    border: 1px solid var(--primary-color);
+    width: 10px;
+    height: 10px;
+    display: flex;
+    padding: 21px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+/* main */
+.sell-now-page-main .services-section {
+    margin-top: 80px;
+}
+
+@media (max-width:1399px) and (min-width:767px) {
+    .sell-now-section .sell-now-table tr td:first-child {
+        max-width: 380px;
+        min-width: 380px
+    }
+}
+
+@media (max-width:1024px) {
+    .sell-now-page-main .services-section {
+        margin-top: 50px;
+    }
+
+}
+
+@media (max-width:767px) {
+    .sell-now-section .sell-now-content {
+        font-size: 14px;
+    }
+
+    .sell-now-section .sell-now-check-btn a label {
+        font-size: 12px;
+    }
+
+    .sell-now-section .sell-now-check-btn {
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .sell-now-section form .table-responsive {
+        padding: 20px 14px;
+    }
+
+    .sell-now-section .form-select {
+        font-size: 12px;
+    }
+
+    .sell-now-section .sell-now-table tr td:first-child {
+        max-width: 340px;
+        min-width: 340px;
+    }
+
+
+}
+
+@media (max-width:576px) {
+
+}

@@ -1,0 +1,233 @@
+/* .login-page .login-row col.md-7.col-12{
+    padding: 0;
+}
+.login-page .login-row col.md-5.col-12{
+    padding: 30px 20px;
+    background: var(--light-black);
+} */
+.login-page {
+    margin: 40px 0;
+}
+
+.login-page .common-title {
+    font-size: 58px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.login-page .common-title:after {
+    bottom: -6px;
+    content: "";
+    position: absolute;
+    width: 228px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, #F9E7C1 8%, #B48A3E 47%, #F9E7C1 93%);
+    border-image-slice: 1;
+    padding-bottom: 36px;
+}
+
+.login-page p {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--black);
+}
+
+.login-page .login-img {
+    width: 100%;
+    /* background: url('../assets/image/login-final.png') no-repeat; */
+    background: url('../assets/image/gold-silver-register.jpg') no-repeat;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-row {
+    background: var(--white);
+    border: 1px solid var(--light-white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 30px;
+}
+
+.login-page .login-row .col-md-5.col-12 {
+    padding: 0;
+}
+
+.login-page .login-row .col-md-7.col-12 {
+    padding: 30px 20px;
+    background: var(--white);
+}
+
+.login-page .login-row .col-md-7.col-12 {
+    display: flex;
+    align-items: center;
+}
+
+.login-page .login-row .form-outline {
+    margin-bottom: 10px;
+}
+
+.login-page .login-row .login-form .form-outline .form-control {
+    padding: 10px 12px 10px 12px;
+    color: var(--light-black);
+    font-size: 14px;
+}
+
+.login-page .login-row .login-form .form-outline .form-control~.form-label {
+    color: var(--primary-color);
+    font-size: 16px;
+}
+
+.login-page .form-control~.form-notch div {
+    border: 1px solid var(--primary-color);
+}
+
+.login-page button {
+    max-width: 100%;
+    min-width: 100%;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    justify-content: center;
+}
+
+.login-page button:hover {
+    color: var(--primary-color);
+}
+
+.login-page .form-check .form-check-label {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.login-page .form-check .form-check-label a {
+    color: var(--primary-color);
+}
+
+.login-page .form-check-input[type=checkbox]:checked {
+    background-image: none;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.login-page .login-link p a {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* login end */
+.needs-validation.login-form .row {
+    justify-content: center;
+}
+
+.login-page .login-check-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login-page .forgot-password-link a {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.login-page .login-row {
+    max-height: 500px;
+    min-height: 500px;
+}
+
+.desktop-view-forgot {
+    display: block;
+}
+
+.mobile-view-forgot {
+    display: none;
+}
+
+
+.login-page .login-form .input-icon i,
+.login-page .common-user i {
+    color: var(--primary-color);
+    font-size: 14px;
+}
+
+@media (max-width:1024px) {
+    .login-page {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width:991px) {
+    .login-page .login-row {
+        max-height: 400px;
+        min-height: 400px;
+    }
+
+    .login-check-input .login-link a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:767px) {
+    .login-page .login-row .col-md-4.col-12 {
+        display: none;
+
+    }
+
+    .login-check-input {
+        flex-direction: column;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .login-page .password-link {
+        margin-top: 20px;
+    }
+
+    .desktop-view-forgot {
+        display: none;
+    }
+
+    .mobile-view-forgot {
+        display: block;
+        margin-top: 28px;
+        text-align: center;
+    }
+
+    .login-page p {
+        font-size: 14px;
+    }
+
+    .login-page .login-row .col-md-5.col-12 {
+        display: none;
+    }
+
+    .login-page .common-title {
+        font-size: 40px;
+    }
+    .login-page .login-link p a {
+        font-size: 14px;
+    }
+}
+
+@media (max-width:576px) {
+    .login-page .common-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width:320px) {
+    .login-row {
+        margin: 10px 4px;
+    }
+}

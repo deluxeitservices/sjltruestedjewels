@@ -1,0 +1,322 @@
+.pyement-page {
+    padding: 40px 0;
+}
+
+.pyement-page .common-title {
+    font-size: 58px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.pyement-page .common-title:after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    width: 228px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(to right, #F9E7C1 8%, #B48A3E 47%, #F9E7C1 93%);
+    border-image-slice: 1;
+    padding-bottom: 36px;
+}
+
+
+.pyement-page .form-control~.form-notch div {
+    border: 1px solid var(--primary-color);
+}
+
+.pyement-page .register-form .input-icon i,
+.pyement-page .common-user i {
+    color: var(--primary-color);
+}
+
+.pyement-page .form-outline .form-control~.form-label {
+    color: var(--light-black);
+    font-weight: 500;
+}
+
+.pyement-page .form-check .form-check-label .register-row .register-form .form-outline .form-control {
+    color: var(--light-black);
+}
+
+.pyement-page .form-check label {
+    color: var(--light-black);
+}
+
+.pyement-page .form-check a {
+    color: var(--primary-color);
+}
+
+.pyement-page .form-check .form-check-label {
+    color: var(--light-black);
+}
+
+.pyement-page .form-outline .form-control {
+    margin-bottom: 10px;
+    padding: 10px 12px 10px 12px;
+    line-height: 0;
+}
+
+.pyement-page .common-d-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.pyement-page .order-total-cardbody .pyement-total-text {
+
+    border-bottom: 1px solid var(--primary-color);
+    padding: 10px 0;
+    margin: 20px 0;
+}
+
+.pyement-page .cart-listing-content {
+    padding: 10px 10px;
+}
+
+.pyement-page .card-body.order-total-cardbody p {
+    font-size: 16px;
+    color: var(--white);
+}
+
+.pyement-page .order-price {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.pyement-page .order-price, 
+.pyement-page .order-price h6 {
+    color: var(--light-black);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pyement-page .shpping-cart-box {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 10px;
+}
+
+.pyement-page .shpping-cart-box span {
+    color: var(--light-black);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.pyement-page .shpping-cart-box {
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.pyement-page .shpping-cart-box,
+.pyement-page .shipping-total {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.pyement-page .shipping-total h6 {
+    color: var(--light-black);
+    font-size: 14px;
+       font-weight: 500;
+}
+
+
+.pyement-page .shipping-total p {
+    color: var(--light-black);
+    font-size: 14px;
+       font-weight: 500;
+}
+
+.pyement-page .total-shipping-cart {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--primary-color);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.pyement-page .total-shipping-cart p,
+.pyement-page .total-shipping-cart h6 {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.pyement-page .item-cart-title {
+    font-size: 16px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.pyement-page .order-summary-box h4 {
+    border: 0;
+    border-bottom: 0;
+    margin: 20px 0 10px;
+    padding: 0;
+    font-size: 16px;
+    color: var(--primary-color);
+}
+
+.pyement-page .order-summary-main-box {
+    min-height: 102px;
+    max-height: 120px;
+    overflow-y: scroll;
+    background-color: var(--white);
+}
+
+
+.pyement-page .order-summary-main-box {
+    max-height: 0;
+    /* jitni height me scroll chahiye */
+    overflow-y: auto;
+    /* vertical scroll enable */
+    scrollbar-width: thin;
+    /* Firefox */
+    scrollbar-color: var(--primary-color) transparent;
+    /* Firefox colors (thumb, track) */
+}
+
+.pyement-page .total-shipping-cart {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid var(--primary-color);
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.pyement-page .total-shipping-cart p,
+.pyement-page .total-shipping-cart h6 {
+    font-size: 16px;
+}
+
+
+.pyement-page .checkout-detail .card {
+    box-shadow: unset;
+    margin-bottom: 10px;
+    background: var(--primary-color);
+}
+
+.pyement-page .qunaty-item {
+    justify-content: space-between;
+}
+
+/* .pyement-page .order-summary-card {
+    min-height: 537px;
+} */
+/* scorllbar */
+/* Chrome, Edge, Safari */
+.pyement-page .order-summary-main-box::-webkit-scrollbar {
+    width: 0;
+    /* scrollbar ki width */
+}
+
+.pyement-page .order-summary-main-box::-webkit-scrollbar-track {
+    background: var(--shadow-white-color);
+    /* track color */
+    border-radius: 0;
+    width: 0;
+}
+
+.pyement-page .order-summary-main-box::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    /* thumb color (gold) */
+    border-radius: 0;
+    border: 0px solid var(--shadow-white-color);
+    /* thumb ke around spacing effect */
+}
+
+.pyement-page .order-summary-main-box::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary-color);
+    /* hover effect */
+}
+
+.pyement-page .cart-listing-content h5 {
+    color: var(--white);
+    font-weight: 400;
+}
+
+.pyement-page .cart-listing-content p {
+    padding-top: 2px;
+    color: var(--white);
+}
+
+@media (max-width:1024px) {
+    .pyement-page {
+        padding: 30px 0;
+    }
+}
+
+@media (max-width:991px) {
+    .pyement-page .item-cart-title {
+        font-size: 14px;
+    }
+
+    .pyement-page .qunaty-box {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .pyement-page .cart-listing-content p {
+        text-align: center;
+
+    }
+
+    .pyement-page .order-summary-main-box {
+        min-height: 200px;
+    }
+
+    .pyement-page .cart-listing-content h5 {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .pyement-page .checkout-detail .card .qunaty-item {
+        justify-content: center;
+    }
+
+    .pyement-page .common-title {
+        font-size: 40px;
+    }
+}
+
+@media (max-width:767px) {
+    .pyement-page .order-summary-main-box {
+        min-height: 205px;
+    }
+
+    .pyement-page .common-primary-btn {
+        font-size: 14px;
+    }
+
+    .pyement-page .qunaty-box {
+        gap: 10px;
+    }
+
+    .pyement-page .order-summary-card {
+        margin-top: 20px;
+    }
+
+    .pyement-page button {
+        margin-top: 0;
+    }
+
+    .pyement-page .total-shipping-cart p,
+    .pyement-page .total-shipping-cart h6 {
+        font-size: 14px;
+    }
+
+    .pyement-page .common-title {
+        font-size: 28px;
+        margin-bottom: 14px;
+    }
+}

@@ -1,0 +1,116 @@
+.vat-free-main .common-banner-section {
+    /* background-image: url(../assets/image/retrun-echange.jpg); */
+     background-image: url(../assets/image/vat-free.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-position: bottom;
+    display: flex;
+    justify-content: center;
+    background-position-x: 75%;
+    min-height: 380px;
+    height: 100%;
+    max-height: 650px;
+    border-radius: 0;
+}
+
+.vat-free-main .common-banner-section .common-banner-content {
+    color: var(--white);
+    text-align: center;
+    background-color: #33333397;
+    width: 100%;
+    padding: 20px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    border-radius: 0;
+}
+
+.vat-free-main .common-banner-content h2 {
+    margin: 0;
+    font-size: 50px;
+    letter-spacing: 6px;
+}
+
+.vat-free-section .retun-echange-box {
+    width: 100%;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    padding: 50px 40px;
+}
+
+.vat-free-section .retun-echange-box .returns-text {
+    margin-bottom: 20px;
+}
+
+.vat-free-section .retun-echange-box .returns-text h6 {
+    font-size: 18px;
+    color: var(--primary-color);
+    font-weight: 500;
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    gap: 8px
+}
+
+.vat-free-section .retun-echange-box .returns-text p {
+    font-size: 14px;
+    color: var(--light-black);
+    font-weight: 400;
+}
+
+.vat-free-section .retun-echange-box .returns-text ul {
+    margin-left: 0;
+    margin-top: 8px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.vat-free-section .retun-echange-box .returns-text ul li {
+    font-size: 14px;
+    color: var(--light-black);
+    font-weight: 400;
+}
+
+.vat-free-section .retun-echange-box .returns-text ul li span {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.vat-free-section .retun-echange-box .returns-text .retuns-sub-title {
+    color: var(--light-black);
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+@media (max-width:767px) {
+    .vat-free-main .common-banner-section {
+              min-height: 170px;
+        background-position: right;
+    }
+
+    .vat-free-main .common-banner-content h2 {
+        font-size: 30px;
+    }
+    .vat-free-section .retun-echange-box .returns-text h6{
+        font-size: 14px;
+    }
+    .vat-free-section .retun-echange-box{
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width:576px){
+    .vat-free-section .retun-echange-box .returns-text p{
+        text-align: justify;
+    }
+    .vat-free-section .retun-echange-box .returns-text ul li{
+        text-align: justify;
+    }
+}

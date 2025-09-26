@@ -1,7 +1,12 @@
 @php
   $sid = session()->getId();
   $cartCount = \App\Models\Cart::where('session_id',$sid)->where('status','open')->withCount('items')->first()->items_count ?? 0;
+  $favoritedIdCount = \App\Models\Favorite::where('user_id', auth()->id())
+  ->pluck('external_id')
+  ->count();
+
 @endphp
+
     <div class="header-part">
       <header class="custom-header desktop-view-header">
         <!-- top header -->
@@ -296,19 +301,19 @@
                     </div>
                   </li>
                   <li class="nav-item">
-                    <a href="product-listing.html" class="nav-link">Preowned
+                    <a href="{{url('preowned')}}" class="nav-link">Preowned
                       Items </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link">Diamond Items
+                    <a href="{{url('diamond')}}" class="nav-link">Diamond Items
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="about-us.html" class="nav-link">About Us
+                    <a href="{{url('about-us')}}" class="nav-link">About Us
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="contact-us.html" class="nav-link">Contact us
+                    <a href="{{url('contact')}}" class="nav-link">Contact us
                     </a>
                   </li>
                   <li class="header-contact mobile-contact">
@@ -336,15 +341,40 @@
                     <a href="#" class="nav-link searchToggle"><i
                         class="fa-solid fa-magnifying-glass"></i></a>
                   </li>
-                  <li>
-                    <a href="login.html" class="nav-link"><i
-                        class="fa-regular fa-user"></i></a>
-                  </li>
-                  <li>
-                    <a href="cart-listing.html" class="nav-link"><i
-                        class="fa-solid fa-basket-shopping"></i></a>
-                    <div class="cart-item-box"><span>1</span></div>
-                  </li>
+                  @auth
+                      {{-- If user is logged in --}}
+                      <li>
+                          <a href="{{ route('dashboard') }}" class="nav-link">
+                              <i class="fa-regular fa-user"></i>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="{{ url('/wishlist') }}" class="nav-link">
+                              <i class="fa-regular fa-heart"></i>
+                          </a>
+                          <div class="heart-item-box"><span>{{$favoritedIdCount}}</span></div>
+                      </li>
+                      <li>
+                          <a href="{{ url('/cart') }}" class="nav-link">
+                              <i class="fa-solid fa-basket-shopping"></i>
+                          </a>
+                          <div class="cart-item-box"><span>{{ $cartCount }}</span></div>
+                      </li>
+                      
+                  @else
+                      {{-- If user is NOT logged in --}}
+                      <li>
+                          <a href="{{ route('login') }}" class="nav-link">
+                              <i class="fa-regular fa-user"></i>
+                          </a>
+                      </li>
+                      <li>
+                        <a href="{{ url('/cart') }}" class="nav-link">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </a>
+                        <div class="cart-item-box"><span>{{ $cartCount }}</span></div>
+                      </li>
+                  @endauth
                 </ul>
               </div>
             </nav>

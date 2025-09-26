@@ -5,7 +5,34 @@
     <div class="container py-5">
         <div class="row">
             <!-- Sidebar -->
-            @include('profile.profilecommon')
+            <div class="col-lg-3 col-md-12">
+                <div class="profile-card text-center">
+                    <div class="user-profile">
+                        <img src="./assets/image/user.jpg" alt="User">
+                    </div>
+                    <h5 class="mb-0">dp jadv</h5>
+                    <a href="login.html" class="logout-text">Logout</a>
+                    <hr>
+                    <div class="sidebar-menu">
+                        <button class="active" onclick="showContent('dashboard')">
+                            <i class="fa-solid fa-boxes-stacked"></i>
+                            Dashboard
+                        </button>
+                        <button onclick="showContent('orders')"><i
+                                class="fa-solid fa-bag-shopping"></i> Orders</button>
+                        <button onclick="showContent('account')">
+                            <i class="fa-solid fa-user"></i> Account
+                            details
+                        </button>
+                        <button onclick="showContent('wishlist')"><i
+                                class="fa-solid fa-heart"></i> Wishlist</button>
+                        <button onclick="logoutUser()"><i
+                                class="fa-solid fa-arrow-right-from-bracket"></i> Log
+                            out</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- Content Area -->
             <div class="col-lg-9 col-md-12">
                 <div class="pofile-content-card">
@@ -13,7 +40,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <a href="order">
+                                    <a href="orders">
                                         <div class="card border-0">
                                             <div
                                                 class="card-body d-flex align-items-center flex-column">
@@ -24,7 +51,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="account">
+                                    <a href="orders">
                                         <div class="card border-0">
                                             <div
                                                 class="card-body d-flex align-items-center flex-column">
@@ -35,7 +62,7 @@
                                     </a>
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="wishlist">
+                                    <a href="orders">
                                         <div class="card border-0">
                                             <div
                                                 class="card-body d-flex align-items-center flex-column">

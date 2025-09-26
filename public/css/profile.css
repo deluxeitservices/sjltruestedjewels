@@ -35,7 +35,7 @@
         border-radius: 50%;
     }
 
-    .profile-page .sidebar-menu button {
+    .profile-page .sidebar-menu button, .profile-page .sidebar-menu a {
         display: block;
         width: 100%;
         text-align: left;
@@ -52,21 +52,23 @@
         font-size: 14px;
     }
 
-    .profile-page .sidebar-menu button.active {
+    .profile-page .sidebar-menu button.active, .profile-page .sidebar-menu a.active {
         background: var(--primary-color);
         color: var(--white);
     }
 
-    .profile-page .sidebar-menu button i {
+    .profile-page .sidebar-menu button i, .profile-page .sidebar-menu a {
         color: var(--primary-color);
     }
 
     .profile-page .sidebar-menu button.active i,
-    .profile-page .sidebar-menu button:hover i {
+    .profile-page .sidebar-menu button:hover i, 
+    .profile-page .sidebar-menu a.active i,
+    .profile-page .sidebar-menu a:hover i {
         color: var(--white);
     }
 
-    .profile-page .sidebar-menu button:hover {
+    .profile-page .sidebar-menu button:hover, .profile-page .sidebar-menu a:hover {
         background: var(--primary-color);
         color: var(--white);
     }

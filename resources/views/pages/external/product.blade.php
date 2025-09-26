@@ -45,7 +45,7 @@
             <div class="product-detail-content">
               <div class="pdp_sku_info">
                 <div class="left-info">
-                  <div class="product_salution ribbon-update-color tax" aria-label="Tax Efficient">Tax Efficient</div>
+                  <div class="product_salution ribbon-update-color tax" aria-label="Tax Efficient">SJL Trusted</div>
                   <p class="mb-0 pl-0"><span>SKU</span> {{ $p['sku'] }}</p>
                   <div class="d-flex availability-like-icons">
                     <div class="pdp_info_bottom">
@@ -62,8 +62,17 @@
                   </div>
                 </div>
                 <div class="btn-group">
-                  <a data-toggle="tooltip" title="fav" href="#" data-original-title="Add Product to Favourites">
-                    <i class="fa-regular fa-heart"></i>
+                    @php
+                      $isFavorited = in_array($p['external_id'], $favoritedIds);
+                    @endphp
+                  <a class="wishlist-btn js-fav" data-external-id="{{ $p['external_id'] }}"
+                            data-title="{{ e($p['title']) }}"
+                            data-prefix="{{ ($category) }}"
+                            data-slug="{{ e($p['slug']) }}"
+                            data-sku="{{ e($p['sku'] ?? '') }}"
+                             data-slug="{{ e($p['slug'] ?? '') }}"
+                            data-image="{{ e($p['image'] ?? '') }}" data-toggle="tooltip" title="fav" href="#" data-original-title="Add Product to Favourites">
+                    <i class="fa-heart {{ $isFavorited ? 'fa-solid is-favorited' : 'fa-regular' }}"></i>
                   </a>
                 </div>
               </div>
@@ -133,36 +142,56 @@
                 </div>
               </div>
               </div> -->
-               <form action="{{ route('ext.cart.add') }}" method="post" class="mt-4 flex gap-2">
-                @csrf
-                <div class="product-count">
-                  <label for="size">Quantity</label>
-                  <div class="value-count-box">
-                   <!--  <form action="#" class="number-count-box">
-                      <div class="qtyminus">-</div>
-                      <input type="text" name="quantity" value="1" class="qty">
-                      <div class="qtyplus">+</div>
-                    </form> -->
-                     <input type="hidden" name="external_id" value="{{ $p['external_id'] }}">
-                     <input type="hidden" name="product_id" value="{{ $p['external_id'] }}">
-                     <input type="number" name="qty" value="1" min="1" class="border px-2 w-16">
+              @if($alreadyInCart)
+                  <div class="addto-cart-btn">
+                        <a href="/cart" class="common-primary-btn btn">
+                            <i class="fa-solid fa-cart-arrow-down"></i> View Cart
+                        </a>
+                  </div>                  
+              @else
+                <form action="{{ route('ext.cart.add', ['category' => $category]) }}" method="post" class="mt-4 flex gap-2">
+                  @csrf
+                  <div class="product-count">
+                    <label for="size">Quantity</label>
+                    <div class="value-count-box">
+                    <!--  <form action="#" class="number-count-box">
+                        <div class="qtyminus">-</div>
+                        <input type="text" name="quantity" value="1" class="qty">
+                        <div class="qtyplus">+</div>
+                      </form> -->
+                      <input type="hidden" name="external_id" value="{{ $p['external_id'] }}">
+                      <input type="hidden" name="product_id" value="{{ $p['external_id'] }}">
+                      <!-- <input type="number" name="qty" value="1" min="1" class="border px-2 w-16"> -->
+                      <div class="number-count-box flex items-center border rounded overflow-hidden">
+                        <div class="qtyminus px-3 cursor-pointer select-none">-</div>
+                        <input type="text" name="qty" value="1" class="qty w-12 text-center border-0">
+                        <div class="qtyplus px-3 cursor-pointer select-none">+</div>
+                      </div>
 
-                    <div class="price-proudct">
-                      <input type="hidden" id="price-pruct" value="1296.52" placeholder="value">
-                       <p class="mt-4 text-3xl font-bold">£<span id="livePrice">{{ number_format($price ?? 0,2) }}</span></p>
+
+                      <div class="price-proudct">
+                        <input type="hidden" id="price-pruct" value="1296.52" placeholder="value">
+                        <p class=" text-3xl font-bold">£<span id="livePrice">{{ number_format($price ?? 0,2) }}</span></p>
+                      </div>
                     </div>
+
                   </div>
 
-                </div>
+                  <div class="addto-cart-btn">
+                    <!-- <a href="cart-listing.html"> -->
+                    <a href="#">
+                      <!-- <button class="common-primary-btn"><i class="fa-solid fa-cart-arrow-down"></i> Add To cart</button> -->
+                      
+                          <button class="common-primary-btn">
+                              <i class="fa-solid fa-cart-arrow-down"></i> Add to cart
+                          </button>
 
-                <div class="addto-cart-btn">
-                  <a href="cart-listing.html">
-                    <!-- <button class="common-primary-btn"><i class="fa-solid fa-cart-arrow-down"></i> Add To cart</button> -->
-                    <button class="common-primary-btn"><i class="fa-solid fa-cart-arrow-down"></i> Add to cart</button>
-                  </a>
-                </div>
-                
-              </form>
+                    </a>
+                  </div>
+                  
+                </form>
+              @endif
+
                 
                 <div class="payment-product">
                   <div class="payment-card ">
@@ -336,6 +365,25 @@ async function refreshPrice(){
 refreshPrice(); setInterval(refreshPrice, 30000);
 
 // Update price when qty changes (multibuy)
+  $('.qtyplus').click(function() {
+      let qtyInput = document.querySelector('input[name="qty"]');
+      // let qty = qtyInput.value;
+      setTimeout(() => {
+          qtyInput.dispatchEvent(new Event('change'));
+      }, 500);
+  });
+
+  $('.qtyminus').click(function() {
+    let qtyInput = document.querySelector('input[name="qty"]');
+    // let qty = qtyInput.value;
+    setTimeout(() => {
+        qtyInput.dispatchEvent(new Event('change'));
+    }, 500);
+  });
+  
+$('input[name="qty"]').on('change', function() {
+    refreshPrice();
+});
 document.querySelector('input[name="qty"]').addEventListener('input', () => {
   refreshPrice();
 });

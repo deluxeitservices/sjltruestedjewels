@@ -458,3 +458,7 @@
     <script src="{{ URL::asset('js/search-bar.js?t=2') }}"></script>
     <script src="{{ URL::asset('js/validation.js?t=2') }}"></script>
     <script src="{{ URL::asset('js/top-scroll.js') }}"></script>
+    <script src="{{ URL::asset('js/profile.js') }}"></script>
+    <script src="{{ URL::asset('js/sell-item.js') }}"></script>
+    <script src="{{ URL::asset('js/your-detail.js') }}"></script>
+    <script src="https://cdn.datatables.net/2.3.3/js/dataTables.js"></script>

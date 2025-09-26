@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
 
 class LoginRequest extends FormRequest
 {
@@ -51,6 +54,33 @@ class LoginRequest extends FormRequest
 
         RateLimiter::clear($this->throttleKey());
     }
+
+    // public function authenticate()
+    // {
+    //     $email = $this->input('email');
+    //     $password = $this->input('password'); // Plain password user entered
+
+    //     $user = Admin::where('email', $email)->first();
+        
+    //     if (!$user) {
+    //         throw ValidationException::withMessages([
+    //             'email' => __('auth.failed'),
+    //         ]);
+    //     }
+
+    //     // Check MD5 password manually
+    //     if ($user->password !== md5($password)) {
+    //         throw ValidationException::withMessages([
+    //             'password' => __('auth.failed'),
+    //         ]);
+    //     }
+
+    // // Manually log the user in since password matched
+    //     Auth::login($user, $this->boolean('remember'));
+    //         dd(Auth::user());
+
+
+    // }
 
     /**
      * Ensure the login request is not rate limited.

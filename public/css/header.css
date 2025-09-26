@@ -376,7 +376,20 @@ header .cart-item-box {
     right: 6px;
 }
 
-header .cart-item-box span {
+header .heart-item-box {
+    background: var(--primary-color);
+    border-radius: 50%;
+    width: 17px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 29px;
+    right: 60px;
+}
+
+header .cart-item-box span, header .heart-item-box span {
     color: var(--white);
     font-size: 10px;
     font-weight: 700;
@@ -565,7 +578,7 @@ header .cart-item-box span {
 
     }
 
-    header .cart-item-box {
+    header .cart-item-box, header .heart-item-box {
         top: 15px;
         right: 0;
         left: 124px;

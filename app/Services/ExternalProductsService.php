@@ -22,14 +22,33 @@ class ExternalProductsService
 
     public function fetchList(int $page = 1, int $perPage = 50, array $filters = []): array
     {
+        $request = request();
+        $segment = $request->segment(1); // Returns 'preowned' if URL is /preowned
+
+
+        $front_stock_type = 1;
+        if($segment == 'buillion'){
+            $front_stock_type = 1;
+        }else if($segment == 'preowned'){
+            $front_stock_type = 2;
+        }else if($segment == 'diamond'){
+            $front_stock_type = 3;
+        }
         $q = [
             'domain_id'        => env('ISTOCK_DOMAIN_ID'),
             'rental_user_id'   => env('ISTOCK_RENTAL_USER_ID'),
             'page'             => $page,
             'per_page'         => $perPage,
             'front_status'     => env('ISTOCK_FRONT_STATUS', 1),
-            'front_stock_type' => env('ISTOCK_FRONT_STOCK_TYPE', 1),
+            // 'front_stock_type' => env('ISTOCK_FRONT_STOCK_TYPE', 1),
+            'front_stock_type' => $front_stock_type,
         ];
+
+        // print_r($q);
+        // die;
+        // preowned - 2 
+        // buillion = 1
+        // diammond - 3 
 
         // --- Always send live spot prices (GBP/gram) ---
         try {
@@ -94,6 +113,7 @@ class ExternalProductsService
             $q['price_max'] = (float) $filters['price_max'];
         }
 
+       
         // --- Sort mapping (UI -> API) ---
         if (!empty($filters['sort'])) {
             switch ($filters['sort']) {
@@ -414,6 +434,7 @@ class ExternalProductsService
     }
     public function fetchByIds(array $ids, \App\Services\PricingService $pricing): array
     {
+        
         $ids = array_values(array_unique(array_filter(array_map('intval', $ids))));
         if (empty($ids)) return [];
 
@@ -422,11 +443,12 @@ class ExternalProductsService
             'domain_id'        => (int) env('ISTOCK_DOMAIN_ID'),
             'rental_user_id'   => (int) env('ISTOCK_RENTAL_USER_ID'),
             'front_status'     => (int) env('ISTOCK_FRONT_STATUS', 1),
-            'front_stock_type' => (int) env('ISTOCK_FRONT_STOCK_TYPE', 1),
+            // 'front_stock_type' => (int) env('ISTOCK_FRONT_STOCK_TYPE', 1),
             'product_ids'      => implode(',', $ids),
             'page'             => 1,
             'per_page'         => max(50, count($ids)),
         ];
+
 
         // Add live spots (if available)
         $spotGold      = $pricing->latestSpotPerGramGBP('XAU');
@@ -443,6 +465,7 @@ class ExternalProductsService
             $url  = rtrim($this->base(), '/').'/'.$this->path(); // e.g. .../api/v1/products.php
             $resp = \Http::timeout(12)->withHeaders($this->headers())->get($url, $q);
             $resp->throw();
+           
             return $resp->json();
         });
 

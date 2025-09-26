@@ -56,6 +56,7 @@ class CartService
             ['user_id' => null]
         );
 
+
         // Remember the guest cart id in session so we can find it after login
         session()->put('guest_cart_id', $guestCart->id);
 
@@ -89,7 +90,7 @@ class CartService
             $cart->items()->create([
                 'product_id'  => $productId,
                 'external_id' => $externalId,
-                'qty'         => max(1, $qty),
+                'quantity'         => max(1, $qty),
             ]);
         }
 
@@ -296,7 +297,7 @@ class CartService
         } else {
             $cart->items()->create([
                 'product_id'  => $externalId, // store external id
-                'qty'         => $qty,
+                'quantity'         => $qty,
             ]);
         }
     }
@@ -327,14 +328,14 @@ class CartService
                 $match = $query->first();
 
                 if ($match) {
-                    $match->qty = (int)($match->qty ?? $match->quantity ?? 0) + (int)($fi->qty ?? $fi->quantity ?? 0);
+                    $match->quantity = (int)($match->qty ?? $match->quantity ?? 0) + (int)($fi->qty ?? $fi->quantity ?? 0);
                     // Keep any other attributes you care about (options, notes, etc.)
                     $match->save();
                 } else {
                     $into->items()->create([
                         'product_id'  => $fi->product_id,
                         'external_id' => $fi->external_id,
-                        'qty'         => (int)($fi->qty ?? $fi->quantity ?? 1),
+                        'quantity'         => (int)($fi->qty ?? $fi->quantity ?? 1),
                         // copy other fields you store on items if needed…
                     ]);
                 }

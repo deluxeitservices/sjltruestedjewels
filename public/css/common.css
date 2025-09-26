@@ -642,7 +642,9 @@ html {
 }
 
 .common-count-box .qtyplus,
-.common-count-box .qtyminus {
+.common-count-box .qtyminus,
+.common-count-box .js-qty-dec,
+.common-count-box .js-qty-inc {
   width: 30px;
   height: 28px;
   background: var(--primary-color);
@@ -656,11 +658,11 @@ html {
   justify-content: center;
 }
 
-.common-count-box .qtyminus {
+.common-count-box .qtyminus, .common-count-box .js-qty-dec {
   border-radius: 3px 0 0 3px;
 }
 
-.common-count-box .qtyplus {
+.common-count-box .qtyplus, .common-count-box .js-qty-inc {
   border-radius: 0 3px 3px 0;
 }
 
@@ -851,7 +853,7 @@ html {
 }
 /* form */
 .password-link {
-    margin-top: 48px;
+    margin-top: 20px;
 }
 /* Search Bar */
 .common-faq-section .search-container {
@@ -5560,6 +5562,9 @@ html {
     opacity: 1;
 }
 
+.is-favorited{
+  color:red !important;
+}
 @media (max-width:1440px) {
   .common-banner-section .common-banner-content {
     padding: 55px 89px;

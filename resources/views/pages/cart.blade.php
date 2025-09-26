@@ -8,7 +8,27 @@
   @endif
 
   @if(empty($totals['items']))
-    <p>Your cart is empty.</p>
+    <section class="h-100 d-flex align-items-center justify-content-center py-5 cart-empty-section">
+      <div class="container text-center">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6">
+            <div class="card border-0 shadow-sm p-4">
+              <div class="card-body">
+                <div class="mb-4">
+                  <i class="fa-solid fa-cart-shopping fa-3x text-muted"></i>
+                </div>
+                <h2 class="h4 mb-3">Your cart is empty</h2>
+                <p class="text-muted mb-5">Looks like you haven’t added anything to your cart yet.</p>
+                <a href="{{ url('/') }}" class="common-primary-btn mt-3 p-3">
+                  <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   @else
   <section class="h-100 h-custom cart-listing-page">
     <div class="container py-5 h-100">
@@ -20,7 +40,7 @@
 
                 <div class="col-lg-7">
                   <h5 class="mb-3">
-                    <a href="{{ route('ext.catalog') }}" class="cart-lisitng-title">
+                    <a href="{{ route('ext.catalog', ['category' => $category]) }}" class="cart-lisitng-title">
                       <i class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping
                     </a>
                   </h5>
@@ -28,9 +48,9 @@
 
                   <div class="cart-list">
                     <div class="cart-title">
-                      <h5>Your Basket <span>({{ $totals['distinct_items'] }})</span></h5>
+                      <h5>Your Basket <span class="basket_count">({{ $totals['distinct_items'] }})</span></h5>
                     </div>
-                    <p class="mb-0">You have {{ $totals['total_quantity'] }} items in your cart</p>
+                    <p class="mb-0">You have <span class="js-qty-sum" >{{ $totals['total_quantity'] }}</span> items in your cart</p>
                   </div>
 
                   <div class="cart-listing-main-box">
@@ -50,16 +70,23 @@
                             </div>
 
                             <div class="qunaty-item">
-                              <div class="d-flex align-items-center gap-2">
-                                <button type="button" class="btn btn-outline-secondary px-2 js-qty-dec" data-item="{{ $ci['item_id'] }}">-</button>
+                              <!-- <div class="d-flex align-items-center gap-2"> -->
+                                <!-- <button type="button" class="btn btn-outline-secondary px-2 js-qty-dec" data-item="{{ $ci['item_id'] }}">-</button>
                                 <input type="number"
                                        class="form-control text-center js-qty-input"
                                        value="{{ $ci['qty'] }}"
                                        min="0"
                                        data-item="{{ $ci['item_id'] }}"
                                        style="width:70px;">
-                                <button type="button" class="btn btn-outline-secondary px-2 js-qty-inc" data-item="{{ $ci['item_id'] }}">+</button>
-                              </div>
+                                <button type="button" class="btn btn-outline-secondary px-2 js-qty-inc" data-item="{{ $ci['item_id'] }}">+</button> -->
+                                <div class="number-count-box common-count-box">
+                                 <div data-item="{{ $ci['item_id'] }}" class=" js-qty-dec">-</div>
+                                  <input type="text" name="quantity" value="{{ $ci['qty'] }}"
+                                       min="0"
+                                       data-item="{{ $ci['item_id'] }}" class="qty text-center js-qty-input" >
+                                  <div data-item="{{ $ci['item_id'] }}" class=" js-qty-inc">+</div>
+                                </div>
+                              <!-- </div> -->
 
                               <div class="price-cart-listing">
                                 <h5>£<span class="unit" data-item="{{ $ci['item_id'] }}">{{ number_format($ci['unit'], 2) }}</span></h5>
@@ -85,7 +112,7 @@
                       </div>
 
                       <div class="order-price">
-                        <p>Subtotal ( <span id="qty-sum">{{ $totals['total_quantity'] }}</span> )</p>
+                        <p>Subtotal ( <span class="js-qty-sum" id="qty-sum">{{ $totals['total_quantity'] }}</span> )</p>
                         <h6><strong>£<span id="subtotal">{{ number_format($totals['subtotal'], 2) }}</span></strong></h6>
                       </div>
 
@@ -105,24 +132,28 @@
                     <div class="cart-checkout-btn p-3">
                       {{-- If guest, pressing this will redirect to login (auth middleware on /checkout) --}}
                       @auth
-                        <a href="{{ route('checkout.show') }}" class="common-primary-btn w-100 text-center d-block">
-                          <i class="fa-solid fa-lock"></i> Checkout
-                        </a>
+                        <a href="{{ route('checkout.show') }}"> <button class="common-primary-btn">
+                            <i class="fa-solid fa-cart-arrow-down"></i> Checkout
+                          </button></a>
                       @endauth
 
                       {{-- If the user is a guest, show Login / Register --}}
                       @guest
-                        <a href="{{ route('login') }}" class="common-primary-btn w-100 text-center d-block mb-2">
-                          <i class="fa-solid fa-right-to-bracket"></i> Login to checkout
-                        </a>
+                        <a href="{{ route('login') }}"> <button class="common-primary-btn">
+                            <i class="fa-solid fa-right-to-bracket"></i> Login to checkout
+                          </button></a>
                        <!--  <a href="{{ route('register') }}" class="common-primary-btn w-100 text-center d-block">
                           <i class="fa-solid fa-user-plus"></i> Create account
                         </a> -->
                       @endguest
 
-                      <a href="{{ route('ext.catalog') }}" class="common-primary-btn mt-2 w-100 text-center d-block">
+                      <!-- <a href="{{ route('ext.catalog', ['category' => $category]) }}" class="common-primary-btn mt-2 w-100 text-center d-block">
                         <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
-                      </a>
+                      </a> -->
+                      <a href="{{ url('/') }}"><button class="common-primary-btn mt-2">
+                        <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
+                      </button></a>
+                      
                     </div>
                   </div>
                 </div>
@@ -146,7 +177,23 @@ function updateSummary(totals){
   document.getElementById('subtotal').textContent = Number(totals.subtotal).toFixed(2);
   document.getElementById('vat').textContent      = Number(totals.vat).toFixed(2);
   document.getElementById('total').textContent    = Number(totals.total).toFixed(2);
-  const qtySum = document.getElementById('qty-sum'); if (qtySum) qtySum.textContent = totals.total_quantity;
+  // const qtySum = document.getElementById('qty-sum'); 
+  // if (qtySum) qtySum.textContent = totals.total_quantity; 
+  document.querySelectorAll('.js-qty-sum').forEach(el => {
+      el.textContent = totals.total_quantity;
+  });
+
+  document.querySelectorAll('.basket_count').forEach(el => {
+      el.textContent = '('+totals.distinct_items+')';
+  });
+
+  document.querySelectorAll('.cart-item-box span').forEach(el => {
+      el.textContent = totals.distinct_items;
+  });
+
+  if (totals.distinct_items === 0) {
+      location.reload(); // reloads the current page
+  }
 }
 
 function updateLines(totals){

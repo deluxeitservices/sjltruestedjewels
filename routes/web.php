@@ -16,7 +16,6 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SjlContactController;
 use App\Http\Controllers\OrderController;
 
-
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/metal/{metal}', [CatalogController::class,'index'])->name('catalog.metal');
 Route::get('/product/{slug}', [ProductController::class,'show'])->name('product.show');
@@ -70,6 +69,11 @@ Route::post('/cart/item/remove', [CartController::class,'removeAjax'])->name('ca
 // routes/web.php
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');
+
+Route::get('/sell-now', [SellNowController::class, 'index'])->name('sell.index');
+Route::post('/sell-now', [SellNowController::class, 'store'])->name('sell.store');
+// AJAX: price calculator (live price x purity x weight x qty)
+Route::post('/sell-now/calc', [SellNowController::class, 'calc'])->name('sell.calc');
 
 Route::post('/favorites/unfav/{id}', [FavoriteController::class, 'unfav'])->name('favorites.unfav');
 Route::middleware('auth')->group(function () {

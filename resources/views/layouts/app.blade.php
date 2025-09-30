@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="{{ URL::asset('/css/zoom.css') }}?t=2?t=2">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
     rel="stylesheet" />
-  <link rel="stylesheet" href="{{ URL::asset('./css/common.css') }}??t=2" />
+  <link rel="stylesheet" href="{{ URL::asset('./css/common.css') }}?t=4" />
   <link rel="stylesheet"
     href="https://cdn.datatables.net/2.3.3/css/dataTables.dataTables.css">
   <meta name="csrf-token" content="{{ csrf_token() }}">

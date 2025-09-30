@@ -43,8 +43,12 @@
             <a href="{{ url('/account') }}" class="main-box d-flex gap-2 align-items-center p-3 mb-2 text-decoration-none desbor-icon m-0 {{ request()->is('account') ? 'active' : '' }}">
                 <!-- <div class="main-box d-flex gap-2 align-items-center p-3 mb-2 " id="orders-link"> -->
                 <i class="fa-solid fa-bag-shopping"></i>
-                <span>Account details</span>
+                <span>Account</span>
                 <!-- </div> -->
+            </a>
+            <a href="{{ url('/address') }}" class="main-box d-flex gap-2 align-items-center p-3 mb-2 text-decoration-none desbor-icon m-0 {{ request()->is('address') || request()->is('address/*') ? 'active' : '' }}">
+                <i class="fa-solid fa-location"></i>
+                <span>Addresses</span>
             </a>
             <!-- <button onclick="showContent('wishlist')"><i
                                 class="fa-solid fa-heart"></i> Wishlist</button> -->

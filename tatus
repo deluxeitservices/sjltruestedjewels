@@ -1,0 +1,103 @@
+[1mdiff --git a/app/Http/Controllers/ExternalCatalogController.php b/app/Http/Controllers/ExternalCatalogController.php[m
+[1mindex c949c15..c41443a 100644[m
+[1m--- a/app/Http/Controllers/ExternalCatalogController.php[m
+[1m+++ b/app/Http/Controllers/ExternalCatalogController.php[m
+[36m@@ -84,7 +84,7 @@[m [mpublic function index(Request $r, ExternalProductsService $svc, PricingService $[m
+                 return in_array($woId, $weightIds, true);[m
+             })->values();[m
+         }[m
+[31m-[m
+[32m+[m[32m        $prefix = request()->segment(1);[m
+         // Create paginator that generates /ext/catalog?page=2&... links[m
+         $products = new LengthAwarePaginator([m
+             $items,[m
+[36m@@ -92,24 +92,40 @@[m [mpublic function index(Request $r, ExternalProductsService $svc, PricingService $[m
+             $per,[m
+             $page,[m
+             [[m
+[31m-                'path'  => route('ext.catalog'),[m
+[32m+[m[32m                'path'  => route('ext.catalog', ['category' => $prefix]),[m
+                 'query' => $r->query(), // keep other filters in links[m
+             ][m
+         );[m
+ [m
+[31m-        return view('pages.external.catalog', compact('products', 'categories', 'brands','weights'));[m
+[32m+[m[32m        return view('pages.external.catalog', compact('products', 'categories', 'brands','weights','prefix'));[m
+     }[m
+[31m-    public function show(string $slug, ExternalProductsService $svc, PricingService $pricing)[m
+[32m+[m[32m    public function show(string $category, string $slug, ExternalProductsService $svc, PricingService $pricing, CartService $cartData)[m
+     {[m
+[32m+[m
+[32m+[m[32m        $cart   = $cartData->getOrCreateCart();[m
+[32m+[m[32m        $totals = $cartData->totalsExternal($cart, $pricing, $svc);[m
+[32m+[m
+         $ext = $svc->findBySlug($slug);[m
+         abort_unless($ext, 404);[m
+ [m
+         $mapped = $svc->mapForView($ext, $pricing);[m
+         $price  = $mapped['display_price']; // initial render[m
+ [m
+[32m+[m[32m        $currentProductId = $mapped['external_id'] ?? null;[m
+[32m+[m
+[32m+[m[32m        // echo $currentProductId;[m
+[32m+[m[41m        [m
+[32m+[m[32m        $alreadyInCart = collect($totals['items'])->contains(function ($item) use ($currentProductId) {[m
+[32m+[m[32m            return isset($item['product_id']) && $item['product_id'] == $currentProductId;[m
+[32m+[m[32m        });[m
+[32m+[m
+[32m+[m[32m        $routeName = request()->route()->getName(); // e.g. ext.product.show.bullion[m
+[32m+[m[32m        $category = str_replace('ext.product.', '', $routeName); // result: 'bullion'[m
+         return view('pages.external.product', [[m
+             'p'     => $mapped,[m
+             'price' => $price,[m
+[32m+[m[32m            'alreadyInCart' => $alreadyInCart,[m
+[32m+[m[32m            'category' => $category,[m
+         ]);[m
+     }[m
+ [m
+[36m@@ -135,17 +151,41 @@[m [mpublic function livePrice(int $id, Request $r, ExternalProductsService $svc, Pri[m
+      */[m
+     public function addToCart(Request $r, CartService $cartSvc)[m
+     {[m
+[32m+[m
+         $data = $r->validate([[m
+             'external_id' => 'required|integer',[m
+             'qty'         => 'nullable|integer|min:1',[m
+         ]);[m
+[31m-[m
+         $qty = max(1, (int)($data['qty'] ?? 1));[m
+[31m-[m
+         // No local Product creation, no price rule writing.[m
+[31m-        // Just remember the external product id in the cart:[m
+[32m+[m[32m        // Just remember the ealreadyInCartxternal product id in the cart:[m
+         $cartSvc->addExternal((int)$data['external_id'], $qty);[m
+[32m+[m[32m        // print_r($cartSvc);[m
+[32m+[m[32m        // die;[m
+[32m+[m[32m        return back()->with('success', 'Added to cart');[m
+[32m+[m[32m        // return redirect()->route('cart.index')->with('success', 'Added to cart');[m
+[32m+[m[32m    }[m
+[32m+[m
+ [m
+[31m-        return redirect()->route('cart.index')->with('success', 'Added to cart');[m
+[32m+[m
+[32m+[m[32m    public function toggle(Request $request)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        $user = auth()->user();[m
+[32m+[m[32m        $productId = $request->input('product_id');[m
+[32m+[m
+[32m+[m[32m        $wishlist = Wishlist::where('user_id', $user->id)[m
+[32m+[m[32m                            ->where('product_id', $productId)[m
+[32m+[m[32m                            ->first();[m
+[32m+[m
+[32m+[m[32m        if ($wishlist) {[m
+[32m+[m[32m            $wishlist->delete();[m
+[32m+[m[32m            return response()->json(['status' => 'removed']);[m
+[32m+[m[32m        } else {[m
+[32m+[m[32m            Wishlist::create([[m
+[32m+[m[32m                'user_id' => $user->id,[m
+[32m+[m[32m                'product_id' => $productId,[m
+[32m+[m[32m            ]);[m
+[32m+[m[32m            return response()->json(['status' => 'added']);[m
+[32m+[m[32m        }[m
+     }[m
+ }[m

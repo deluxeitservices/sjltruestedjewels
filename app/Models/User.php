@@ -51,4 +51,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function addresses()
+    {
+        return $this->hasMany(\App\Models\UserAddress::class);
+    }
+
+    public function defaultAddress()
+    {
+        return $this->hasOne(\App\Models\UserAddress::class)->where('default_address', true);
+    }
 }

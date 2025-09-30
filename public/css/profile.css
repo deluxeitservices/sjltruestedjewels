@@ -168,7 +168,7 @@
     }
 
     .profile-page div.dt-container .dt-paging .dt-paging-button:hover {
-        background: transparent;
+        /* background: transparent; */
         box-shadow: unset;
         border: 0;
     }

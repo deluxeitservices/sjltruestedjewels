@@ -63,9 +63,9 @@
                 <div class="form-outline" data-mdb-input-init>
                   <input type="text" name="name" class="form-control"
                     id="validationTooltip00" value="{{ old('name') }}" required />
-                  <label for="validationTooltip00" class="form-label">First
-                    name</label>
-                  <div class="invalid-tooltip">First Name is required</div>
+                  <label for="validationTooltip00" class="form-label">
+                    Name</label>
+                  <div class="invalid-tooltip">Name is required</div>
                 </div>
                 <div class="common-user">
                   <i class="fa-solid fa-user"></i>
@@ -139,12 +139,12 @@
                   <i class="fa-regular fa-eye"></i>
                 </div>
               </div>
-              <!-- <div class="col-md-6 position-relative">
+              <div class="col-md-6 position-relative">
                 <div class="form-outline" data-mdb-input-init>
 
                   <input type="text"  name="address" class="form-control"
                     id="validationTooltip07" value="{{ old('name') }}" required />
-                  <label for="validationTooltip07" class="form-label">Find
+                  <label for="validationTooltip07" class="form-label">
                     Address</label>
                   <div class="invalid-tooltip">Find Address is
                     required</div>
@@ -152,7 +152,7 @@
                 <div class="common-user">
                   <i class="fa-solid fa-location-dot"></i>
                 </div>
-              </div> -->
+              </div>
               <div class="col-md-6 position-relative">
                 <div class="form-outline" data-mdb-input-init>
 

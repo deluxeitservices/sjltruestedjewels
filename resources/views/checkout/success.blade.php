@@ -10,7 +10,7 @@
             <p class="lead">Your order <strong>{{ $order->order_no }}</strong> has been paid successfully.</p>
         </div>
         @isset($declarationUrl)
-        <div class="alert alert-info d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4" role="alert">
+        <!-- <div class="alert alert-info d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4" role="alert">
             <div class="me-2">
                 Please fill out the required <strong>Compulsory Buying Form</strong> to complete your purchase.
             </div>
@@ -18,7 +18,27 @@
                 class="btn btn-dark">
                 Fill the Compulsory Buying Form
             </a>
+        </div> -->
+        <div class="alert alert-warning border-0 shadow-sm d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4" role="alert" style="background:#fff8e6;">
+            <div class="d-flex align-items-start">
+                <div class="me-3 d-inline-flex align-items-center justify-content-center rounded-circle" style="width:36px;height:36px;background:#ffe8b3;">
+                    <span aria-hidden="true" style="font-size:18px;line-height:1;">🛡️</span>
+                </div>
+                <div>
+                    <div class="fw-semibold mb-1" style="color:#7a5a00;">One quick step to finish</div>
+                    <div class="text-muted">
+                        Thanks—your order has been placed. To help keep everyone safe, please take a moment to complete the
+                        <strong>Compulsory Buying Form</strong>. It’s quick and ensures we can process your purchase smoothly.
+                    </div>
+                </div>
+            </div>
+
+            <a href="{{ $declarationUrl }}" class="btn btn-dark d-block mx-auto">
+                Complete form (2–3 mins)
+            </a>
+
         </div>
+
         @endisset
 
         <!-- Order Summary -->

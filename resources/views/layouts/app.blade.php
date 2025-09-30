@@ -49,6 +49,17 @@
 
   })
 
+  new DataTable('#address-list-table', {
+    scrollX: true,
+    responsive: true,
+    order: [[6, 'desc']],
+    columnDefs: [{
+      className: "dt-left",
+      targets: "_all"
+    }],
+
+  })
+
 
 
 </script>

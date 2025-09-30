@@ -13,7 +13,7 @@
                     <div id="account" class="content-section">
                         <div class="card account-form">
                             <div class="card-body">
-                                <form id="user-address-form" class="needs-validation register-form"
+                                <form id="user-account-form" class="needs-validation register-form"
                                     novalidate>
                                     <div class="row g-3">
                                         <div
@@ -64,7 +64,7 @@
                                                 <i class="fa-regular fa-envelope"></i>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 position-relative">
+                                        <!-- <div class="col-md-6 position-relative">
                                             <div class="form-outline" data-mdb-input-init>
 
                                                 <input type="text" class="form-control"
@@ -91,7 +91,7 @@
                                             <div class="common-user">
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="col-md-6 position-relative">
                                             <div class="form-outline" data-mdb-input-init>
 
@@ -106,7 +106,7 @@
                                                 <i class="fa-solid fa-location-dot"></i>
                                             </div>
                                         </div> -->
-                                        <div class="col-md-6 position-relative">
+                                        <!-- <div class="col-md-6 position-relative">
                                             <div class="form-outline" data-mdb-input-init>
 
                                                 <input type="text" class="form-control"
@@ -162,7 +162,7 @@
                                             <div class="common-user">
                                                 <i class="fa-solid fa-earth-americas"></i>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-6 position-relative">
                                             <div class="form-outline" data-mdb-input-init>
                                                 <input type="text" class="form-control"
@@ -183,7 +183,7 @@
                                                         class="btn common-primary-btn" type="submit"
                                                         data-mdb-ripple-init>Save</button></a> -->
                                                 <div id="ajax-message" class="alert d-none mt-3"></div>
-                                                <button type="button" class="common-primary-btn" id="user-address-button" class="pr-btn2 button w-100 mt-3">Save Changes</button>
+                                                <button type="button" class="common-primary-btn" id="user-account-button" class="pr-btn2 button w-100 mt-3">Save Changes</button>
                                             </div>
                                         </div>
                                     </div>
@@ -197,7 +197,7 @@
     </div>
 </main>
 <script>
-    var updateAddressUrl = @json(route('update.address')); 
+    var updateAccountUrl = @json(route('update.account')); 
     var csrfToken = @json(csrf_token()); 
 </script>
 @endsection

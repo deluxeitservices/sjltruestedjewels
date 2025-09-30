@@ -18,13 +18,13 @@ use App\Http\Controllers\OrderController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/metal/{metal}', [CatalogController::class,'index'])->name('catalog.metal');
-Route::get('/product/{slug}', [ProductController::class,'show'])->name('product.show');
+Route::get('/metal/{metal}', [CatalogController::class, 'index'])->name('catalog.metal');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
 
-Route::get('/contact', [ProfileController::class,'contact'])->name('contact');
+Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
 Route::post('/contact', [SjlContactController::class, 'store'])->name('contact.store');
-Route::get('/about-us', [ProfileController::class,'about'])->name('about');
+Route::get('/about-us', [ProfileController::class, 'about'])->name('about');
 
 // routes/web.php
 Route::get('/orders/{order}/declaration', [OrderController::class, 'showCompulsory'])
@@ -41,11 +41,14 @@ Route::get('/orders/{order}/pdf', [OrderController::class, 'downloadPdf'])
     ->middleware('auth'); // optional, but recommended
 
 
+Route::middleware('auth')->post('/checkout/address', [CheckoutController::class, 'addresStore'])
+    ->name('checkout.address.store');
+
 // Checkout (auth required)
 Route::middleware('auth')->group(function () {
-    Route::get('/checkout', [CheckoutController::class,'show'])->name('checkout.show');
-    Route::get('/checkout/success', [CheckoutController::class,'success'])->name('checkout.success');
-    Route::get('/checkout/cancel',  [CheckoutController::class,'cancel'])->name('checkout.cancel');
+    Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/cancel',  [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 });
 // Checkout
 //Route::get('/checkout', [CheckoutController::class, 'show'])->middleware('auth')->name('checkout.go');
@@ -53,19 +56,19 @@ Route::middleware('auth')->group(function () {
 // Route::get('/checkout/success', [CheckoutController::class,'success'])->name('checkout.success');
 
 // Stripe webhook
-Route::post('/stripe/webhook', [StripeWebhookController::class,'handle'])->name('stripe.webhook');
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle'])->name('stripe.webhook');
 
 // Cart
-Route::get('/cart', [CartController::class,'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
-Route::get('/cart/add',  [CartController::class,'addFromGet'])->name('cart.add.get');//Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
-Route::post('/cart/update', [CartController::class,'update'])->name('cart.update');
-Route::get('/cart/price', [CartController::class,'price'])->name('cart.price');
-Route::post('/cart/remove', [CartController::class,'remove'])->name('cart.remove');
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/add',  [CartController::class, 'addFromGet'])->name('cart.add.get'); //Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/price', [CartController::class, 'price'])->name('cart.price');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
 
 // New AJAX endpoints for qty +/- and remove
-Route::post('/cart/item/update', [CartController::class,'updateAjax'])->name('cart.updateAjax');
-Route::post('/cart/item/remove', [CartController::class,'removeAjax'])->name('cart.removeAjax');
+Route::post('/cart/item/update', [CartController::class, 'updateAjax'])->name('cart.updateAjax');
+Route::post('/cart/item/remove', [CartController::class, 'removeAjax'])->name('cart.removeAjax');
 
 // routes/web.php
 Route::view('/login', 'auth.login')->name('login');
@@ -76,7 +79,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
     Route::delete('/favorites/{externalId}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
-
 });
 
 Route::get('/logout', function (Request $request) {
@@ -90,6 +92,8 @@ Route::get('/logout', function (Request $request) {
 // Route for processing the account page(requires login)
 Route::middleware('auth')->get('/account', [ProfileController::class, 'account'])->name('account');
 Route::middleware('auth')->get('/order', [ProfileController::class, 'order'])->name('order');
+Route::middleware('auth')->get('/address', [ProfileController::class, 'address'])->name('address');
+Route::middleware('auth')->get('/address/{id}', [ProfileController::class, 'addressDetail'])->name('address.details');
 Route::middleware('auth')->get('/order/{id}', [ProfileController::class, 'orderDetail'])->name('order.details');
 
 Route::middleware('auth')->get('/wishlist', [ProfileController::class, 'wishlist'])->name('wishlist');
@@ -97,33 +101,34 @@ Route::middleware('auth')->get('/dashboard', [ProfileController::class, 'dashboa
 
 // Route for processing the user address update page(requires login)
 Route::middleware('auth')->post('/update-address', [ProfileController::class, 'addressUpdate'])->name('update.address');
+Route::middleware('auth')->post('/update-account', [ProfileController::class, 'accountUpdate'])->name('update.account');
 Route::post('/wishlist/toggle', [ExternalCatalogController::class, 'toggle'])->name('wishlist.toggle');
 
 
 
 
 // External catalog (from your API)
-Route::get('/{category}', [ExternalCatalogController::class,'index'])->name('ext.catalog');
+Route::get('/{category}', [ExternalCatalogController::class, 'index'])->name('ext.catalog');
 // Route::get('/bullion', [ExternalCatalogController::class,'index'])->name('ext.catalog');
 // Route::get('/preowned', [ExternalCatalogController::class,'index'])->name('ext.catalog');
 // Route::get('/diamond', [ExternalCatalogController::class,'index'])->name('ext.catalog');
-Route::get('/{category}/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
+Route::get('/{category}/product/{slug}', [ExternalCatalogController::class, 'show'])->name('ext.product');
 // Route::get('/preowned/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
 // Route::get('/diamond/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
 
 // Live price (AJAX)
-Route::get('/api/{category}/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
+Route::get('/api/{category}/products/{id}/price', [ExternalCatalogController::class, 'livePrice'])->name('ext.product.price');
 // Route::get('/api/preowned/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
 // Route::get('/api/diamond/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
 
 // Add to cart (external -> upsert local -> cart)
-Route::post('/{category}/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
+Route::post('/{category}/cart/add', [ExternalCatalogController::class, 'addToCart'])->name('ext.cart.add');
 // Route::post('/preowned/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
 // Route::post('/diamond/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
 
 // API for live prices
-Route::get('/api/quotes/summary', [QuoteController::class,'summary']);
-Route::get('/api/products/{id}/price', [QuoteController::class,'productPrice']);
+Route::get('/api/quotes/summary', [QuoteController::class, 'summary']);
+Route::get('/api/products/{id}/price', [QuoteController::class, 'productPrice']);
 
 
 
@@ -140,5 +145,4 @@ Route::middleware('auth')->group(function () {
     // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';

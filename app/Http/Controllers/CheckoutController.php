@@ -9,6 +9,7 @@ use App\Services\PricingService;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Cart;
+use App\Models\UserAddress;
 use App\Services\ExternalProductsService;
 use Stripe\StripeClient;
 use Illuminate\Support\Facades\Auth;
@@ -136,10 +137,16 @@ class CheckoutController extends Controller
             'pi_id'   => $pi->id,
             'cart_id' => $cart->id,
         ]);
+
+        $defaultAddress = UserAddress::where('user_id', auth()->id())
+            ->where('default_address', true)
+            ->first();
+
         return view('checkout.show', [
             'clientSecret'   => $pi->client_secret,
             'publishableKey' => config('services.stripe.key'),
             'totals'         => $totals,
+            'defaultAddress'         => $defaultAddress,
         ]);
     }
 
@@ -166,6 +173,21 @@ class CheckoutController extends Controller
             return redirect()->route('checkout.show')->with('error', 'Payment is not completed.');
         }
 
+        $addressId = $request->input('address_id');
+        if($addressId){
+            $billingAddressId = UserAddress::where('user_id', auth()->id())
+                        ->where('id', $addressId)
+                        ->value('id');
+
+        }else{
+            $billingAddressId = UserAddress::where('user_id', auth()->id())
+                        ->where('default_address', true)
+                        ->value('id');
+
+        }
+
+        
+
         // Totals & items from cart
         $cart   = $carts->getOrCreateCart();
         $totals = $carts->totalsExternal($cart, $pricing, $extSvc);
@@ -191,6 +213,7 @@ class CheckoutController extends Controller
             'paid_at'            => now(),
             'lock_expires_at'    => now()->addMinutes(15),
             'user_id'            => (string)Auth::id(),
+            'customer_address_id' => $billingAddressId,
         ]);
 
         // Persist each line as an order item
@@ -227,9 +250,9 @@ class CheckoutController extends Controller
         $declarationUrl = route('orders.declaration', ['order' => $order->id]);
 
         // Customer (attach PDF optional: true/false)
-        // Mail::to($order->customer_email)->send(new OrderPlaced($order, toAdmin: false, attachPdf: false, declarationUrl: $declarationUrl));
-        // // Admin notification
-        // Mail::to($adminEmail)->send(new OrderPlaced($order, toAdmin: true, attachPdf: false));
+        Mail::to($order->customer_email)->send(new OrderPlaced($order, toAdmin: false, attachPdf: false, declarationUrl: $declarationUrl));
+        // Admin notification
+        Mail::to($adminEmail)->send(new OrderPlaced($order, toAdmin: true, attachPdf: false));
 
         return view('checkout.success', [
             'order'  => $order,
@@ -241,5 +264,36 @@ class CheckoutController extends Controller
     public function cancel()
     {
         return redirect()->route('cart.index')->with('error', 'Payment canceled.');
+    }
+
+
+    public function addresStore(Request $request)
+    {
+        $data = $request->validate([
+            // 'name'        => ['required', 'string', 'max:255'],
+            // 'phone'       => ['nullable', 'string', 'max:50'],
+            'address'     => ['required', 'string', 'max:255'],
+            'house_no'    => ['required', 'string', 'max:255'],
+            'street_name' => ['nullable', 'string', 'max:255'],
+            'city'        => ['required', 'string', 'max:120'],
+            'postal_code' => ['required', 'string', 'max:20'],
+            'country'     => ['required', 'string', 'size:2'],
+            'make_default' => ['sometimes', 'boolean'],
+        ]);
+
+        $userId = $request->user()->id;
+
+        // If making default, clear previous defaults
+        if ($request->boolean('make_default')) {
+            UserAddress::where('user_id', $userId)->update(['default_address' => false]);
+            $data['default_address'] = true;
+        }
+
+        $addr = UserAddress::create($data + ['user_id' => $userId]);
+        return response()->json([
+            'ok' => true,
+            'address_id' => $addr->id,
+            'is_default' => (bool)$addr->is_default,
+        ]);
     }
 }

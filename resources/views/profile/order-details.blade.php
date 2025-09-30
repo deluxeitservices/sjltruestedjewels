@@ -65,9 +65,11 @@
                                       <div class="order-address-box2 order-add-box h-100 ps-4 pe-4">
                                           <p class="order-add-title"><strong>Shipping Address</strong></p>
                                           <p class="order-add-text">
-                                              {{ $order->user->address }},
-                                              {{ $order->user->city }} {{ $order->user->state }},
-                                              {{ $order->user->postal_code }}, {{ $order->user->country }}
+                                              {{ $order->user_address->address }},
+                                              {{ $order->user_address->house_no }},
+                                              {{ $order->user_address->street_name }},
+                                              {{ $order->user_address->city }} {{ $order->user_address->state }},
+                                              {{ $order->user_address->postal_code }}, {{ $order->user_address->country }}
                                           </p>
                                       </div>
                                   </div>

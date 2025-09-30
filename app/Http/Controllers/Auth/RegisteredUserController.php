@@ -14,6 +14,7 @@ use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use App\Mail\UserRegisteredMail;
 use Illuminate\Support\Facades\Mail;
+use App\Models\UserAddress;
 
 class RegisteredUserController extends Controller
 {
@@ -76,20 +77,33 @@ class RegisteredUserController extends Controller
             'dob'         => $request->dob,
             'mobile'      => $request->mobile,
             // 'address'     => $request->address,
-            'house_no'    => $request->house_no,
-            'street_name' => $request->street_name,
-            'city'        => $request->city,
-            'postal_code' => $request->postal_code,
-            'country'     => $request->country,
+            // 'house_no'    => $request->house_no,
+            // 'street_name' => $request->street_name,
+            // 'city'        => $request->city,
+            // 'postal_code' => $request->postal_code,
+            // 'country'     => $request->country,
         ]);
+
+         $addr = UserAddress::create([
+                'user_id'     => $user->id,
+                'name'        => $request->name,            // or a dedicated address_name field
+                'phone'       => $request->mobile,          // or a dedicated phone input
+                'address'     => $request->address,         // single-line if you keep it
+                'house_no'    => $request->house_no,
+                'street_name' => $request->street_name,
+                'city'        => $request->city,
+                'postal_code' => $request->postal_code,
+                'country'     => $request->country ?: 'GB',
+                'default_address'  => true,
+            ]);
 
         event(new Registered($user));
 
         Auth::login($user);
 
 
-        Mail::to($user->email)->send(new UserRegisteredMail($user, false)); // to user
-        Mail::to(config('mail.admin_address'))->send(new UserRegisteredMail($user, true)); // to admin
+        // Mail::to($user->email)->send(new UserRegisteredMail($user, false)); // to user
+        // Mail::to(config('mail.admin_address'))->send(new UserRegisteredMail($user, true)); // to admin
         return redirect(RouteServiceProvider::HOME);
     }
 

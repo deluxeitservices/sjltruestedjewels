@@ -166,6 +166,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }, 2000); // 2-second delay to simulate processing
     });
   });
+
+
+
+    setTimeout(() => {
+      $('.alert-danger').hide();
+      $('#ajaxError').hide();
+    }, 5000); // 2-second delay to simulate processing
+
 </script>
 
 </html>

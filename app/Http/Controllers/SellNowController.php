@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\JewelleryTabMaster;
 use App\Models\SellItem;
+use App\Models\SellItemImage;
 use App\Services\ExternalProductsService;
 use App\Models\User;
 use App\Services\PricingService; // <— use live pricing service
@@ -13,6 +14,7 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash; // <-- ADD THIS
+use Illuminate\Validation\ValidationException;
 
 class SellNowController extends Controller
 {
@@ -44,17 +46,26 @@ class SellNowController extends Controller
                 'weight' => $grams,
                 'purity' => '24ct (99.99%)',
             ];
-        })->filter(fn ($x) => $x['weight'] > 0)->values()->all();
+        })->filter(fn($x) => $x['weight'] > 0)->values()->all();
 
         // Fallback purity list (used until the user chooses)
         $purities = [
-            '24ct (99.99%)','23ct (95.80%)','22ct (91.6%)','21ct (87.5%)','20ct (83.3%)',
-            '18ct (75%)','14ct (58.5%)','9ct (37.5%)','999.5 (99.95%)','999 (99.9%)',
-            '950 (95%)','925 (92.5%)'
+            '24ct (99.99%)',
+            '23ct (95.80%)',
+            '22ct (91.6%)',
+            '21ct (87.5%)',
+            '20ct (83.3%)',
+            '18ct (75%)',
+            '14ct (58.5%)',
+            '9ct (37.5%)',
+            '999.5 (99.95%)',
+            '999 (99.9%)',
+            '950 (95%)',
+            '925 (92.5%)'
         ];
-        $metals   = ['gold','silver','platinum','palladium'];
+        $metals   = ['gold', 'silver', 'platinum', 'palladium'];
 
-        return view('sell-now.index', compact('items','purities','metals'));
+        return view('sell-now.index', compact('items', 'purities', 'metals'));
     }
 
     /**
@@ -64,11 +75,11 @@ class SellNowController extends Controller
     public function calc(Request $request)
     {
         $data = $request->validate([
-            'item_key'     => ['nullable','string','max:64'], // e.g. gold_jewellery, silver_bar (optional)
-            'metal'        => ['required', Rule::in(['gold','silver','platinum','palladium'])],
-            'purity_label' => ['required','string','max:50'],
-            'qty'          => ['required','integer','min:1','max:9999'],
-            'weight_g'     => ['required','numeric','min:0.001','max:100000'],
+            'item_key'     => ['nullable', 'string', 'max:64'], // e.g. gold_jewellery, silver_bar (optional)
+            'metal'        => ['required', Rule::in(['gold', 'silver', 'platinum', 'palladium'])],
+            'purity_label' => ['required', 'string', 'max:50'],
+            'qty'          => ['required', 'integer', 'min:1', 'max:9999'],
+            'weight_g'     => ['required', 'numeric', 'min:0.001', 'max:100000'],
         ]);
 
         $purity     = $this->purityFromLabel($data['purity_label']);
@@ -90,51 +101,80 @@ class SellNowController extends Controller
     {
         // Base validation (common to all modes)
         $baseRules = [
-            'checkout_mode' => ['nullable', Rule::in(['auth','guest','register'])],
-            'name'   => ['nullable','string','max:120'],
-            'email'  => ['nullable','email','max:255'],
-            'phone'  => ['nullable','string','max:50'],
-            'notes'  => ['nullable','string','max:5000'],
-
-            'items'                           => ['required','array','min:1'],
-            'items.*.catalog_item_id'         => ['nullable','integer','min:0'],
-            'items.*.item_label'              => ['nullable','string','max:255'],
-            'items.*.item_key'                => ['nullable','string','max:64'],
-            'items.*.metal'                   => ['required', Rule::in(['gold','silver','platinum','palladium'])],
-            'items.*.purity_label'            => ['required','string','max:50'],
-            'items.*.qty'                     => ['required','integer','min:1','max:9999'],
-            'items.*.weight_g'                => ['required','numeric','min:0.001','max:100000'],
-            'items.*.photo'                   => ['nullable','image','max:5120'],
+            'checkout_mode' => ['nullable', Rule::in(['auth', 'guest', 'register', 'login'])],
+            'name'   => ['nullable', 'string', 'max:120'],
+            'email'  => ['nullable', 'email', 'max:255'],
+            'phone'  => ['nullable', 'string', 'max:50'],
+            'notes'  => ['nullable', 'string', 'max:5000'],
+            'items'                           => ['required', 'array', 'min:1'],
+            'items.*.catalog_item_id'         => ['nullable', 'integer', 'min:0'],
+            'items.*.item_label'              => ['nullable', 'string', 'max:255'],
+            'items.*.item_key'                => ['nullable', 'string', 'max:64'],
+            'items.*.metal'                   => ['required', Rule::in(['gold', 'silver', 'platinum', 'palladium'])],
+            'items.*.purity_label'            => ['required', 'string', 'max:50'],
+            'items.*.qty'                     => ['required', 'integer', 'min:1', 'max:9999'],
+            'items.*.weight_g'                => ['required', 'numeric', 'min:0.001', 'max:100000'],
+            'items.*.photo'                   => ['nullable', 'image', 'max:5120'],
         ];
+
+
 
         // Additional rules when registering
         $mode = $request->input('checkout_mode', auth()->check() ? 'auth' : 'guest');
 
         if ($mode === 'register') {
             $baseRules = array_merge($baseRules, [
-                'first_name'            => ['required','string','max:80'],
-                'last_name'             => ['required','string','max:80'],
-                'email'                 => ['required','email','max:255', Rule::unique('users','email')],
-                'phone'                 => ['required','string','max:50'],
-                'password'              => ['required','string','min:8','confirmed'],
-                'password_confirmation' => ['required','string','min:8'],
+                'first_name'            => ['required', 'string', 'max:80'],
+                // 'last_name'             => ['required', 'string', 'max:80'],
+                'email'                 => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+                'phone'                 => ['required', 'string', 'max:50'],
+                'password'              => ['required', 'string', 'min:4'],
+                // 'password_confirmation' => ['required', 'string', 'min:8'],
+            ]);
+        } elseif ($mode === 'login') {
+            // For guests, we still want contact so we can follow up
+            $baseRules = array_merge($baseRules, [
+                'email'      => ['required', 'email', 'max:255'],
+                'password'   => ['required', 'string', 'min:4'],
             ]);
         } elseif ($mode === 'guest') {
             // For guests, we still want contact so we can follow up
             $baseRules = array_merge($baseRules, [
-                'first_name' => ['nullable','string','max:80'],
-                'last_name'  => ['nullable','string','max:80'],
-                'email'      => ['required','email','max:255'],
-                'phone'      => ['required','string','max:50'],
+                'first_name' => ['nullable', 'string', 'max:80'],
+                // 'last_name'  => ['nullable', 'string', 'max:80'],
+                'email'      => ['required', 'email', 'max:255'],
+                'phone'      => ['required', 'string', 'max:50'],
             ]);
         }
 
-        $validated = $request->validate($baseRules);
+
+        try {
+            $validated = $request->validate($baseRules);
+            // echo 'passed';
+        } catch (ValidationException $e) {
+            // dd($e->errors()); // inspect which fields failed and why
+            return back()
+                ->withErrors($e->errors())
+                ->withInput();
+        }
+        if ($mode === 'login' && !auth()->check()) {
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials, true)) {     // true = remember me (optional)
+                $request->session()->regenerate();
+                // proceed
+            } else {
+                // For web (redirect back with error + old input)
+                return back()
+                    ->withErrors(['email' => 'The provided credentials are incorrect.'])
+                    ->withInput($request->except('password'));
+            }
+        }
 
         // If registering: create user and log them in
         if ($mode === 'register' && !auth()->check()) {
             $user = User::create([
-                'name'     => trim(($validated['first_name'] ?? '').' '.($validated['last_name'] ?? '')) ?: ($validated['email'] ?? ''),
+                // 'name'     => trim(($validated['first_name'] ?? '') . ' ' . ($validated['last_name'] ?? '')) ?: ($validated['email'] ?? ''),
+                'name'     => $validated['first_name'],
                 'email'    => $validated['email'],
                 'password' => Hash::make($validated['password']),
                 'phone'    => $validated['phone'] ?? null, // if your users table has 'phone'
@@ -144,12 +184,15 @@ class SellNowController extends Controller
 
         // Compose display name for inquiry (priority: request->name, else first+last, else user name/email)
         $displayName = $validated['name']
-            ?? trim(($validated['first_name'] ?? '').' '.($validated['last_name'] ?? ''))
+            ?? trim(($validated['first_name'] ?? ''))
             ?? (auth()->user()->name ?? auth()->user()->email ?? null);
 
         return DB::transaction(function () use ($validated, $request, $displayName) {
+            $userId = auth()->id() ?? 0;
+            $dontKnow  = ($request->input('dontKnow')) ? $request->input('dontKnow') : 0;
             $inq = JewelleryTabMaster::create([
-                'user_id' => auth()->id(),
+                'user_id' => $userId,
+                'dont_know' => $dontKnow,
                 'fNameJew'    => $displayName,
                 'emailJew'   => $validated['email'] ?? (auth()->user()->email ?? null),
                 'contactNumberJew'   => $validated['phone'] ?? (auth()->user()->phone ?? null),
@@ -170,15 +213,11 @@ class SellNowController extends Controller
                 $unit = $perGram * $purity * (float)$row['weight_g'] * $buyRate;
                 $line = $unit * $qty;
 
-                $path = null;
-                if ($request->hasFile("items.$i.photo")) {
-                    $path = $request->file("items.$i.photo")->store("sell-items/{$inq->id}", 'public');
-                }
 
                 $totalGrams += (float)$row['weight_g'] * $qty;
                 $totalAmt   += $line;
 
-                SellItem::create([
+                $item = SellItem::create([
                     'sell_inquiry_id' => $inq->id,
                     'catalog_item_id' => $row['catalog_item_id'] ?? null,
                     'metal'           => $row['metal'],
@@ -190,8 +229,20 @@ class SellNowController extends Controller
                     'total_weight_g'  => (float)$row['weight_g'] * $qty,
                     'unit_price'      => round($unit, 2),
                     'line_total'      => round($line, 2),
-                    'photo_path'      => $path,
                 ]);
+
+
+                $path = null;
+                if ($request->hasFile("items.$i.photo")) {
+                    $file = $request->file("items.$i.photo");
+                    $path = $request->file("items.$i.photo")->store("sell-items/{$inq->id}", 'public');
+
+                    SellItemImage::create([
+                        'sell_item_id'  => $item->id,
+                        'path'          => $path,
+                        'original_name' => $file->getClientOriginalName(),
+                    ]);
+                }
             }
 
             $inq->update([
@@ -200,8 +251,11 @@ class SellNowController extends Controller
                 'expectedPriceJew' => round($totalAmt, 2),
             ]);
 
-            return redirect()
+            /*return redirect()
                 ->route('sell.index')
+                ->with('success', 'Thank you! Your inquiry has been submitted.');*/
+            return redirect()
+                ->route('sell.thankyou')
                 ->with('success', 'Thank you! Your inquiry has been submitted.');
         });
     }
@@ -224,15 +278,15 @@ class SellNowController extends Controller
         }
         $l = strtolower($label);
         return match (true) {
-            str_contains($l,'999.5') || str_contains($l,'995') => 0.9995,
-            str_contains($l,'999')                             => 0.9990,
-            str_contains($l,'950')                             => 0.9500,
-            str_contains($l,'925')                             => 0.9250,
-            str_contains($l,'916') || str_contains($l,'22')    => 0.9160,
-            str_contains($l,'750') || str_contains($l,'18')    => 0.7500,
-            str_contains($l,'585') || str_contains($l,'14')    => 0.5850,
-            str_contains($l,'375') || str_contains($l,'9')     => 0.3750,
-            str_contains($l,'24')                              => 0.9990,
+            str_contains($l, '999.5') || str_contains($l, '995') => 0.9995,
+            str_contains($l, '999')                             => 0.9990,
+            str_contains($l, '950')                             => 0.9500,
+            str_contains($l, '925')                             => 0.9250,
+            str_contains($l, '916') || str_contains($l, '22')    => 0.9160,
+            str_contains($l, '750') || str_contains($l, '18')    => 0.7500,
+            str_contains($l, '585') || str_contains($l, '14')    => 0.5850,
+            str_contains($l, '375') || str_contains($l, '9')     => 0.3750,
+            str_contains($l, '24')                              => 0.9990,
             default                                            => 1.0,
         };
     }
@@ -255,5 +309,98 @@ class SellNowController extends Controller
             return (float)$metals[$metal];
         }
         return $def;
+    }
+
+
+    /**
+     * Buy-rate percentage (what you pay vs spot).
+     * Reads config('buyrates') if present; otherwise returns 1.0 (100%).
+     */
+    public function checkStore(Request $request)
+    {
+        // Base validation (common to all modes)
+        $baseRules = [
+            'checkout_mode' => ['nullable', Rule::in(['auth', 'guest', 'register', 'login'])],
+            'name'   => ['nullable', 'string', 'max:120'],
+            'email'  => ['nullable', 'email', 'max:255'],
+            'phone'  => ['nullable', 'string', 'max:50'],
+            'notes'  => ['nullable', 'string', 'max:5000'],
+            'items'                           => ['required', 'array', 'min:1'],
+            'items.*.catalog_item_id'         => ['nullable', 'integer', 'min:0'],
+            'items.*.item_label'              => ['nullable', 'string', 'max:255'],
+            'items.*.item_key'                => ['nullable', 'string', 'max:64'],
+            'items.*.metal'                   => ['required', Rule::in(['gold', 'silver', 'platinum', 'palladium'])],
+            'items.*.purity_label'            => ['required', 'string', 'max:50'],
+            'items.*.qty'                     => ['required', 'integer', 'min:1', 'max:9999'],
+            'items.*.weight_g'                => ['required', 'numeric', 'min:0.001', 'max:100000'],
+            'items.*.photo'                   => ['nullable', 'image', 'max:5120'],
+        ];
+
+
+
+
+
+        // Additional rules when registering
+        $mode = $request->input('checkout_mode', auth()->check() ? 'auth' : 'guest');
+        if ($mode === 'register') {
+            $baseRules = array_merge($baseRules, [
+                'first_name'            => ['required', 'string', 'max:80'],
+                // 'last_name'             => ['required', 'string', 'max:80'],
+                'email'                 => ['required', 'email', 'max:255', Rule::unique('users', 'email')],
+                'phone'                 => ['required', 'string', 'max:50'],
+                'password'              => ['required', 'string', 'min:4'],
+                // 'password_confirmation' => ['required', 'string', 'min:8'],
+            ]);
+        } elseif ($mode === 'login') {
+            // For guests, we still want contact so we can follow up
+            $baseRules = array_merge($baseRules, [
+                'email'      => ['required', 'email', 'max:255'],
+                'password'   => ['required', 'string', 'min:4'],
+            ]);
+        } elseif ($mode === 'guest') {
+            // For guests, we still want contact so we can follow up
+            $baseRules = array_merge($baseRules, [
+                'first_name' => ['required', 'string', 'max:80'],
+                // 'last_name'  => ['nullable', 'string', 'max:80'],
+                'phone'      => ['required', 'string', 'max:50'],
+                'email'      => ['required', 'email', 'max:255'],
+            ]);
+        }
+
+        try {
+            $validated = $request->validate($baseRules);
+            // echo 'passed';
+        } catch (ValidationException $e) {
+            // dd($e->errors()); // inspect which fields failed and why
+            return response()->json([
+                'ok'     => false,
+                'errors' => $e->errors(),
+            ], 422);
+        }
+
+
+
+        if ($mode === 'login' && !auth()->check()) {
+            $credentials = $request->only('email', 'password');
+            if (Auth::attempt($credentials, true)) {     // true = remember me (optional)
+                // $request->session()->regenerate();
+                // proceed
+            } else {
+                // For web (redirect back with error + old input)
+                return response()->json([
+                    'ok'     => false,
+                    'errors' => ['email' => ['The provided credentials are incorrect.']],
+                ], 422);
+            }
+        }
+
+        return response()->json(['ok' => true]);
+    }
+
+
+    // SellNowController.php
+    public function thankYou()
+    {
+        return view('sell-now.thank-you');
     }
 }

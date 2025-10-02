@@ -75,6 +75,9 @@ Route::view('/register', 'auth.register')->name('register');
 
 Route::get('/sell-now', [SellNowController::class, 'index'])->name('sell.index');
 Route::post('/sell-now', [SellNowController::class, 'store'])->name('sell.store');
+Route::get('/sell/thank-you', [SellNowController::class, 'thankYou'])->name('sell.thankyou');
+
+Route::post('/checkSell', [SellNowController::class, 'checkStore'])->name('check.sell.form');
 // AJAX: price calculator (live price x purity x weight x qty)
 Route::post('/sell-now/calc', [SellNowController::class, 'calc'])->name('sell.calc');
 

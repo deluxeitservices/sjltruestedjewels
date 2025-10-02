@@ -36,7 +36,7 @@
     }
 
     // Attach events to the first row
-    document.querySelectorAll(".item-row").forEach(row => attachRowEvents(row));
+    /*document.querySelectorAll(".item-row").forEach(row => attachRowEvents(row));
 
     // Add new item row (only data, not headers)
     addItemBtn.addEventListener("click", () => {
@@ -45,4 +45,4 @@
       newRow.querySelector(".price-box").textContent = "£3,933.74";
       itemsContainer.appendChild(newRow);
       attachRowEvents(newRow);
-    });
+    });*/

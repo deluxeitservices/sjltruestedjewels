@@ -269,6 +269,7 @@ class CheckoutController extends Controller
 
     public function addresStore(Request $request)
     {
+
         $data = $request->validate([
             // 'name'        => ['required', 'string', 'max:255'],
             // 'phone'       => ['nullable', 'string', 'max:50'],
@@ -277,7 +278,7 @@ class CheckoutController extends Controller
             'street_name' => ['nullable', 'string', 'max:255'],
             'city'        => ['required', 'string', 'max:120'],
             'postal_code' => ['required', 'string', 'max:20'],
-            'country'     => ['required', 'string', 'size:2'],
+            'country'     => ['required', 'string'],
             'make_default' => ['sometimes', 'boolean'],
         ]);
 

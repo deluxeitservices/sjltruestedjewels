@@ -194,8 +194,9 @@ class SellNowController extends Controller
                 'user_id' => $userId,
                 'dont_know' => $dontKnow,
                 'fNameJew'    => $displayName,
+                'add_date' => time(),
                 'emailJew'   => $validated['email'] ?? (auth()->user()->email ?? null),
-                'contactNumberJew'   => $validated['phone'] ?? (auth()->user()->phone ?? null),
+                'contactNumberJew'   => $validated['phone'] ?? (auth()->user()->mobile ?? null),
                 'notes'   => $validated['notes'] ?? null,
                 'status'  => 1,
             ]);

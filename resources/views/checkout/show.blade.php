@@ -22,9 +22,11 @@
 
 
                 <div class="form-check mb-3">
-                  <input class="form-check-input" type="checkbox" id="use-default">
+                  <input class="form-check-input" type="checkbox" id="use-default" {{($savedCartAddress->default_address ?? '') ? 'checked' : ''}}>
                   <label class="form-check-label" for="use-default">
-                    Use my default address
+                    Use my default address<br> 
+                    <span class="text-muted">(If you will use this option then you can not change the address.)</span>
+
                   </label>
                 </div>
 
@@ -43,33 +45,66 @@
 
                       <div class="col-12">
                         <label class="form-label">Address</label>
-                        <input id="address" name="address" class="form-control" placeholder="Address">
+                        <input id="address" name="address" class="form-control" placeholder="Address" value="{{ old('address', optional($savedCartAddress)->address ?? '') }}"
+                          @if(!empty(optional($savedCartAddress)->address)) readonly @endif>
                       </div>
                       <div class="col-6">
                         <label class="form-label">House
                           No. / Name</label>
-                        <input id="house_no" name="house_no" class="form-control" placeholder="House No">
+                        <input id="house_no" name="house_no" class="form-control" placeholder="House No" value="{{$savedCartAddress->house_no ?? ''}}" @if(!empty(optional($savedCartAddress)->house_no)) readonly @endif>
                       </div>
                       <div class="col-6">
                         <label class="form-label">Street
                           Name</label>
-                        <input id="street_name" name="street_name" class="form-control" placeholder="Street Name">
+                        <input id="street_name" name="street_name" class="form-control" placeholder="Street Name" value="{{$savedCartAddress->street_name ?? ''}}" @if(!empty(optional($savedCartAddress)->street_name)) readonly @endif>
                       </div>
 
                       <div class="col-md-6">
                         <label class="form-label">City</label>
-                        <input id="city" name="city" class="form-control" placeholder="City">
+                        <input id="city" name="city" class="form-control" placeholder="City" value="{{$savedCartAddress->city ?? ''}}" @if(!empty(optional($savedCartAddress)->city)) readonly @endif>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Postal/Zip</label>
-                        <input id="postal_code" name="postal_code" class="form-control" placeholder="Postcode">
+                        <input id="postal_code" name="postal_code" class="form-control" placeholder="Postcode" value="{{$savedCartAddress->postal_code ?? ''}}" @if(!empty(optional($savedCartAddress)->postal_code)) readonly @endif>
                       </div>
                       <div class="col-md-3">
                         <label class="form-label">Country</label>
-                        <input id="country" name="country" class="form-control" value="" placeholder="Country">
+                        <input id="country" name="country" class="form-control" placeholder="Country" value="{{$savedCartAddress->country ?? '' }}" @if(!empty(optional($savedCartAddress)->country)) readonly @endif>
                       </div>
                     </div>
-                    <input type="hidden" name="address_id" id="address_id" value="">
+                    <!-- <div class="mt-2">
+                      <label for="order_note" class="form-label">Additional instructions (optional)</label>
+                      <h6>If you want to resize, please provide the desired size and details. Additionally, ensure your contact information is accurate so we can reach you via call or WhatsApp.</h6>
+                      <h6>If you have specific preferences or additional requests, please include them in the description.</h6>
+                      <textarea id="order_note"
+                        name="order_note"
+                        class="form-control"
+                        rows="3"
+                        maxlength="500"
+                        placeholder="Example: ring size, delivery notes, etc.">{{$order_note ?? ''}}</textarea>
+                    </div> -->
+                    <div class="mb-3 mt-3">
+                      <label for="order_note">
+                        Additional instructions <span class="text-muted">(optional)</span>
+                      </label>
+                      <div id="order_note_help" class="form-text mb-2">
+                        • For resizing, include the exact size and any specifics.<br>
+                        • Make sure your phone/WhatsApp number is correct so we can reach you.<br>
+                        • Add any preferences (finish, engraving, delivery notes, etc.).
+                      </div>
+
+                      <textarea
+                        id="order_note"
+                        name="order_note"
+                        class="form-control"
+                        rows="4"
+                        maxlength="500"
+                        aria-describedby="order_note_help order_note_counter"
+                        placeholder="Example: Ring size L, matte finish, leave with neighbour if not home.">{{ $order_note ?? '' }}</textarea>
+                    </div>
+
+                    <input type="hidden" name="address_id" id="address_id" value="{{$savedCartAddress->id ?? 0}}">
+                    <input type="hidden" name="cart_id" id="cart_id" value="{{$cart_id}}">
                     <div class="mt-3">
                       <button type="button" id="continue-to-payment" class="btn btn-dark" disabled>
                         Continue to payment
@@ -371,8 +406,10 @@
 
   function getBillingDetailsFromForm() {
     return {
-      // name: document.getElementById('addr_name').value.trim(),
-      // phone: document.getElementById('addr_phone').value.trim(),
+      cart_id: document.getElementById('cart_id').value.trim(),
+      address_id: document.getElementById('address_id').value.trim(),
+      use_default: document.getElementById('use-default').checked,
+      order_note: document.getElementById('order_note').value.trim(),
       address: {
         address: document.getElementById('address').value.trim(),
         house_no: document.getElementById('house_no').value.trim(),
@@ -402,14 +439,16 @@
       },
       body: JSON.stringify({
         // name: bd.name,
-        // phone: bd.phone,
+        cart_id: bd.cart_id,
+        order_note: bd.order_note,
+        address_id: bd.address_id,
         address: bd.address.address,
         house_no: bd.address.house_no,
         street_name: bd.address.street_name,
         city: bd.address.city,
         postal_code: bd.address.postal_code,
         country: bd.address.country,
-        make_default: true // store as default if you want
+        make_default: bd.use_default // store as default if you want
       })
     });
     // if (!res.ok) throw new Error('Failed to save address');
@@ -439,7 +478,7 @@
   (function initAddress() {
     const useDefault = document.getElementById('use-default');
     const def = readDefaultAddress();
-    const hiddenId   = document.getElementById('address_id');
+    const hiddenId = document.getElementById('address_id');
 
     // default state
     toggleButtonStates();
@@ -459,7 +498,7 @@
     });
 
     // live validation on input
-    [ 'house_no', 'street_name', 'city', 'postal_code', 'country'].forEach(id => {
+    ['house_no', 'street_name', 'city', 'postal_code', 'country'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.addEventListener('input', toggleButtonStates);
     });
@@ -496,6 +535,8 @@
     });
   })();
 
+  let paymentErrorMsg = '';
+
   // ---------- Stripe submit ----------
   document.getElementById('payment-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -517,7 +558,8 @@
       }
     });
 
-    if (error) {
+    if (error) {  
+      paymentErrorMsg = 'error.message';
       document.getElementById('error-message').textContent = error.message || 'Payment failed.';
     }
   });

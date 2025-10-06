@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\OrderPlaced;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB; 
+
 
 
 class CheckoutController extends Controller
@@ -142,7 +144,17 @@ class CheckoutController extends Controller
             ->where('default_address', true)
             ->first();
 
+        $savedCartAddress = UserAddress::where('user_id', auth()->id())
+            ->where('id', $cart->address_id)
+            ->first();
+
+            // echo '<pre>';
+            // print_r($savedCartAddress);
+            // die;
         return view('checkout.show', [
+            'savedCartAddress'   => $savedCartAddress,
+            'cart_id'   => $cart->id,
+            'order_note'   => $cart->order_note,
             'clientSecret'   => $pi->client_secret,
             'publishableKey' => config('services.stripe.key'),
             'totals'         => $totals,
@@ -282,19 +294,41 @@ class CheckoutController extends Controller
             'make_default' => ['sometimes', 'boolean'],
         ]);
 
+        $cart_id = $request->input('cart_id');
+        $order_note = $request->input('order_note');
+        $address_id = $request->input('address_id');
         $userId = $request->user()->id;
+        if (!empty($address_id)) {
+            // UPDATE existing address (owned by this user)
+            $address = UserAddress::where('user_id', $userId)
+                ->where('id', $address_id)
+                ->firstOrFail();
 
-        // If making default, clear previous defaults
-        if ($request->boolean('make_default')) {
-            UserAddress::where('user_id', $userId)->update(['default_address' => false]);
-            $data['default_address'] = true;
+            // unset($data['address_id']);
+            // $address->update($data);
+            $mode = 'updated';
+        } else {
+             UserAddress::where('user_id', $userId)->update(['default_address' => false]);
+            // CREATE new address
+            $address = UserAddress::create($data + [
+                'user_id'          => $userId,
+                'default_address'  => true,
+            ]);
         }
 
-        $addr = UserAddress::create($data + ['user_id' => $userId]);
+        DB::table('carts')->where('id', $cart_id)->update(
+            [
+                'address_id' => $address->id,
+                'order_note' => $order_note
+            ]);
+
+        // UserAddress::where('user_id', $userId)->update(['default_address' => false]);
+
+        // $addr = UserAddress::create($data + ['user_id' => $userId]);
         return response()->json([
             'ok' => true,
-            'address_id' => $addr->id,
-            'is_default' => (bool)$addr->is_default,
+            'address_id' => $address->id,
+            'is_default' => (bool)$address->default_address,
         ]);
     }
 }

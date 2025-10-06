@@ -146,22 +146,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('payment-form');
     const submitButton = document.getElementById('submit');
     const errorMessage = document.getElementById('error-message');
+    let paymentErrorMsg = '';
+
 
     form.addEventListener('submit', function (e) {
       e.preventDefault(); // prevent form from submitting immediately
 
+
+      console.log(e);
+      console.log('dev');
+      console.log(e.error);
+      //  if (!paymentComplete || paymentErrorMsg) {
+      //   errorMessage.textContent = paymentErrorMsg || 'Please complete your payment details.';
+      //   submitButton.disabled = false;
+      //   submitButton.textContent = 'Pay now';
+      //   return;
+      // }
+      
       // Disable the button
       submitButton.disabled = true;
-
       // Optional: Change the text
       submitButton.textContent = 'Processing...';
-
       // Show progress message
       errorMessage.textContent = 'Payment is in progress, please wait for some time.';
 
       // 🧠 Here you would call Stripe or your payment processor logic.
       // For now, simulate it with a timeout
+      
       setTimeout(() => {
+        console.log(errorMessage.textContent);
+        if (errorMessage.textContent != 'Payment is in progress, please wait for some time.') {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Pay Now';
+          errorMessage.textContent = '';  
+        }
         form.submit(); // now allow form to continue
       }, 2000); // 2-second delay to simulate processing
     });

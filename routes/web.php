@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SjlContactController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NewsletterController;
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/metal/{metal}', [CatalogController::class, 'index'])->name('catalog.metal');
@@ -24,6 +25,9 @@ Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
 Route::post('/contact', [SjlContactController::class, 'store'])->name('contact.store');
 Route::get('/about-us', [ProfileController::class, 'about'])->name('about');
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe']);
+
 
 // routes/web.php
 Route::get('/orders/{order}/declaration', [OrderController::class, 'showCompulsory'])

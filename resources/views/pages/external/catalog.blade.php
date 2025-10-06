@@ -263,10 +263,21 @@
 
                           {{-- Keep the user's current query string but go to page 1 (if any filters were applied) --}}
                           @if(!empty($activeFilters))
-                          <a href="{{ route('ext.catalog', array_merge(request()->except('page'), ['page'=>1])) }}"
-                            class="btn btn-sm btn-primary">
+                          @php
+                            $category = request()->route('category'); // e.g. "bullion"
+                          @endphp
+
+                          <a href="{{ route('ext.catalog',
+                                  array_merge(
+                                    ['category' => $category],
+                                    request()->except('page','category'),
+                                    ['page' => 1]
+                                  )
+                               ) }}"
+                             class="btn btn-sm btn-primary">
                             Keep filters &amp; try again
                           </a>
+
                           @endif
                         </div>
 

@@ -2,6 +2,8 @@
 @section('title','Sell Now — SJL')
 
 
+
+@section('content')
 <style>
   .sell-now-table td,
   .sell-now-table th {
@@ -95,7 +97,6 @@
   }
 </style>
 
-@section('content')
 <main class="sell-now-page-main">
   <section class="sell-now-section common-section">
     <div class="container">

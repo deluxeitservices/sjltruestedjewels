@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Http\Request;
- use Illuminate\Support\Str;
- use App\Models\PreownedSale; // Make sure you import the model
- use App\Models\PreownedContact; // Make sure you import the model
- use App\Models\PreownedNewsletter; // Make sure you import the model
- use App\Models\ProductFrontImages; // Make sure you import the model
- use Illuminate\Support\Facades\Storage; // Add this line
-
+use Illuminate\Support\Str;
+use App\Models\PreownedSale; // Make sure you import the model
+use App\Models\PreownedContact; // Make sure you import the model
+use App\Models\PreownedNewsletter; // Make sure you import the model
+use App\Models\ProductFrontImages; // Make sure you import the model
+use Illuminate\Support\Facades\Storage; // Add this line
+use App\Services\ProductApi; // <= add this at the top with other imports
 
 class HomeController extends Controller
 {
@@ -28,13 +28,13 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(ProductApi $api)
     {
         $base = config('app.backend_path'); // from config/app.php
         $products = [];
         /** Banner **/
         $lastBanner = DB::table('banner')->where('status', 1)->orderByDesc('id')->value('image');
-        $bannerStyle = $lastBanner ? "background-image: url('{$base}upload/banners/{$lastBanner}') !important": '';
+        $bannerStyle = $lastBanner ? "background-image: url('{$base}/upload/banners/{$lastBanner}') !important": '';
         /** Services banner **/
         $result_home_services = DB::table('home_services')->orderBy('sort_order', 'asc')->get();
         
@@ -47,7 +47,20 @@ class HomeController extends Controller
         /** process testimonials **/
         $testimonials = DB::table('testimonials')->orderBy('sort_order', 'desc')->get();
 
-        return view('index', ['products' => $products,'bannerStyle' => $bannerStyle,'result_home_services' => $result_home_services,'base' => $base,'result_home_process' => $result_home_process,'resulthome' => $resulthome,'testimonials' => $testimonials]);
+        $arrivalsRes  = $api->latestArrivals(7, null);
+        $newArrivals  = $arrivalsRes['data'] ?? [];
+        $apiError     = $arrivalsRes['error'] ?? null;
+
+        $trendingRes  = $api->trending(7, null);
+        $newtrending  = $trendingRes['data'] ?? [];
+        $trendError     = $trendingRes['error'] ?? null;
+
+        
+        $favoritedIds = \App\Models\Favorite::where('user_id', auth()->id())
+            ->pluck('external_id')
+            ->toArray();
+
+        return view('index', ['products' => $products,'bannerStyle' => $bannerStyle,'result_home_services' => $result_home_services,'base' => $base,'result_home_process' => $result_home_process,'resulthome' => $resulthome,'testimonials' => $testimonials,'newArrivals'=> $newArrivals,'apiError'=> $apiError,'favoritedIds'=>$favoritedIds,'newtrending' => $newtrending,'trendError' => $trendError]);
     }
 
 
@@ -413,7 +426,7 @@ class HomeController extends Controller
 
         
         $to = $request->email;
-        $subject = 'Welcome to Preowned Luxuries Newsletter!';
+        $subject = 'Welcome to SJL Trusted Jewels Newsletter!';
         $content = view('emails.user_newsletter_email', [
             'user_name' => $request->email, // Optional, for personalizing the email
         ])->render();

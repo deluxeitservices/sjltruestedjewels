@@ -14,32 +14,30 @@
                     </a>
                     <h6>Click</h6>
                     <div class="link-box"><a
-                        href="mailto:sjl123@gmail.com">sjl123@gmail.com</a></div>
+                        href="mailto:shivanijewellers.uk@gmail.com">shivanijewellers.uk@gmail.com</a></div>
                   </div>
                 </div>
                 <div class="col-md-4 col-12">
                   <div class="contact-box slider-down-load">
-                    <a href="tel:+42 (0) 227 271 1232">
+                    <a href="tel:+44 7477 068003">
                       <div class="icon-box">
                         <i class="fa-solid fa-phone"></i>
                       </div>
                     </a>
                     <h6>Call</h6>
-                    <div class="link-box"><a href="tel:+42 (0) 227 271 1232">+42
-                        (0) 227 271 1232</a>
+                    <div class="link-box"><a href="tel:+44 7477 068003">+44 7477 068003</a>
                     </div>
                   </div>
                 </div>
                 <div class="col-md-4 col-12">
                   <div class="contact-box slider-down-load ">
-                    <a href="tel:+42 (0) 227 271 1232">
+                    <a href="tel:+44 7477 068003">
                       <div class="icon-box">
                         <i class="fa-solid fa-location-dot"></i>
                       </div>
                     </a>
                     <h6>Visit</h6>
-                    <div class="link-box">Akshya Nagar 1st Block 1st Cross,
-                      Rammurthy nagar, Bangalore-560016
+                    <div class="link-box">Unit 2,281 Green Street(on Shafresbury Road Side) London, E7 8PD
                     </div>
                   </div>
                 </div>
@@ -65,8 +63,8 @@
               <a href="index.html">
                 <img src="./assets/image/fooer-logo.svg" class="footer-logo">
               </a>
-              <p>We provide the best solutions to help you grow your business
-                and achieve your goals.</p>
+              <p>SJL Trusted Jewels.
+Where trust meets carat.</p>
               <ul class="social-media">
                 <li><a href="#" class=" text-decoration-none"><i
                       class="fa-brands fa-facebook"></i></a></li>
@@ -81,16 +79,10 @@
             <div class="col-lg-2 col-md-6 col-12">
               <h6>Buying</h6>
               <ul class="list-unstyled">
-                <li><a href="#" class=" text-decoration-none">Shop Gold</a></li>
-                <li><a href="#" class="text-decoration-none d-block ">Shop
+                <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'gold-bars']) }}" class=" text-decoration-none">Shop Gold</a></li>
+                <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'silver-bars']) }}" class="text-decoration-none d-block ">Shop
                     Silver</a></li>
-                <li><a href="#" class="text-decoration-none d-block ">Clearance
-                    Sale</a></li>
-                <li><a href="#"
-                    class="text-decoration-none d-block">Gift</a></li>
-                <li><a href="#" class="text-decoration-none d-block">VAT
-                    Free</a></li>
-                <li><a href="#" class="text-decoration-none d-block">CGT
+                <li><a href="{{route('vatfree.index')}}" class="text-decoration-none d-block">VAT
                     Free</a></li>
               </ul>
             </div>
@@ -99,23 +91,25 @@
             <div class="col-lg-2 col-md-6 col-12">
               <h6>Selling</h6>
               <ul class="list-unstyled">
-                <li><a href="sell-gold.html"
-                    class="text-decoration-none d-block ">Sell
-                    Gold</a></li>
-                <li><a href="sell-silver.html"
-                    class="text-decoration-none d-block ">Sell
-                    Silver</a></li>
-                <li><a href="sell-platinum.html"
-                    class="text-decoration-none d-block ">Sell
-                    Platinum</a></li>
-                <li><a href="sell-palladium.html"
-                    class="text-decoration-none d-block ">Sell
-                    Palladium</a>
-                </li>
-                <li><a href="#" class="text-decoration-none d-block">Premium
-                    Collection</a></li>
-                <li><a href="#" class="text-decoration-none d-block">Click &
-                    Drop</a></li>
+                 <li>  <a href="{{ route('sellgold.index') }}"
+                      class="text-decoration-none d-block">Sell
+                      Gold</a>
+                   </li>
+                    <li>
+                    <a href="{{ route('sellsilver.index') }}"
+                      class="text-decoration-none d-block">Sell
+                      Silver</a>
+                    </li>
+                     <li>
+                    <a href="{{ route('sellplatinum.index') }}"
+                      class="text-decoration-none d-block">Sell
+                      Platinum</a>
+                    </li>
+                     <li>
+                    <a href="{{route('sellpalladium.index')}}"
+                      class="text-decoration-none d-block">Sell
+                      Palladium</a>
+                    </li>
               </ul>
             </div>
 
@@ -124,38 +118,35 @@
               <h6>About Us</h6>
               <ul class="list-unstyled">
                 <li>
-                  <a href="our-showroom.html"
+                  <a href="{{route('ourshowroom.index')}}"
                     class="text-decoration-none d-block ">Our Showroom</a>
                 </li>
                 <li>
-                  <a href="guide-to-buying.html"
+                  <a href="{{route('guidetobuying.index')}}"
                     class="text-decoration-none d-block ">Guide To Buying</a>
                 </li>
                 <li>
                   <a href="blog.html"
                     class="text-decoration-none d-block ">Blog</a>
                 </li>
+             
                 <li>
-                  <a href="sitemap.html"
-                    class="text-decoration-none d-block ">Sitemap</a>
-                </li>
-                <li>
-                  <a href="shipping-delivery.html"
+                  <a href="{{route('shippingdelivery.index')}}"
                     class="text-decoration-none d-block ">Shipping Delivery</a>
                 </li>
                 <li>
-                  <a href="privacy-policy.html"
+                  <a href="{{route('privacypolicy.index')}}"
                     class="text-decoration-none d-block ">Privacy
                     Policy
                   </a>
                 </li>
                 <li>
-                  <a href="terms-and-conditions.html"
+                  <a href="{{route('termsandconditions.index')}}"
                     class="text-decoration-none d-block ">Terms and
                     Conditions</a>
                 </li>
                 <li>
-                  <a href="returns-exchanges.html"
+                  <a href="{{route('returnsexchanges.index')}}"
                     class="text-decoration-none d-block ">Returns
                     Exchanges</a>
                 </li>
@@ -176,12 +167,11 @@
                 <h6>Visit Us</h6>
                 <ul class>
                   <li>
-                    <a href="#"><i class="fa-regular fa-envelope"></i>
-                      lorem1824@gmail.com</a>
+                    <a href="mailto:shivanijewellers.uk@gmail.com"><i class="fa-regular fa-envelope"></i>
+                      shivanijewellers.uk@gmail.com</a>
                   </li>
                   <li>
-                    <a href="#"><i class="fa-solid fa-phone"></i> +21 204 500
-                      111</a>
+                    <a href="tel:+44 7477068003"><i class="fa-solid fa-phone"></i> +44  7477 068003</a>
                   </li>
                 </ul>
               </div>
@@ -190,7 +180,7 @@
          <div class="row border-top pt-3 mt-4 pb-3">
             <div class="col-md-6">
               <div class="text-left">
-                <small class="footer-bottom-text">© 2025 Company Name. All
+                <small class="footer-bottom-text">© <?php echo date('Y'); ?> SJL Trusted Jewels. All
                   Rights
                   Reserved.</small>
               </div>
@@ -240,19 +230,10 @@
                     data-mdb-parent="#accordionExample">
                     <div class="accordion-body">
                       <ul class="list-unstyled">
-                        <li><a href="#" class=" text-decoration-none">Shop
-                            Gold</a></li>
-                        <li><a href="#"
-                            class="text-decoration-none d-block ">Shop
+                       <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'gold-bars']) }}" class=" text-decoration-none">Shop Gold</a></li>
+                        <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'silver-bars']) }}" class="text-decoration-none d-block ">Shop
                             Silver</a></li>
-                        <li><a href="#"
-                            class="text-decoration-none d-block ">Clearance
-                            Sale</a></li>
-                        <li><a href="#"
-                            class="text-decoration-none d-block">Gift</a></li>
-                        <li><a href="#" class="text-decoration-none d-block">VAT
-                            Free</a></li>
-                        <li><a href="#" class="text-decoration-none d-block">CGT
+                        <li><a href="{{route('vatfree.index')}}" class="text-decoration-none d-block">VAT
                             Free</a></li>
                       </ul>
                     </div>
@@ -273,27 +254,25 @@
                     data-mdb-parent="#accordionExample">
                     <div class="accordion-body">
                       <ul class="list-unstyled">
-                        <li><a href="sell-gold.html"
-                            class="text-decoration-none d-block ">Sell
-                            Gold</a></li>
-                        <li><a href="sell-silver.html"
-                            class="text-decoration-none d-block ">Sell
-                            Silver</a></li>
-                        <li><a href="sell-platinum.html"
-                            class="text-decoration-none d-block ">Sell
-                            Platinum</a></li>
-                        <li><a href="sell-palladium.html"
-                            class="text-decoration-none d-block ">Sell
-                            Palladium</a></li>
-                        <li><a href="sell-palladium.html"
+                        <li>  <a href="{{ route('sellgold.index') }}"
                             class="text-decoration-none d-block">Sell
-                            Now</a></li>
-                        <li><a href="#"
-                            class="text-decoration-none d-block">Premium
-                            Collection</a></li>
-                        <li><a href="#"
-                            class="text-decoration-none d-block">Click &
-                            Drop</a></li>
+                            Gold</a>
+                         </li>
+                          <li>
+                          <a href="{{ route('sellsilver.index') }}"
+                            class="text-decoration-none d-block">Sell
+                            Silver</a>
+                          </li>
+                           <li>
+                          <a href="{{ route('sellplatinum.index') }}"
+                            class="text-decoration-none d-block">Sell
+                            Platinum</a>
+                          </li>
+                           <li>
+                          <a href="{{route('sellpalladium.index')}}"
+                            class="text-decoration-none d-block">Sell
+                            Palladium</a>
+                          </li>
                       </ul>
                     </div>
                   </div>
@@ -313,45 +292,41 @@
                     data-mdb-parent="#accordionExample">
                     <div class="accordion-body">
                       <ul class="list-unstyled">
+
                         <li>
-                          <a href="our-showroom.html"
-                            class="text-decoration-none d-block ">Our
-                            Showroom</a>
+                          <a href="{{route('ourshowroom.index')}}"
+                            class="text-decoration-none d-block ">Our Showroom</a>
                         </li>
                         <li>
-                          <a href="guide-to-buying.html"
-                            class="text-decoration-none d-block ">Guide To
-                            Buying</a>
+                          <a href="{{route('guidetobuying.index')}}"
+                            class="text-decoration-none d-block ">Guide To Buying</a>
                         </li>
                         <li>
                           <a href="blog.html"
                             class="text-decoration-none d-block ">Blog</a>
                         </li>
+                     
                         <li>
-                          <a href="sitemap.html"
-                            class="text-decoration-none d-block ">Sitemap</a>
+                          <a href="{{route('shippingdelivery.index')}}"
+                            class="text-decoration-none d-block ">Shipping Delivery</a>
                         </li>
                         <li>
-                          <a href="shipping-delivery.html"
-                            class="text-decoration-none d-block ">Shipping
-                            Delivery</a>
-                        </li>
-                        <li>
-                          <a href="privacy-policy.html"
+                          <a href="{{route('privacypolicy.index')}}"
                             class="text-decoration-none d-block ">Privacy
                             Policy
                           </a>
                         </li>
                         <li>
-                          <a href="terms-and-conditions.html"
+                          <a href="{{route('termsandconditions.index')}}"
                             class="text-decoration-none d-block ">Terms and
                             Conditions</a>
                         </li>
                         <li>
-                          <a href="returns-exchanges.html"
+                          <a href="{{route('returnsexchanges.index')}}"
                             class="text-decoration-none d-block ">Returns
                             Exchanges</a>
                         </li>
+                        
                       </ul>
                     </div>
                   </div>
@@ -400,8 +375,7 @@
                             lorem1824@gmail.com</a>
                         </li>
                         <li>
-                          <a href="#"><i class="fa-solid fa-phone"></i> +21 204
-                            500 111</a>
+                          <a href="tel:+44 7477068003"><i class="fa-solid fa-phone"></i> +44  7477 068003</a>
                         </li>
                       </ul>
                     </div>
@@ -414,7 +388,7 @@
            <div class="row border-top pt-3 mt-4 pb-3">
             <div class="col-md-6">
               <div class="text-left">
-                <small class="footer-bottom-text">© 2025 Company Name. All
+                <small class="footer-bottom-text">© <?php echo date('Y'); ?> SJL Trusted Jewels. All
                   Rights
                   Reserved.</small>
               </div>

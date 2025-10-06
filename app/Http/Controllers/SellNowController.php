@@ -403,4 +403,50 @@ class SellNowController extends Controller
     {
         return view('sell-now.thank-you');
     }
+
+    // SellNowController.php
+    public function sellgold()
+    {
+        return view('sell-now.sellgold');
+    }
+
+     public function sellsilver()
+    {
+        return view('sell-now.sellsilver');
+    }
+
+     public function sellplatinum()
+    {
+        return view('sell-now.sellplatinum');
+    }
+
+     public function sellpalladium()
+    {
+        return view('sell-now.sellpalladium');
+    }
+
+    public function vatfree()
+    {
+        return view('sell-now.vatfree');
+    }
+    public function termsandconditions(){
+        return view('sell-now.termsandconditions');
+    }
+    public function returnsexchanges(){
+        return view('sell-now.returnsexchanges');
+    }
+    public function privacypolicy(){
+        return view('sell-now.privacypolicy');
+    }
+    public function shippingdelivery(){
+        return view('sell-now.shippingdelivery');
+    }
+    public function guidetobuying(){
+        return view('sell-now.guidetobuying');
+    }
+    public function ourshowroom(){
+        return view('sell-now.ourshowroom');
+    }
+    
+    
 }

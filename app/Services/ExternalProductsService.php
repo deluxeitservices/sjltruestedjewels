@@ -305,7 +305,8 @@ class ExternalProductsService
      *
      * Multibuy (optional): if qty >= threshold apply discount percent off final pre-VAT or post-VAT?
      * Here: apply the multibuy % off the net (pre-VAT) + then VAT.
-     */public function computeUnitPriceGBP(array $extProduct, \App\Services\PricingService $pricing, int $qty = 1): ?float
+     */
+    public function computeUnitPriceGBP(array $extProduct, \App\Services\PricingService $pricing, int $qty = 1): ?float
     {
         // --- Spot & melt ---
         $metalName = $extProduct['front_metal']['name'] ?? 'Gold';

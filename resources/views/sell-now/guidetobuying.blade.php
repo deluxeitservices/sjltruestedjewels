@@ -1,16 +1,52 @@
 @extends('layouts.app')
-@section('title', 'SJL')
+@section('title','Sell Gold')
+
 @section('content')
-<main class="about-us-page">
+   <main class="guide-buying-page">
+    <!-- common-banner -->
     <section class="common-banner-section">
       <div class="common-banner-content">
-        <h2>About Us</h2>
-        <p>
-          Discover our story and the passion behind our work. We are committed to providing excellence
-          and creativity. Explore our mission and the values that guide everything we do.</p>
+        <h2>Guide To Buying</h2>
       </div>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
+            <i class="rain"></i>
     </section>
-
+    <!-- about-top-section -->
     <section class="about-us-section common-section">
       <div class="container">
         <div class="row">
@@ -28,19 +64,20 @@
           </div>
           <div class="col-md-6 col-12 second-colomn-about">
             <div class="about-us-img">
-              <img src="./assets/image/about-us-new.jpg" class="img-fluid">
+              <img src="./assets/image/guid-line-about-1.svg" class="img-fluid">
             </div>
           </div>
         </div>
 
       </div>
     </section>
+    <!-- about-bottom-section -->
     <section class="about-us-section bottom-about-us">
       <div class="container">
         <div class="row">
           <div class="col-md-6">
             <div class="about-us-img">
-              <img src="./assets/image/terms.jpg" class="img-fluid">
+              <img src="./assets/image/guid-line-about-2.svg" class="img-fluid">
             </div>
           </div>
           <div class="col-md-6 col-12 second-colomn-about">
@@ -53,18 +90,14 @@
             <p>At SJL Trusted Jewels, we guarantee authenticity, superior quality, expert craftsmanship,
               personalized service, and a 12-month warranty with every purchase. Our collection features some of the
               most exquisite pre-owned jewellery and luxury watches available worldwide.</p>
-             <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}" aria-label="Shop gold bars at live market rates">
-                                       <button
-                                    class="common-primary-btn">
-                                      Buy Now
-                                    </button>
-                                    </a>
+            <button class="common-primary-btn">Buy Now</button>
           </div>
         </div>
 
       </div>
     </section>
-    <section class="gallary-about-us">
+    <!-- gallary section -->
+  <section class="gallary-about-us">
       <div class="container">
         <div class="property-container">
           <div class="container">
@@ -74,7 +107,7 @@
                 <div class="property-item">
                   <a href="#">
                     <div class="property-img">
-                      <img src="./assets/image/inspire-1.png" alt="Featured Property" />
+                      <img src="./assets/image/coins-gold-bars-scattered-table.jpg" alt="Featured Property" />
                     </div>
 
                   </a>
@@ -98,7 +131,7 @@
                 <div class="property-item">
                   <a href="#">
                     <div class="property-img">
-                      <img src="./assets/image/gallary.jpg" alt="Featured Property" />
+                      <img src="./assets/image/golden-rmb-coins-cloth-bag.jpg" alt="Featured Property" />
                     </div>
 
                   </a>
@@ -106,7 +139,7 @@
                 <div class="property-item">
                   <a href="#">
                     <div class="property-img">
-                      <img src="./assets/image/terms.jpg" alt="Featured Property" />
+                      <img src="./assets/image/goldbar-2.jpg" alt="Featured Property" />
                     </div>
 
                   </a>
@@ -114,7 +147,7 @@
                 <div class="property-item">
                   <a href="#">
                     <div class="property-img">
-                      <img src="./assets/image/luxury-jewellery-display.jpg" alt="Featured Property" />
+                      <img src="./assets/image/still-life-dollar-coins-piles.jpg" alt="Featured Property" />
                     </div>
 
                   </a>
@@ -126,50 +159,6 @@
         </div>
       </div>
     </section>
-    <section class="contact-us-section">
-      <div class="container">
-        <div class="row">
-          <h4 class="common-title">Get Started. Lock in a price now.</h4>
-        </div>
-        <div class="contact-main-box">
-          <div class="row">
-            <div class="col-md-4 col-12">
-              <div class="contact-box slider-down-load">
-                <a href="mailto:sjl123@gmail.com">
-                  <div class="icon-box">
-                    <i class="fa-solid fa-envelope"></i>
-                  </div>
-                </a>
-                <h6>Click</h6>
-                <div class="link-box"><a href="mailto:sjl123@gmail.com">sjl123@gmail.com</a></div>
-              </div>
-            </div>
-            <div class="col-md-4 col-12">
-              <div class="contact-box slider-down-load">
-                <a href="tel:+42 (0) 227 271 1232">
-                  <div class="icon-box">
-                    <i class="fa-solid fa-phone"></i>
-                  </div>
-                </a>
-                <h6>Call</h6>
-                <div class="link-box"><a href="tel:+42 (0) 227 271 1232">+42 (0) 227 271 1232</a></div>
-              </div>
-            </div>
-            <div class="col-md-4 col-12">
-              <div class="contact-box slider-down-load ">
-                <a href="tel:+42 (0) 227 271 1232">
-                  <div class="icon-box">
-                    <i class="fa-solid fa-location-dot"></i>
-                  </div>
-                </a>
-                <h6>Visit</h6>
-                <div class="link-box">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+  
   </main>
-  @endsection
+@endsection

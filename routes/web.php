@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
@@ -25,6 +26,8 @@ Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
 Route::post('/contact', [SjlContactController::class, 'store'])->name('contact.store');
 Route::get('/about-us', [ProfileController::class, 'about'])->name('about');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
 
 Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe']);
 
@@ -76,6 +79,18 @@ Route::post('/cart/item/remove', [CartController::class, 'removeAjax'])->name('c
 // routes/web.php
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/register', 'auth.register')->name('register');
+
+Route::get('/sell-gold', [SellNowController::class, 'sellgold'])->name('sellgold.index');
+Route::get('/sell-silver', [SellNowController::class, 'sellsilver'])->name('sellsilver.index');
+Route::get('/sell-platinum', [SellNowController::class, 'sellplatinum'])->name('sellplatinum.index');
+Route::get('/sell-palladium', [SellNowController::class, 'sellpalladium'])->name('sellpalladium.index');
+Route::get('/vat-free', [SellNowController::class, 'vatfree'])->name('vatfree.index');
+Route::get('/terms-and-conditions', [SellNowController::class, 'termsandconditions'])->name('termsandconditions.index');
+Route::get('/returns-exchanges', [SellNowController::class, 'returnsexchanges'])->name('returnsexchanges.index');
+Route::get('/privacy-policy', [SellNowController::class, 'privacypolicy'])->name('privacypolicy.index');
+Route::get('/shipping-delivery', [SellNowController::class, 'shippingdelivery'])->name('shippingdelivery.index');
+Route::get('/guide-to-buying', [SellNowController::class, 'guidetobuying'])->name('guidetobuying.index');
+Route::get('/our-showroom', [SellNowController::class, 'ourshowroom'])->name('ourshowroom.index');
 
 Route::get('/sell-now', [SellNowController::class, 'index'])->name('sell.index');
 Route::post('/sell-now', [SellNowController::class, 'store'])->name('sell.store');

@@ -14,40 +14,37 @@
             </a>
             <h6>Click</h6>
             <div class="link-box"><a
-                href="mailto:shivanijewellers.uk@gmail.com">shivanijewellers.uk@gmail.com</a></div>
+                href="mailto:sjl123@gmail.com">sjl123@gmail.com</a></div>
           </div>
         </div>
         <div class="col-md-4 col-12">
           <div class="contact-box slider-down-load">
-            <a href="tel:+44 7477 068003">
+            <a href="tel:+42 (0) 227 271 1232">
               <div class="icon-box">
                 <i class="fa-solid fa-phone"></i>
               </div>
             </a>
             <h6>Call</h6>
-            <div class="link-box"><a href="tel:+44 7477 068003">+44 7477 068003</a>
+            <div class="link-box"><a href="tel:+42 (0) 227 271 1232">+42
+                (0) 227 271 1232</a>
             </div>
           </div>
         </div>
         <div class="col-md-4 col-12">
           <div class="contact-box slider-down-load ">
-            <a href="tel:+44 7477 068003">
+            <a href="tel:+42 (0) 227 271 1232">
               <div class="icon-box">
                 <i class="fa-solid fa-location-dot"></i>
               </div>
             </a>
             <h6>Visit</h6>
-            <div class="link-box">Unit 2,281 Green Street(on Shafresbury Road Side) London, E7 8PD
+            <div class="link-box">Akshya Nagar 1st Block 1st Cross,
+              Rammurthy nagar, Bangalore-560016
             </div>
           </div>
         </div>
       </div>
-      </a>
-     
-  </div>
-
-  </div>
-  </div>
+    </div>
   </div>
 </section>
 <button id="backToTop" class="back-to-top">
@@ -66,8 +63,7 @@
         <!-- Logo & About -->
         <div class="col-lg-3 col-md-6 col-12">
           <a href="index.html">
-            <img src="{{ asset('./assets/image/logo-scroll.svg') }}" class="footer-logo">
-            <!-- <img src="./assets/image/footer-logo.svg" class="footer-logo"> -->
+            <img src="./assets/image/footer-logo.svg" class="footer-logo">
           </a>
           <p>We provide the best solutions to help you grow your business
             and achieve your goals.</p>
@@ -81,15 +77,20 @@
           </ul>
         </div>
 
-
         <!-- Links -->
         <div class="col-lg-2 col-md-6 col-12">
           <h6>Buying</h6>
           <ul class="list-unstyled">
-            <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'gold-bars']) }}" class=" text-decoration-none">Shop Gold</a></li>
-            <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'silver-bars']) }}" class="text-decoration-none d-block ">Shop
+            <li><a href="#" class=" text-decoration-none">Shop Gold</a></li>
+            <li><a href="#" class="text-decoration-none d-block ">Shop
                 Silver</a></li>
-            <li><a href="{{route('vatfree.index')}}" class="text-decoration-none d-block">VAT
+            <li><a href="#" class="text-decoration-none d-block ">Clearance
+                Sale</a></li>
+            <li><a href="#"
+                class="text-decoration-none d-block">Gift</a></li>
+            <li><a href="#" class="text-decoration-none d-block">VAT
+                Free</a></li>
+            <li><a href="#" class="text-decoration-none d-block">CGT
                 Free</a></li>
           </ul>
         </div>
@@ -98,25 +99,23 @@
         <div class="col-lg-2 col-md-6 col-12">
           <h6>Selling</h6>
           <ul class="list-unstyled">
-            <li> <a href="{{ route('sellgold.index') }}"
-                class="text-decoration-none d-block">Sell
-                Gold</a>
-            </li>
-            <li>
-              <a href="{{ route('sellsilver.index') }}"
-                class="text-decoration-none d-block">Sell
-                Silver</a>
-            </li>
-            <li>
-              <a href="{{ route('sellplatinum.index') }}"
-                class="text-decoration-none d-block">Sell
-                Platinum</a>
-            </li>
-            <li>
-              <a href="{{route('sellpalladium.index')}}"
-                class="text-decoration-none d-block">Sell
+            <li><a href="sell-gold.html"
+                class="text-decoration-none d-block ">Sell
+                Gold</a></li>
+            <li><a href="sell-silver.html"
+                class="text-decoration-none d-block ">Sell
+                Silver</a></li>
+            <li><a href="sell-platinum.html"
+                class="text-decoration-none d-block ">Sell
+                Platinum</a></li>
+            <li><a href="sell-palladium.html"
+                class="text-decoration-none d-block ">Sell
                 Palladium</a>
             </li>
+            <li><a href="#" class="text-decoration-none d-block">Premium
+                Collection</a></li>
+            <li><a href="#" class="text-decoration-none d-block">Click &
+                Drop</a></li>
           </ul>
         </div>
 
@@ -125,35 +124,38 @@
           <h6>About Us</h6>
           <ul class="list-unstyled">
             <li>
-              <a href="{{route('ourshowroom.index')}}"
+              <a href="our-showroom.html"
                 class="text-decoration-none d-block ">Our Showroom</a>
             </li>
             <li>
-              <a href="{{route('guidetobuying.index')}}"
+              <a href="guide-to-buying.html"
                 class="text-decoration-none d-block ">Guide To Buying</a>
             </li>
             <li>
-              <a href="{{route('blog')}}"
+              <a href="blog.html"
                 class="text-decoration-none d-block ">Blog</a>
             </li>
-
             <li>
-              <a href="{{route('shippingdelivery.index')}}"
+              <a href="sitemap.html"
+                class="text-decoration-none d-block ">Sitemap</a>
+            </li>
+            <li>
+              <a href="shipping-delivery.html"
                 class="text-decoration-none d-block ">Shipping Delivery</a>
             </li>
             <li>
-              <a href="{{route('privacypolicy.index')}}"
+              <a href="privacy-policy.html"
                 class="text-decoration-none d-block ">Privacy
                 Policy
               </a>
             </li>
             <li>
-              <a href="{{route('termsandconditions.index')}}"
+              <a href="terms-and-conditions.html"
                 class="text-decoration-none d-block ">Terms and
                 Conditions</a>
             </li>
             <li>
-              <a href="{{route('returnsexchanges.index')}}"
+              <a href="returns-exchanges.html"
                 class="text-decoration-none d-block ">Returns
                 Exchanges</a>
             </li>
@@ -178,11 +180,12 @@
             <h6>Visit Us</h6>
             <ul class>
               <li>
-                <a href="mailto:shivanijewellers.uk@gmail.com"><i class="fa-regular fa-envelope"></i>
-                  shivanijewellers.uk@gmail.com</a>
+                <a href="#"><i class="fa-regular fa-envelope"></i>
+                  lorem1824@gmail.com</a>
               </li>
               <li>
-                <a href="tel:+44 7477068003"><i class="fa-solid fa-phone"></i> +44 7477 068003</a>
+                <a href="#"><i class="fa-solid fa-phone"></i> +21 204 500
+                  111</a>
               </li>
             </ul>
           </div>
@@ -191,7 +194,7 @@
       <div class="row border-top pt-3 mt-4 pb-3">
         <div class="col-md-6">
           <div class="text-left">
-            <small class="footer-bottom-text">© <?php echo date('Y'); ?> SJL Trusted Jewels. All
+            <small class="footer-bottom-text">© 2025 Company Name. All
               Rights
               Reserved.</small>
           </div>
@@ -202,6 +205,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
   <div class="mobile-view-footer">
@@ -240,10 +244,19 @@
                 data-mdb-parent="#accordionExample">
                 <div class="accordion-body">
                   <ul class="list-unstyled">
-                    <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'gold-bars']) }}" class=" text-decoration-none">Shop Gold</a></li>
-                    <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'silver-bars']) }}" class="text-decoration-none d-block ">Shop
+                    <li><a href="#" class=" text-decoration-none">Shop
+                        Gold</a></li>
+                    <li><a href="#"
+                        class="text-decoration-none d-block ">Shop
                         Silver</a></li>
-                    <li><a href="{{route('vatfree.index')}}" class="text-decoration-none d-block">VAT
+                    <li><a href="#"
+                        class="text-decoration-none d-block ">Clearance
+                        Sale</a></li>
+                    <li><a href="#"
+                        class="text-decoration-none d-block">Gift</a></li>
+                    <li><a href="#" class="text-decoration-none d-block">VAT
+                        Free</a></li>
+                    <li><a href="#" class="text-decoration-none d-block">CGT
                         Free</a></li>
                   </ul>
                 </div>
@@ -264,25 +277,27 @@
                 data-mdb-parent="#accordionExample">
                 <div class="accordion-body">
                   <ul class="list-unstyled">
-                    <li> <a href="{{ route('sellgold.index') }}"
+                    <li><a href="sell-gold.html"
+                        class="text-decoration-none d-block ">Sell
+                        Gold</a></li>
+                    <li><a href="sell-silver.html"
+                        class="text-decoration-none d-block ">Sell
+                        Silver</a></li>
+                    <li><a href="sell-platinum.html"
+                        class="text-decoration-none d-block ">Sell
+                        Platinum</a></li>
+                    <li><a href="sell-palladium.html"
+                        class="text-decoration-none d-block ">Sell
+                        Palladium</a></li>
+                    <li><a href="sell-palladium.html"
                         class="text-decoration-none d-block">Sell
-                        Gold</a>
-                    </li>
-                    <li>
-                      <a href="{{ route('sellsilver.index') }}"
-                        class="text-decoration-none d-block">Sell
-                        Silver</a>
-                    </li>
-                    <li>
-                      <a href="{{ route('sellplatinum.index') }}"
-                        class="text-decoration-none d-block">Sell
-                        Platinum</a>
-                    </li>
-                    <li>
-                      <a href="{{route('sellpalladium.index')}}"
-                        class="text-decoration-none d-block">Sell
-                        Palladium</a>
-                    </li>
+                        Now</a></li>
+                    <li><a href="#"
+                        class="text-decoration-none d-block">Premium
+                        Collection</a></li>
+                    <li><a href="#"
+                        class="text-decoration-none d-block">Click &
+                        Drop</a></li>
                   </ul>
                 </div>
               </div>
@@ -302,41 +317,45 @@
                 data-mdb-parent="#accordionExample">
                 <div class="accordion-body">
                   <ul class="list-unstyled">
-
                     <li>
-                      <a href="{{route('ourshowroom.index')}}"
-                        class="text-decoration-none d-block ">Our Showroom</a>
+                      <a href="our-showroom.html"
+                        class="text-decoration-none d-block ">Our
+                        Showroom</a>
                     </li>
                     <li>
-                      <a href="{{route('guidetobuying.index')}}"
-                        class="text-decoration-none d-block ">Guide To Buying</a>
+                      <a href="guide-to-buying.html"
+                        class="text-decoration-none d-block ">Guide To
+                        Buying</a>
                     </li>
                     <li>
                       <a href="blog.html"
                         class="text-decoration-none d-block ">Blog</a>
                     </li>
-
                     <li>
-                      <a href="{{route('shippingdelivery.index')}}"
-                        class="text-decoration-none d-block ">Shipping Delivery</a>
+                      <a href="sitemap.html"
+                        class="text-decoration-none d-block ">Sitemap</a>
                     </li>
                     <li>
-                      <a href="{{route('privacypolicy.index')}}"
+                      <a href="shipping-delivery.html"
+                        class="text-decoration-none d-block ">Shipping
+                        Delivery</a>
+                    </li>
+                    <li>
+                      <a href="privacy-policy.html"
                         class="text-decoration-none d-block ">Privacy
                         Policy
                       </a>
                     </li>
                     <li>
-                      <a href="{{route('termsandconditions.index')}}"
+                      <a href="terms-and-conditions.html"
                         class="text-decoration-none d-block ">Terms and
                         Conditions</a>
                     </li>
                     <li>
-                      <a href="{{route('returnsexchanges.index')}}"
+                      <a href="returns-exchanges.html"
                         class="text-decoration-none d-block ">Returns
                         Exchanges</a>
                     </li>
-
                   </ul>
                 </div>
               </div>
@@ -384,11 +403,12 @@
                 <div class="accordion-body">
                   <ul class="visit-us">
                     <li>
-                      <a href="mailto:shivanijewellers.uk@gmail.com"><i class="fa-regular fa-envelope"></i>
-                  shivanijewellers.uk@gmail.com</a>
+                      <a href="#"><i class="fa-regular fa-envelope"></i>
+                        lorem1824@gmail.com</a>
                     </li>
                     <li>
-                      <a href="tel:+44 7477068003"><i class="fa-solid fa-phone"></i> +44 7477 068003</a>
+                      <a href="#"><i class="fa-solid fa-phone"></i> +21 204
+                        500 111</a>
                     </li>
                   </ul>
                 </div>
@@ -401,18 +421,6 @@
       <div class="row border-top pt-3 mt-4 pb-3">
         <div class="col-md-6">
           <div class="text-left">
-            <small class="footer-bottom-text">© <?php echo date('Y'); ?> SJL Trusted Jewels. All
-              Rights
-              Reserved.</small>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <!-- <div class="row border-top pt-3 mt-4 pb-3">
-        <div class="col-md-6">
-          <div class="text-left">
             <small class="footer-bottom-text">© 2025 Company Name. All
               Rights
               Reserved.</small>
@@ -423,8 +431,8 @@
             <a href="https://deluxe-it-services.co.uk/" target="_blank">Develop by Deluxe IT Services</a>
           </div>
         </div>
-      </div> -->
-  </div>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -463,33 +471,33 @@
 <script src="https://cdn.datatables.net/2.3.3/js/dataTables.js"></script>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const FORMS = document.querySelectorAll('form.newsletter-form');
-    const DEFAULT_SUCCESS = 'Subscribed! We’ll be in touch soon.';
-    const getToken = (form) =>
-      (form.querySelector('input[name=_token]') || document.querySelector('meta[name="csrf-token"]'))?.value || '';
+document.addEventListener('DOMContentLoaded', () => {
+  const FORMS = document.querySelectorAll('form.newsletter-form');
+  const DEFAULT_SUCCESS = 'Subscribed! We’ll be in touch soon.';
+  const getToken = (form) =>
+    (form.querySelector('input[name=_token]') || document.querySelector('meta[name="csrf-token"]'))?.value || '';
 
-    FORMS.forEach(form => {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+  FORMS.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-        const emailInput = form.querySelector('input[name="email"]');
-        const btn = form.querySelector('button[type="submit"]');
-        const msgBox = form.nextElementSibling?.classList.contains('newsletter-msg') ?
-          form.nextElementSibling :
-          null;
+      const emailInput = form.querySelector('input[name="email"]');
+      const btn        = form.querySelector('button[type="submit"]');
+      const msgBox     = form.nextElementSibling?.classList.contains('newsletter-msg')
+                         ? form.nextElementSibling
+                         : null;
 
-        console.log(emailInput);
-        // basic validate
-        if (!emailInput || !emailInput.value.trim()) {
-          show('Please enter your email.', 'error');
-          return;
-        }
+                         console.log(emailInput);
+      // basic validate
+      if (!emailInput || !emailInput.value.trim()) {
+        show('Please enter your email.', 'error');
+        return;
+      }
 
-        // btn.disabled = true;
-        // btn.dataset.prev = btn.textContent;
-        // btn.textContent = 'Subscribing…';
-        show('', ''); // clear
+      // btn.disabled = true;
+      // btn.dataset.prev = btn.textContent;
+      // btn.textContent = 'Subscribing…';
+      show('', ''); // clear
 
         const res = await fetch('/newsletter/subscribe', {
           method: 'POST',
@@ -497,9 +505,7 @@
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || ''
           },
-          body: JSON.stringify({
-            email: emailInput.value.trim()
-          })
+          body: JSON.stringify({ email: emailInput.value.trim() })
 
         });
 
@@ -515,17 +521,17 @@
           show(DEFAULT_SUCCESS, 'success');
           form.reset();
         }
+      
 
-
-        function show(text, type) {
-          if (!msgBox) return;
-          msgBox.style.display = text ? 'block' : 'none';
-          msgBox.textContent = text || '';
-          msgBox.classList.remove('text-success', 'text-danger');
-          if (type === 'success') msgBox.classList.add('text-success');
-          if (type === 'error') msgBox.classList.add('text-danger');
-        }
-      });
+      function show(text, type) {
+        if (!msgBox) return;
+        msgBox.style.display = text ? 'block' : 'none';
+        msgBox.textContent = text || '';
+        msgBox.classList.remove('text-success', 'text-danger');
+        if (type === 'success') msgBox.classList.add('text-success');
+        if (type === 'error')   msgBox.classList.add('text-danger');
+      }
     });
   });
+});
 </script>

@@ -5565,6 +5565,12 @@ html {
 .is-favorited{
   color:red !important;
 }
+
+.price-eyes-section button{
+  border: 0;
+  background: transparent;
+}
+
 @media (max-width:1440px) {
   .common-banner-section .common-banner-content {
     padding: 55px 89px;

@@ -31,102 +31,6 @@
               </div>
               @endforeach
 
-           <!--  <div class="col-lg-2 col-sm-6 col-6 active">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Gold Bars</h5>
-                <a href="#" class="cate_desc all_products_metal_filter">
-                  <span class="cate_desc_inner_content">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="gold-bars-img image-mask-effect pseudo common-shop-img">
-                      <img src="./assets/image/gold-bars.png" alt>
-                    </div>
-                  </span>
-                  <div><span class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-6">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Gold Coins</h5>
-                <a href="#" class="cate_desc all_products_metal_filter"
-                  data-metal-name="Gold" data-metal-id="1">
-                  <span class="cate_desc_inner_content goldimg">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="image-mask-effect-gold-coins pseudo common-shop-img">
-                      <img src="./assets/image/gold-coin-img.png" alt>
-                    </div>
-                  </span>
-                  <div><span class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-6">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Silver Bars</h5>
-                <a href="#" class="cate_desc all_products_metal_filter"
-                  data-metal-name="Platinum" data-metal-id="3">
-
-                  <span class="cate_desc_inner_content silver-bars-sec">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="image-mask-effect-silvar-bars pseudo common-shop-img">
-                      <img src="./assets/image/silvar-bars-img.png" alt>
-                    </div>
-                  </span>
-                  <div><span class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-6">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Silver Coins</h5>
-                <a href="#" class="cate_desc all_products_metal_filter">
-                  <span class="cate_desc_inner_content palladium">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="image-mask-effect-silvar-coins pseudo common-shop-img">
-                      <img src="./assets/image/coin-7.png" alt>
-                    </div>
-                  </span>
-                  <div class="shop"><span
-                      class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-6">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Platinum Coins</h5>
-                <a href="#" class="cate_desc all_products_metal_filter">
-                  <span class="cate_desc_inner_content palladium">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="image-mask-effect-silvar-coins pseudo common-shop-img">
-                      <img src="./assets/image/coin-5.png" alt>
-                    </div>
-                  </span>
-                  <div class="shop"><span
-                      class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-2 col-sm-6 col-6">
-              <div class="shop-card">
-                <h5 class="ornament_ttl">Palldium Coins</h5>
-                <a href="#" class="cate_desc all_products_metal_filter">
-                  <span class="cate_desc_inner_content palladium">
-                    <div class="highlight_portion"></div>
-                    <div
-                      class="image-mask-effect-silvar-coins pseudo common-shop-img">
-                      <img src="./assets/image/coin-6.png" alt>
-                    </div>
-                  </span>
-                  <div class="shop"><span
-                      class="discover_link">DISCOVER</span></div>
-                </a>
-              </div>
-            </div> -->
           </div>
         </div>
       </section>
@@ -178,214 +82,117 @@
         <h4 class="common-title">New Arrivals</h4>
         <div class="container-fluid">
 
+          <!-- @if($apiError)
+            <div class="alert alert-warning mb-3">
+              Couldn’t load latest arrivals right now. Please try again later.
+            </div>
+          @endif
+ -->
           <div class="row">
-            <div class="new-arrivals-banner owl-carousel owl-theme ">
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <a href="product-detail.html"> <img
-                          src="./assets/image/coin-1.png" alt="Diamond Band"
-                          class="img-fluid"></a>
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/right.svg">In Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <a href="product-detail.html"><img
-                          src="./assets/image/coin-2.png" alt="Diamond Band"
-                          class="img-fluid"></a>
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/right.svg">In Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-3.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/cart.png">Pre Order</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-4.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
+            <div class="new-arrivals-banner owl-carousel owl-theme">
+              <?php $prefix = 'bullion'; ?>
+              @forelse($newArrivals as $p)
+                <div class="item">
+                  <div class="product-card h-100" data-label="NEW">
+                    <div class="product-card-container">
+                      <div class="product-img">
+                        <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}"  rel="noopener">
+                          @if(!empty($p['image']))
+                            <img src="{{ $p['image'] }}" alt="{{ $p['name'] ?? 'Product' }}" class="img-fluid">
+                          @else
+                            <img src="{{ asset('assets/image/placeholder.png') }}" alt="No image" class="img-fluid">
+                          @endif
+                        </a>
+                        <!-- <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button> -->
 
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/cart.png"> Out Of Stock</p>
+                        @php
+                          $isFavorited = in_array($p['external_id'], $favoritedIds);
+                        @endphp
+                          <button
+                            class="wishlist-btn js-fav "
+                            data-external-id="{{ $p['external_id'] }}"
+                            data-prefix="{{ ($prefix) }}"
+                            data-slug="{{ e($p['slug']) }}"
+                            data-title="{{ e($p['title']) }}"
+                            data-sku="{{ e($p['sku'] ?? '') }}"
+                            data-image="{{ e($p['image'] ?? '') }}"
+                            aria-label="Toggle favorite">
+                            <i class=" fa-heart {{ $isFavorited ? 'fa-solid is-favorited' : 'fa-regular' }}"></i>
+                          </button>
                       </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
+
+                      <div class="product-info">
+                       <!--  <small>
+                          @if(!empty($p['sku'])) SKU: {{ $p['sku'] }} @endif
+                        </small> -->
+                         <h6 class="product-title">WG:{{ number_format($p['weight_g'] ?? 0,3) }} g</h6>
+                          <small>{{ $p['brand'] }} | SKU: {{ $p['sku'] }}</small>
+                        <div class="stock-box">
+                          <h6 class="product-title">{{ $p['title'] ?? '—' }}</h6>
+                           @if($p['availability'] === 'pre_order')
+                            <p><img src="/assets/image/awaiting_stock.svg">Pre Order</p>
+                            @elseif($p['availability'] === 'in_stock')
+                            <p><img src="/assets/image/right.svg">In Stock</p>
+                            @else
+                            <p><img src="/assets/image/outof_stock.svg">Sold Out</p>
+                            @endif
+                          <!-- @if(array_key_exists('in_stock', $p))
+                            <p>
+                              <img src="{{ asset('assets/image/right.svg') }}">
+                              {{ $p['in_stock'] ? 'In Stock' : 'Out of Stock' }}
+                            </p>
+                          @endif -->
                         </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
+
+                        <div class="price-eyes-section">
+                          <div>
+                            @php
+                              $cur = $p['currency'] ?? 'GBP';
+                              $symbol = $cur === 'GBP' ? '£' : ($cur === 'USD' ? '$' : ($cur === 'EUR' ? '€' : $cur.' '));
+                            @endphp
+
+                            @if(!is_null($p['display_price']))
+
+                                <span class="js-price product-price" data-id="{{ $p['external_id'] }}">
+                                  From {{ number_format($p['display_price'] ?? 0, 2) }}
+                                </span>
+                              <!-- <p class="product-price">From {{ $symbol }}{{ number_format((float)$p['display_price'], 2) }}</p> -->
+                            @else
+                              <p class="product-price">Price on request</p>
+                            @endif
+                          </div>
+
+                          <div>
+                            @if(!empty($p['url']))
+                              <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}"  rel="noopener">
+                                <i class="fa-solid fa-cart-arrow-down"></i>
+                              </a>
+                            @else
+                              <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                            @endif
+                          </div>
                         </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-5.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/outof_stock.svg">Out Of
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
+              @empty
+                {{-- Optional: a single placeholder card when no items --}}
+                <div class="item">
+                  <div class="product-card h-100">
+                    <div class="product-card-container p-4 text-center">
+                      <em>No new arrivals found.</em>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-6.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="item">
-                <div class="product-card  h-100" data-label="BESTSELLER">
-                  <div class="product-card-container">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-7.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00</p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              @endforelse
+
             </div>
           </div>
         </div>
       </section>
+
       <!-- sell-gold-modern -->
       <section class="sell-gold-modern text-center">
         <div class="container">
@@ -436,7 +243,7 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="sell-btn"><a href="sell-now.html"><button
+              <div class="sell-btn"><a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button
                     class="common-primary-btn">Sell Now</button></a></div>
             </div>
           </div>
@@ -451,226 +258,80 @@
           <div class="product-listing">
             <div class="container">
               <div class="row">
+
+                @php
+                    // Simple currency symbol helper
+                    $symbol = fn($c) => match(strtoupper($c ?? 'GBP')) {
+                        'GBP' => '£', 'USD' => '$', 'EUR' => '€', default => ''
+                    };
+                @endphp
+
+                @foreach ($newtrending as $p)
                 <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
+                  <div class="product-card h-100"
+                       @if(!empty($p['label'])) data-label="{{ e($p['label']) }}" @endif>
                     <div class="product-img">
-                      <a href="product-detail.html"><img
-                          src="./assets/image/coin-1.png" alt="Diamond Band"
-                          class="img-fluid"></a>
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
+                      <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}" >
+                        <img
+                          src="{{ $p['image'] ?? asset('assets/image/placeholder-product.png') }}"
+                          alt="{{ e($p['title'] ?? 'Product') }}"
+                          class="img-fluid">
+                      </a>
+                      <button class="wishlist-btn" data-sku="{{ e($p['sku'] ?? '') }}">
+                        <i class="fa-regular fa-heart"></i>
+                      </button>
                     </div>
+
                     <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
+                      <small>
+                        {{ $p['brand'] ?? Str::title($p['metal'] ?? '') ?: '—' }}
+                        &nbsp; | &nbsp; SKU: {{ $p['sku'] ?? '—' }}
+                      </small>
+
                       <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
+                        <h6 class="product-title">{{ $p['title'] ?? 'Untitled' }}</h6>
+                        <p>
+                          @if(isset($p['in_stock']) && $p['in_stock'])
+                            <img src="{{ asset('assets/image/in_stock.svg') }}" alt="">
+                            In Stock
+                          @else
+                            <img src="{{ asset('assets/image/awaiting_stock.svg') }}" alt="">
+                            {{ ucfirst($p['availability'] ?? 'Low Stock') }}
+                          @endif
+                        </p>
                       </div>
+
                       <div class="price-eyes-section">
                         <div>
-                          <p class="product-price">From £950.00 </p>
+                          <p class="product-price">
+                            @php
+                              $dp = $p['display_price'] ?? $p['price'] ?? null;
+                              $cur = $p['currency'] ?? 'GBP';
+                            @endphp
+
+                            @if(is_numeric($dp))
+                              From {{ $symbol($cur) }}{{ number_format((float)$dp, 2) }}
+                            @else
+                              <span class="text-muted">Price on request</span>
+                            @endif
+                          </p>
                         </div>
                         <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
+                          <a href="{{ $p['external_id'] ? route('cart.add', $p['external_id']) : '#' }}">
+                            <i class="fa-solid fa-cart-arrow-down"></i>
+                          </a>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-2.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  product-card h-100"
-                    data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-3.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/outof_stock.svg">Out Of
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-4.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/outof_stock.svg">Out Of
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-5.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/cart.png">Pre Order</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-6.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/cart.png">Pre Order</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-7.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                  <div class="product-card  h-100" data-label="BESTSELLER">
-                    <div class="product-img">
-                      <img src="./assets/image/coin-8.png" alt="Diamond Band"
-                        class="img-fluid">
-                      <button class="wishlist-btn"><i
-                          class="fa-regular fa-heart"></i></button>
-                    </div>
-                    <div class="product-info">
-                      <small>Eternity Rings &nbsp; | &nbsp; SKU: CBR 123</small>
-                      <div class="stock-box">
-                        <h6 class="product-title">Diamond Band</h6>
-                        <p><img src="./assets/image/awaiting_stock.svg">Low
-                          Stock</p>
-                      </div>
-                      <div class="price-eyes-section">
-                        <div>
-                          <p class="product-price">From £950.00 </p>
-                        </div>
-                        <div>
-                          <a href="#"><i
-                              class="fa-solid fa-cart-arrow-down"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
+
+                
               </div>
               <div class="row">
                 <div class="product-listing-btn">
-                  <a href="product-listing.html"><button href="#"
+                  <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button href="#"
                       class="common-primary-btn">View More</button></a>
                 </div>
               </div>
@@ -725,8 +386,9 @@
                {!! $dots !!}
             </div>
             <div class="col-md-12">
-              <div class="buy-now-btn"><button class="common-primary-btn">Buy
-                  Now</button></div>
+              
+              <div class="buy-now-btn"><a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button class="common-primary-btn">Buy
+                  Now</button></a></div>
             </div>
           </div>
         </div>

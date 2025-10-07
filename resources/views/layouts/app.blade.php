@@ -20,6 +20,7 @@
   <link rel="stylesheet"
     href="https://cdn.datatables.net/2.3.3/css/dataTables.dataTables.css">
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.css">
 </head>
 
 <body>

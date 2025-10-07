@@ -445,6 +445,7 @@
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/elevatezoom/3.0.8/jquery.elevatezoom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick.min.js"></script>
 
 <script src="{{ URL::asset('./js/home-banner.js?t=2') }}"></script>
 <script src="{{ URL::asset('./js/new-arrivals.js?t=2') }}"></script>
@@ -459,7 +460,9 @@
 <script src="{{ URL::asset('js/top-scroll.js') }}"></script>
 <script src="{{ URL::asset('js/profile.js') }}"></script>
 <script src="{{ URL::asset('js/sell-item.js') }}"></script>
+<script src="{{ URL::asset('js/faq-section.js') }}"></script>
 <script src="{{ URL::asset('js/your-detail.js') }}"></script>
+<script src="{{ URL::asset('js/about-us-gallary.js') }}"></script>
 <script src="https://cdn.datatables.net/2.3.3/js/dataTables.js"></script>
 
 <script>

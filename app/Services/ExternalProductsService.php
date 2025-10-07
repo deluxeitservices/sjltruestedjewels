@@ -44,8 +44,6 @@ class ExternalProductsService
             'front_stock_type' => $front_stock_type,
         ];
 
-        // print_r($q);
-        // die;
         // preowned - 2 
         // buillion = 1
         // diammond - 3 

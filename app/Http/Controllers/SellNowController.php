@@ -186,6 +186,9 @@ class SellNowController extends Controller
         $displayName = $validated['name']
             ?? trim(($validated['first_name'] ?? ''))
             ?? (auth()->user()->name ?? auth()->user()->email ?? null);
+        if(!$displayName){
+            $displayName =  auth()->user()->name ?? null;
+        }
 
         return DB::transaction(function () use ($validated, $request, $displayName) {
             $userId = auth()->id() ?? 0;

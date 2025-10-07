@@ -56,50 +56,6 @@
     </section>
 
 
-    <section class="contact-us-section">
-        <div class="container">
-            <div class="row">
-                <h4 class="common-title">Get Started. Lock in a price now.</h4>
-            </div>
-            <div class="contact-main-box">
-                <div class="row">
-                    <div class="col-md-4 col-12">
-                        <div class="contact-box slider-down-load">
-                            <a href="mailto:sjl123@gmail.com">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-envelope"></i>
-                                </div>
-                            </a>
-                            <h6>Click</h6>
-                            <div class="link-box"><a href="mailto:sjl123@gmail.com">sjl123@gmail.com</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12">
-                        <div class="contact-box slider-down-load">
-                            <a href="tel:+42 (0) 227 271 1232">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                            </a>
-                            <h6>Call</h6>
-                            <div class="link-box"><a href="tel:+42 (0) 227 271 1232">+42 (0) 227 271 1232</a></div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12">
-                        <div class="contact-box slider-down-load ">
-                            <a href="tel:+42 (0) 227 271 1232">
-                                <div class="icon-box">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                </div>
-                            </a>
-                            <h6>Visit</h6>
-                            <div class="link-box">Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 </main>
 @endsection

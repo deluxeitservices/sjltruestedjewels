@@ -4,6 +4,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .common-faq-section .common-title,
 .sell-now-section .common-title {
     position: relative;
@@ -187,7 +188,7 @@
     justify-content: space-between;
 }
 
-.sell-now-section .sell-now-check-btn a label {
+.sell-now-section .sell-now-check-btn label {
     font-size: 16px;
     font-weight: 400;
     color: var(--light-gray);
@@ -223,6 +224,39 @@
     margin-top: 80px;
 }
 
+.sell-now-page-main .back-item-btn {
+    margin: 20px 0;
+}
+
+.sell-now-page-main .back-item-btn .common-primary-btn {
+    min-width: 220px;
+    max-width: 220px;
+    font-size: 16px;
+
+}
+
+.sell-now-section form .user-input-control {
+    position: relative;
+}
+
+.sell-now-section form .upload-image-user {
+    width: 35%;
+    position: absolute;
+    bottom: 10px;
+    height: 32px;
+    left: 9px;
+    object-fit: cover;
+}
+
+.sell-now-page-main .login-onlyl .form-label {
+    color: var(--balck);
+}
+
+.sell-now-page-main .common-form-row .common-label-checkbox {
+    gap: 16px;
+    display: flex;
+}
+
 @media (max-width:1399px) and (min-width:767px) {
     .sell-now-section .sell-now-table tr td:first-child {
         max-width: 380px;
@@ -242,7 +276,7 @@
         font-size: 14px;
     }
 
-    .sell-now-section .sell-now-check-btn a label {
+    .sell-now-section .sell-now-check-btn label {
         font-size: 12px;
     }
 
@@ -265,9 +299,27 @@
         min-width: 340px;
     }
 
+    .sell-now-page-main .common-form-row .common-label-checkbox {
+        flex-direction: column;
+    }
 
+    .sell-now-page-main .back-item-btn .common-primary-btn {
+        min-width: 200px;
+        max-width: 200px;
+        font-size: 14px;
+    }
+
+    .sell-item-total-section .sell-now-main-box .item-value .common-primary-btn {
+        font-size: 14px;
+    }
+
+    .sell-item-total-section .item-value {
+        flex-direction: column;
+    }
+
+    .sell-now-page-main .common-form-content {
+        text-align: left;
+    }
 }
 
-@media (max-width:576px) {
-
-}
+@media (max-width:576px) {}

@@ -6,7 +6,7 @@
     background: var(--light-black);
 } */
 .login-page {
-    margin: 40px 0;
+    margin: 40px 0 0;
 }
 
 .login-page .common-title {
@@ -119,7 +119,7 @@
     border-color: var(--primary-color);
 }
 
-.login-page .login-link p a {
+.login-page .login-link p a, .login-page .password-link a {
     color: var(--primary-color);
     font-weight: 500;
 }
@@ -132,7 +132,7 @@
 .login-page .login-check-input {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: end;
 }
 
 .login-page .forgot-password-link a {
@@ -198,12 +198,14 @@
         display: none;
     }
 
-    .mobile-view-forgot {
+    .login-page .mobile-view-forgot {
         display: block;
-        margin-top: 28px;
+        margin-top: 10px;
         text-align: center;
     }
-
+.login-page button{
+    margin-top: 0;
+}
     .login-page p {
         font-size: 14px;
     }

@@ -45,12 +45,12 @@
                 </div>
                 <div class="col-md-10">
                   <div class="login-check-input">
-                    <div class="form-check pb-0">
+                    {{-- <div class="form-check pb-0"> --}}
                       <!-- <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
                       <label class="form-check-label" for="invalidCheck">Remember me
                       </label> -->
 
-                    </div>
+                    {{-- </div> --}}
                     <div class="forgot-password-link desktop-view-forgot">
                       <a href="forgot.html">Forgot your password?</a>
                     </div>

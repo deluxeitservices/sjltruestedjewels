@@ -202,13 +202,14 @@
             {{-- LEFT: Register/Guest or Auth summary --}}
             <div class="col-md-2">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
               <div class="common-form-page h-100 h-custom checkout-page p-0">
                 <div class="container">
-                  <button class="btn btn-outline-secondary btn-sm" type="button" id="backToStep1">
-                    &larr; Back to items
+                 <div class="back-item-btn">
+                   <button class="btn common-primary-btn" type="button" id="backToStep1">
+                   <i class="fas fa-long-arrow-alt-left me-2"></i> Back to items
                   </button>
-
+                 </div>
                   <div class="card mt-3 checkout-card">
                     <div class="card-body checkout-card-body">
 
@@ -252,7 +253,7 @@
 
                       <div class="row common-form-row">
                         <div class="col-lg-12">
-                          <div class="d-flex gap-3 common-label-checkbox">
+                          <div class="common-label-checkbox">
                             <div class="form-check">
                               <input class="form-check-input" type="radio" name="checkout_mode" id="modeGuest" value="guest" checked>
                               <label class="form-check-label" for="modeGuest">Continue as guest</label>
@@ -623,9 +624,9 @@
         <input type="number" step="0.001" min="0" name="items[${i}][weight_g]" class="form-control weight" value="0">
       </td>
 
-      <td style="min-width:180px">
+      <td style="min-width:180px" class="user-input-control">
         <input type="file" name="items[${i}][photo]" class="form-control form-control-sm photo" accept="image/*">
-        <img class="img-thumb mt-1 d-none" alt="preview">
+        <img class="img-thumb mt-1 d-none upload-image-user" alt="preview">
       </td>
 
       <td class="price-td" style="min-width:130px">

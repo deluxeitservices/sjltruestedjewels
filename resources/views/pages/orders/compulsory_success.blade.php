@@ -3,12 +3,12 @@
 @section('title', 'Form Submitted')
 
 @section('content')
-<main class="container my-5">
+<main class="container my-5 already-declare-page">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
 
-      <div class="card shadow-sm border-0">
-        <div class="card-body p-4 p-md-5 text-center">
+      <div class="card border-0">
+        <div class="card-body text-center">
 
           <div class="mb-3">
             <div class="mx-auto d-inline-flex align-items-center justify-content-center rounded-circle"
@@ -18,7 +18,7 @@
           </div>
 
           <h1 class="h3 fw-bold mb-2">Thank you!</h1>
-          <p class="text-muted mb-4">
+          <p class="mb-4">
             Your <strong>Compulsory Buying Form</strong> has been submitted successfully.
           </p>
 
@@ -35,12 +35,13 @@
           </p> -->
 
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <a href="{{ url('/') }}" class="btn btn-primary">
+            <a href="{{ url('/') }}" class="common-primary-btn gap-3"><i
+                        class="fa-solid fa-bag-shopping"></i>
               Continue Shopping
             </a>
 
             @if(!empty($order))
-              <a href="{{ route('order.details', $order->id) }}" class="btn btn-outline-secondary">
+              <a href="{{ route('order.details', $order->id) }}" class="btn common-secondary-btn ">
                 View Order
               </a>
             @endif

@@ -163,9 +163,9 @@
                       <input type="hidden" name="product_id" value="{{ $p['external_id'] }}">
                       <!-- <input type="number" name="qty" value="1" min="1" class="border px-2 w-16"> -->
                       <div class="number-count-box flex items-center border rounded overflow-hidden">
-                        <div class="qtyminus px-3 cursor-pointer select-none">-</div>
+                        <div class="qtyminus cursor-pointer select-none">-</div>
                         <input type="text" name="qty" value="1" class="qty w-12 text-center border-0">
-                        <div class="qtyplus px-3 cursor-pointer select-none">+</div>
+                        <div class="qtyplus cursor-pointer select-none">+</div>
                       </div>
 
 

@@ -110,10 +110,9 @@
         </div>
 
         <!-- Continue Shopping Button -->
-        <div class="text-center">
-            <a href="{{ url('/') }}" class="btn btn-primary py-4">
-                <i class="fa-solid fa-arrow-left me-2"></i>Continue Shopping
-            </a>
+        <div class="text-center empty-card-section">
+           <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+                              class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
         </div>
     </section>
 </main>

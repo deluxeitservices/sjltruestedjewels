@@ -8,26 +8,37 @@
   @endif
 
   @if(empty($totals['items']))
-    <section class="h-100 d-flex align-items-center justify-content-center py-5 cart-empty-section">
-      <div class="container text-center">
-        <div class="row justify-content-center">
-          <div class="col-md-8 col-lg-6">
-            <div class="card border-0 shadow-sm p-4">
+    <main class="shopping-continue-page">
+    <section class="h-100 h-custom empty-card-section">
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col">
+            <div class="card">
               <div class="card-body">
-                <div class="mb-4">
-                  <i class="fa-solid fa-cart-shopping fa-3x text-muted"></i>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <!-- <h5 class="mb-3 main-cart-title">Your Basket (0)</a></h5> -->
+                    <!-- <hr> -->
+                    <div class="cart-list">
+                      <div class="cart-empty">
+                        <span class="empty-cart-icon"><i class="fa-solid fa-cart-shopping"></i></span>
+                        <div class="cart-title">
+                          <h6>Your basket is empty</h6>
+                        </div>
+
+                        <p>Looks like you haven't added any products to your basket yet.</p>
+                        <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+                              class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <h2 class="h4 mb-3">Your cart is empty</h2>
-                <p class="text-muted mb-5">Looks like you haven’t added anything to your cart yet.</p>
-                <a href="{{ url('/') }}" class="common-primary-btn mt-3 p-3">
-                  <i class="fa-solid fa-arrow-left"></i> Continue Shopping
-                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </section></main>
 
   @else
   <section class="h-100 h-custom cart-listing-page">

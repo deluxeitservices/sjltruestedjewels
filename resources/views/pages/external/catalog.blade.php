@@ -72,17 +72,20 @@
                                     <h2 class="accordion-header p-0"></h2>
                                     <div data-bs-parent="#subAccordion">
                                       <div class="accordion-body d-flex">
-                                        <input
-                                          type="text"
-                                          name="search"
-                                          id="search"
-                                          value="{{ request('search') }}"
-                                          class="form-control"
-                                          placeholder="Search..."
-                                          onkeydown="if(event.key==='Enter'){ event.preventDefault(); document.getElementById('filterForm').submit(); }">
-                                        <button type="submit" class="btn btn-custom-search ms-2">
-                                          <i class="fa fa-search"></i>
-                                        </button>
+                                          <div
+                                            class="searbar-form-product" id="searchForm">
+                                              <input
+                                                type="text"
+                                                name="search"
+                                                id="search"
+                                                value="{{ request('search') }}"
+                                                class="form-control"
+                                                placeholder="Search..."
+                                                onkeydown="if(event.key==='Enter'){ event.preventDefault(); document.getElementById('filterForm').submit(); }">
+                                              <button type="submit" class="btn btn-custom-search ms-2">
+                                                <i class="fa fa-search"></i>
+                                              </button>
+                                            </div>
                                       </div>
                                     </div>
                                   </div>
@@ -236,8 +239,10 @@
                 <div class="row">
                   @if(($products->count() ?? 0) === 0)
                   <div class="col-12">
-                    <div class="alert alert-warning d-flex align-items-start gap-3" role="alert">
-                      <i class="fa-regular fa-face-frown mt-1"></i>
+                    <div class="alert alert-warning alert-box" role="alert">
+                      <div class="aleat-face-icon">
+                        <i class="fa-regular fa-face-frown mt-1"></i>
+                      </div>
                       <div>
                         <h5 class="m-0">No products available</h5>
                         <p class="mb-2">
@@ -256,8 +261,8 @@
                           There are no products to show right now.
                           @endif
                         </p>
-                        <div class="d-flex flex-wrap gap-2">
-                          <a href="{{ route('ext.catalog', ['category' => $prefix]) }}" class="btn btn-sm btn-outline-secondary">
+                        <div class="d-flex flex-wrap gap-2 justify-content-center">
+                          <a href="{{ route('ext.catalog', ['category' => $prefix]) }}" class="btn common-primary-btn">
                             <i class="fa-solid fa-rotate-left"></i> Reset all filters
                           </a>
 

@@ -3,12 +3,12 @@
 @section('title', 'Form Already Submitted')
 
 @section('content')
-<main class="container my-5">
+<main class="container my-5 already-declare-page">
   <div class="row justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-12">
 
-      <div class="card shadow-sm border-0">
-        <div class="card-body p-4 p-md-5 text-center">
+      <div class="card border-0">
+        <div class="card-body text-center">
 
           {{-- Warning icon --}}
           <div class="mb-3">
@@ -19,8 +19,8 @@
           </div>
 
           {{-- Heading & copy --}}
-          <h1 class="h4 fw-bold mb-2" style="color:#8a6d3b;">Form already submitted</h1>
-          <p class="text-muted mb-4">
+          <h1 class="h4 fw-bold mb-2">Form already submitted</h1>
+          <p class="mb-4">
             A <strong>Compulsory Buying Form</strong> has already been submitted for
             @isset($order)
               <strong>Order #{{ $order->order_no }}</strong>.
@@ -43,22 +43,21 @@
           </div>
 
           {{-- Actions --}}
-          <div class="d-flex flex-wrap gap-2 justify-content-center">
+          <div class="d-flex flex-wrap gap-2 justify-content-center empty-card-section">
             @isset($order)
               {{-- If you have a "view existing form" page, uncomment: --}}
               {{-- <a href="{{ route('orders.declaration.view', $order) }}" class="btn btn-outline-warning">
                 View existing form
               </a> --}}
-              <a href="{{ route('order.details', $order->id) }}" class="btn btn-primary">
+              <a href="{{ route('order.details', $order->id) }}" class="btn common-secondary-btn">
                 Back to Order
               </a>
             @endisset
             <!-- <a href="{{ route('dashboard') }}" class="btn btn-light">
               Go to Dashboard
             </a> -->
-            <a href="{{ url('/') }}" class="btn btn-info text-decoration-none">
-              Continue Shopping
-            </a>
+             <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+                        class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
           </div>
 
         </div>

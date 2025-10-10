@@ -308,7 +308,7 @@
                   @else
                   @foreach($products as $p)
                   <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
-                    <div class="product-card h-100" data-label="SJL Trusted">
+                    <div class="product-card h-100 hover-product-card-table" data-label="SJL Trusted">
                       <div class="product-card-container">
                         <div class="product-img">
                           <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}" class="block">

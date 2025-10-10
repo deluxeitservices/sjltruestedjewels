@@ -29,10 +29,12 @@
                             </div>
                         </a>
                         <div class="blog-content">
+                        <div class="blog-detail-box">
                             <h6>{{ $post->title }}</h6>
                             <?php 
                                 echo \Illuminate\Support\Str::limit($post->content, 140) 
                             ?>
+                        </div>
                             <div class="read-more-btn">
                                 <a href="{{ route('blog.detail', $post->slug) }}">
                                     <button class="btn common-primary-btn">Read More</button>

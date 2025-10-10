@@ -25,6 +25,8 @@
 
 .blog-section .blog-detial-box .blog-content {
     padding: 20px;
+    min-height: 220px;
+    max-height: 220px;
 }
 
 .blog-section .blog-detial-box .blog-content h6 {
@@ -33,7 +35,7 @@
     font-weight: 500;
     min-height: 30px;
     max-height: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     text-transform: capitalize;
 }
 
@@ -41,7 +43,6 @@
     font-size: 14px;
     color: var(--light-black);
     font-weight: 400;
-    margin-bottom: 20px;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     /* number of lines */
@@ -53,7 +54,9 @@
     min-height: 60px;
 
 }
-
+.blog-section .blog-detial-box .blog-content  .blog-detail-box{
+    min-height: 120px;
+}
 .blog-section .blog-detial-box .blog-content .common-primary-btn {
     min-width: 80px;
     height: 40px;

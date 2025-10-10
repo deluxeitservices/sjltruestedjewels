@@ -32,6 +32,7 @@
 @import url('./profile.css?t=2');
 @import url('./order-detail.css?t=2');
 @import url('./vat-free.css?t=2');
+@import url('./reset-passowrd.css?t=2');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Qwigley&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&display=swap');
@@ -319,7 +320,7 @@ html {
   font-size: 48px;
   color: var(--primary-color);
   font-family: "Qwigley", cursive;
-
+  text-transform: capitalize;
   font-weight: 400;
   text-align: center;
 }
@@ -536,7 +537,13 @@ html {
   top: 41px;
   left: -7px;
 }
+.hover-table-show {
+  display: none;
+}
 
+.hover-product-card-table:hover .hover-table-show table {
+  display: block;
+}
 .product-card .product-card-container {
   background-color: var(--white);
   position: relative;
@@ -1397,7 +1404,7 @@ html {
 }
 
 .sell-item-total-section .total-price-item .item-img {
-  width: 50px;
+  width: 36px;
   height: auto;
 }
 

@@ -3,7 +3,7 @@
 
 @section('content')
 <main>
-    <div class="forgot-passwrod-page" >
+    <div class="forgot-passwrod-page reset-password-page" >
         <div class="container">
             {{-- Header --}}
             <div class="row">
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="row forgot-passwrod-row">
+            <div class="row forgot-passwrod-row reset-password-row">
                 <div class="col-md-5 col-12">
                     <div class="forgot-password-img"></div>
                 </div>
@@ -108,7 +108,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-10 col-12">
+                            <div class="col-md-10 col-12">
                                 <button class="btn common-primary-btn" type="submit">
                                     <i class="fa-solid fa-rotate"></i> Reset Password
                                 </button>

@@ -431,7 +431,37 @@
           </div>
         </div>
       </div>
-  </section>
+    <div class="hover-table-show">
+      <table class="tblPrice">
+    <tbody>
+        <tr>
+            <th>Quantity</th>
+            <th>Each</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><span data="1">£3,103.00</span></td>
+        </tr>
+        <tr>
+            <td>2+</td>
+            <td><span data="2">£3,099.90</span></td>
+        </tr>
+        <tr>
+            <td>5+</td>
+            <td><span data="5">£3,096.90</span></td>
+        </tr>
+        <tr>
+            <td>10+</td>
+            <td><span data="10">£3,093.90</span></td>
+        </tr>
+        <tr>
+            <td>25+</td>
+            <td><span data="25">£3,090.90</span></td>
+        </tr>
+    </tbody>
+</table>
+    </div>
+    </section>
 
   {{-- Simple pager (compute from page/per_page/total) --}}
   @php

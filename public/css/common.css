@@ -212,6 +212,109 @@ html {
   background-repeat: no-repeat;
 }
 
+.common-secondary-btn {
+  background-color:transparent;
+  border-radius: 5px;
+  color: var(--primary-color);
+  font-size: 18px;
+  font-weight: 500;
+  height: 58px;
+  max-width: 180px;
+  min-width: 180px;
+  border: 1px solid var(--primary-color);
+  transition: all 0.90s ease;
+  position: relative;
+}
+.common-secondary-btn:hover {
+  background-color: transparent;
+  border: 1px solid var(--primary-color);
+  transform: scale(0.96);
+  color: var(--white);
+}
+
+.common-secondary-btn:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--primary-color) 20%, transparent 30%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--primary-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.common-secondary-btn:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--primary-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--primary-color) 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.common-secondary-btn:active {
+  transform: scale(0.96);
+}
+
+.common-secondary-btn:before,
+.common-secondary-btn:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
 .common-title {
   font-size: 48px;
   color: var(--primary-color);
@@ -5632,6 +5735,34 @@ color: var(--white);
   font-weight: 400;
   padding-top: 10px;
 }
+
+/* Thank you Page */
+.thank-you-page .common-primary-btn, .thank-you-page .common-secondary-btn,  .already-declare-page  .common-primary-btn, .already-declare-page .common-secondary-btn{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  max-width: 220px;
+  min-width:220px;
+  height: 50px;
+}
+.thank-you-page .common-primary-btn:hover, .thank-you-page .common-secondary-btn:hover, .already-declare-page .common-primary-btn:hover, .already-declare-page .common-secondary-btn:hover{
+color: var(--primary-color); 
+}
+.thank-you-page  h1, .already-declare-page h1{
+  color: var(--gold-color);
+  font-size: 48px;
+}
+.thank-you-page  p, .already-declare-page p{
+  color: var(--black);
+}
+.thank-you-page .card, .already-declare-page .card{
+      padding: 80px 0 ;
+    display: flex
+;
+    align-items: center;
+    flex-direction: column;
+}
 @media (max-width:1440px) {
   .common-banner-section .common-banner-content {
     padding: 55px 89px;
@@ -5688,7 +5819,10 @@ color: var(--white);
     min-width: 120px;
     font-size: 16px;
   }
-
+.thank-you-page .common-secondary-btn, .already-declare-page .common-secondary-btn{
+  height: 50px;
+  font-size: 16px;
+}
   .common-section {
     padding-top: 50px;
   }
@@ -5743,6 +5877,12 @@ color: var(--white);
 
   .gallary-about-us {
     margin: 50px 0;
+  }
+  .thank-you-page  h1{
+    font-size: 44px;
+  }
+  .thank-you-page .card{
+    padding: 50px 0;
   }
 }
 
@@ -6075,6 +6215,16 @@ color: var(--white);
   .invalid-tooltip{
     font-size: 10px;
   }
+  .thank-you-page  h1, .already-declare-page h1{
+    font-size: 34px;
+  }
+  .thank-you-page .card, .already-declare-page .card{
+    padding: 30px 0;
+  }
+  .thank-you-page .common-secondary-btn, .already-declare-page .common-secondary-btn{
+  height: 40px;
+  font-size: 14px;
+}
 }
 
 @media (max-width:576px) {

@@ -112,7 +112,7 @@
         <!-- Continue Shopping Button -->
         <div class="text-center">
             <a href="{{ url('/') }}" class="btn btn-primary py-4">
-                <i class="fa-solid fa-arrow-left me-2"></i>Continue Shopping
+                <i class="fa-solid fa-arrow-left me-2 common-primary-btn"></i>Continue Shopping
             </a>
         </div>
     </section>

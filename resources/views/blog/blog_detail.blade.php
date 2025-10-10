@@ -22,9 +22,13 @@
 
           <div class="blog-detail-img">
             @php
-              $img = env('ADMIN_BASE_URL').$post->cover_image ?: asset('assets/image/placeholder.jpg');
+              $img = env('ADMIN_BASE_URL').$post->cover_image ?: asset('assets/image/logo-dark.svg');
             @endphp
-            <img src="{{ $img }}" alt="{{ $post->title }}">
+            @if(!empty($post->cover_image))
+            <img src="{{ $img }}" class="img-fluid">
+            @else
+            <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="No image" class="img-fluid">
+            @endif
           </div>
 
           <div class="common-blog-detail">
@@ -50,7 +54,12 @@
                   @php
                     $thumb = env('ADMIN_BASE_URL').$r->cover_image ?: asset('assets/image/placeholder-thumb.jpg');
                   @endphp
+
+                  @if(!empty($r->cover_image))
                   <img src="{{ $thumb }}" alt="{{ $r->title }}">
+                  @else
+                  <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="No image" class="img-fluid">
+                  @endif
                 </div>
               </a>
               <div class="blog-content">

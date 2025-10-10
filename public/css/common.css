@@ -319,7 +319,7 @@ html {
   font-size: 48px;
   color: var(--primary-color);
   font-family: "Qwigley", cursive;
-
+  text-transform: capitalize;
   font-weight: 400;
   text-align: center;
 }

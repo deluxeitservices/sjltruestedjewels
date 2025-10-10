@@ -779,8 +779,12 @@ width: 100%;
         left: 0;
         right: 0;
         margin: 0 auto;
+        width: 100%;
+        transform: unset;
     }
-    
+    footer ul{
+        list-style: none;
+    }
 }
 
 @media (max-width:576px) {

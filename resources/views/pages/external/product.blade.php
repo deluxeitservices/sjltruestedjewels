@@ -358,7 +358,7 @@
                       @if(!empty($p['image']))
                       <img src="{{ $p['image'] }}" alt="{{ $p['name'] ?? 'Product' }}" class="img-fluid">
                       @else
-                      <img src="{{ asset('assets/image/placeholder.png') }}" alt="No image" class="img-fluid">
+                      <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="No image" class="img-fluid">
                       @endif
                     </a>
                     <!-- <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button> -->

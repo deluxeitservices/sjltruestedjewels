@@ -312,7 +312,7 @@
                       <div class="product-card-container">
                         <div class="product-img">
                           <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}" class="block">
-                            <img src="{{ $p['image'] ?: asset('assets/images/placeholder-bar.svg') }}" alt="{{ $p['title'] }}" class="img-fluid">
+                            <img src="{{ $p['image'] ?: asset('assets/images/logo-dark.svg') }}" alt="{{ $p['title'] }}" class="img-fluid">
                           </a>
                           <!-- <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button> -->
                           @php

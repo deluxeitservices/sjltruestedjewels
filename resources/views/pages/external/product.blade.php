@@ -348,8 +348,16 @@
        -->
         <div class="row">
           <div class="new-arrivals-banner owl-carousel owl-theme">
-            <?php $prefix = 'bullion'; ?>
             @forelse($newArrivals as $p)
+            <?php
+                if($p['front_stock_type'] == 1){
+                  $prefix = 'buillion';
+                }else if($p['front_stock_type'] == 2){
+                  $prefix = 'preowned';                
+                }else if($p['front_stock_type'] == 3){
+                  $prefix = 'diamond';
+                }
+            ?> 
             <div class="item">
               <div class="product-card h-100" data-label="NEW">
                 <div class="product-card-container">

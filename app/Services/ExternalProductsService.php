@@ -386,7 +386,9 @@ class ExternalProductsService
 
         return [
             'external_id'   => $ext['id'],
+            'front_stock_type'   => $ext['front_stock_type'],
             'slug'          => $ext['front_slug'],
+            'front_stock_type'          => $ext['front_stock_type'],
             'title'         => $ext['front_title'],
             'sku'           => $ext['sku'] ?? null,               // <-- add this
             'brand'         => $ext['brand']['name'] ?? null,

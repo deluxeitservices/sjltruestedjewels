@@ -272,7 +272,7 @@
                   <div class="product-img">
                     <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}">
                       <img
-                        src="{{ $p['image'] ?? asset('assets/image/placeholder-product.png') }}"
+                        src="{{ $p['image'] ?? asset('assets/image/logo-dark.svg') }}"
                         alt="{{ e($p['title'] ?? 'Product') }}"
                         class="img-fluid">
                     </a>

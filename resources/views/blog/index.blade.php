@@ -21,7 +21,13 @@
                     <div class="blog-detial-box">
                         <a href="{{ route('blog.detail', $post->slug) }}">
                             <div class="blog-img">
-                                <img src="{{env('ADMIN_BASE_URL') }}{{ $post->cover_image ?? asset('assets/image/placeholder.jpg') }}" alt="{{ $post->title }}">
+                                @if(!empty($post->cover_image))
+                                <img src="{{env('ADMIN_BASE_URL') }}{{ $post->cover_image ?? asset('assets/image/logo-dark.svg') }}" alt="{{ $post->title }}">
+                                @else
+                                <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="{{ $post->title }}">
+                                @endif
+
+                                
                             </div>
                         </a>
                         <div class="blog-content">

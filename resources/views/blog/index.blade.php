@@ -26,13 +26,13 @@
                                 @else
                                 <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="{{ $post->title }}">
                                 @endif
-
-                                
                             </div>
                         </a>
                         <div class="blog-content">
                             <h6>{{ $post->title }}</h6>
-                            <p>{{ \Illuminate\Support\Str::limit($post->content, 140) }}</p>
+                            <?php 
+                                echo \Illuminate\Support\Str::limit($post->content, 140) 
+                            ?>
                             <div class="read-more-btn">
                                 <a href="{{ route('blog.detail', $post->slug) }}">
                                     <button class="btn common-primary-btn">Read More</button>

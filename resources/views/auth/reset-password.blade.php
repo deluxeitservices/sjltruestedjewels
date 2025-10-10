@@ -3,7 +3,7 @@
 
 @section('content')
 <main>
-    <div class="forgot-passwrod-page">
+    <div class="forgot-passwrod-page" >
         <div class="container">
             {{-- Header --}}
             <div class="row">
@@ -38,7 +38,7 @@
                         <!-- Password Reset Token -->
                         <input type="hidden" name="token" value="{{ request()->route('token') }}">
 
-                        <div class="row g-3">
+                        <div class="row g-3 justify-content-center">
                             <!-- Email -->
                             <div class="col-md-10 col-12 position-relative">
                                 <div class="form-outline">

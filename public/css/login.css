@@ -73,7 +73,7 @@
     margin-bottom: 10px;
 }
 
-.login-page .login-row .login-form .form-outline .form-control {
+.login-page .login-row .login-form .form-outline .form-control, .forgot-passwrod-page .form-control {
     padding: 10px 12px 10px 12px;
     color: var(--light-black);
     font-size: 14px;

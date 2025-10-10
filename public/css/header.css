@@ -398,6 +398,14 @@ header .cart-item-box span, header .heart-item-box span {
     justify-content: center;
 }
 
+@media (max-width:1440px) {
+.bottom-header .navbar-expand-lg .navbar-nav{
+    gap:20px;
+}
+
+
+}
+
 @media (max-width:1280px) {
     .bottom-header .socil-menu li a::after {
         right: -14px;

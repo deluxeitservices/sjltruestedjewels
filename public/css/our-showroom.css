@@ -143,3 +143,8 @@
         margin-bottom: 0;
     }
 }
+@media (max-width:576px){
+    .our-showroom-section .card .card-img-top{
+        min-height: 180px;
+    }
+}

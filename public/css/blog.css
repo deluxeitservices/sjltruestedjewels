@@ -35,6 +35,7 @@
     min-height: 30px;
     max-height: 30px;
     margin-bottom: 10px;
+    text-transform: capitalize;
 }
 
 .blog-section .blog-detial-box .blog-content p {

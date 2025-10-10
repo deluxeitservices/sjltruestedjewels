@@ -10,6 +10,7 @@ use App\Models\ProductPrice;
 use Illuminate\Support\Str;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Services\CartService;
+use App\Services\ProductApi; // <= add this at the top with other imports
 
 class ExternalCatalogController extends Controller
 {
@@ -105,7 +106,7 @@ class ExternalCatalogController extends Controller
 
         return view('pages.external.catalog', compact('products', 'categories', 'brands','weights','prefix','favoritedIds'));
     }
-    public function show(string $category, string $slug, ExternalProductsService $svc, PricingService $pricing, CartService $cartData)
+    public function show(string $category, string $slug, ExternalProductsService $svc, PricingService $pricing, CartService $cartData,ProductApi $api)
     {
 
         $cart   = $cartData->getOrCreateCart();
@@ -134,6 +135,14 @@ class ExternalCatalogController extends Controller
             ->pluck('external_id')
             ->toArray();
 
+        $arrivalsRes  = $api->latestArrivals(4, null);
+        $newArrivals  = $arrivalsRes['data'] ?? [];
+        $apiError     = $arrivalsRes['error'] ?? null;
+
+        $trendingRes  = $api->trending(4, null);
+        $newtrending  = $trendingRes['data'] ?? [];
+        $trendError     = $trendingRes['error'] ?? null;
+
         return view('pages.external.product', [
             'p'     => $mapped,
             'price' => $price,
@@ -141,6 +150,8 @@ class ExternalCatalogController extends Controller
             'category' => $category,
             'prefix' => $prefix,
             'favoritedIds' => $favoritedIds,
+            'newArrivals'=> $newArrivals,'apiError'=> $apiError,
+            'newtrending' => $newtrending,'trendError' => $trendError
         ]);
     }
 
@@ -174,7 +185,9 @@ class ExternalCatalogController extends Controller
         $qty = max(1, (int)($data['qty'] ?? 1));
         // No local Product creation, no price rule writing.
         // Just remember the ealreadyInCartxternal product id in the cart:
-        $cartSvc->addExternal((int)$data['external_id'], $qty);
+
+        $refUrl = $r->headers->get('referer');                // e.g. https://example.com/products/123
+        $cartSvc->addExternal((int)$data['external_id'], $qty,$refUrl);
         // print_r($cartSvc);
         // die;
         return back()->with('success', 'Added to cart');

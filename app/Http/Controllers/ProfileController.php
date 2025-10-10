@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\Order;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
 {
@@ -159,7 +161,7 @@ class ProfileController extends Controller
                 'name' => $request->input('name'),
                 'mobile' => $request->input('mobile'),
             ]);
-       
+
         // Store files if uploaded
         if ($request->hasFile('profile_picture')) {
             $directoryPath = 'uploads/userprofile/' . $userId;

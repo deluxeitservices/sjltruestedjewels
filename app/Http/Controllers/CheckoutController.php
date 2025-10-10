@@ -233,6 +233,7 @@ class CheckoutController extends Controller
             OrderItem::create([
                 'order_id'      => $order->id,
                 'product_id'    => $it['product_id']  ?? null,
+                'product_url'   => $it['product_url'] ?? null,   // <-- you asked to keep external id
                 'external_id'   => $it['external_id'] ?? null,   // <-- you asked to keep external id
                 'title'         => $it['title']       ?? 'Item',
                 'qty'           => (int)($it['qty']   ?? 1),

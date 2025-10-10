@@ -264,7 +264,7 @@
                           {{-- Keep the user's current query string but go to page 1 (if any filters were applied) --}}
                           @if(!empty($activeFilters))
                           @php
-                            $category = request()->route('category'); // e.g. "bullion"
+                          $category = request()->route('category'); // e.g. "bullion"
                           @endphp
 
                           <a href="{{ route('ext.catalog',
@@ -274,7 +274,7 @@
                                     ['page' => 1]
                                   )
                                ) }}"
-                             class="btn btn-sm btn-primary">
+                            class="btn btn-sm btn-primary">
                             Keep filters &amp; try again
                           </a>
 
@@ -341,21 +341,28 @@
                           </div>
                           <div class="price-eyes-section">
                             <div>
-                              <p class="product-price">From £
+                              <p class="product-price">Less then £
                                 <span class="js-price" data-id="{{ $p['external_id'] }}">
                                   {{ number_format($p['display_price'] ?? 0, 2) }}
                                 </span>
                               </p>
                             </div>
                             <div>
-                              <form action="{{ route('ext.cart.add', ['category' => $prefix]) }}" method="post" class="flex items-center gap-2">
+                              @if(!empty($p['url']))
+                              <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}" rel="noopener">
+                                <i class="fa-solid fa-cart-arrow-down"></i>
+                              </a>
+                              @else
+                              <a href="{{ route('ext.product', ['category' => $prefix, 'slug' => $p['slug']]) }}"><i class="fa-solid fa-cart-arrow-down"></i></a>
+                              @endif
+                              <!-- <form action="{{ route('ext.cart.add', ['category' => $prefix]) }}" method="post" class="flex items-center gap-2">
                                 @csrf
                                 <input type="hidden" name="external_id" value="{{ $p['external_id'] }}">
                                 <input type="hidden" name="qty" value="1">
                                 <button type="submit" aria-label="Add to cart">
                                   <i class="fa-solid fa-cart-arrow-down"></i>
                                 </button>
-                              </form>
+                              </form> -->
                             </div>
                           </div>
                         </div> <!-- /product-info -->

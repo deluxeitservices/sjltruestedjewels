@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
@@ -17,10 +17,32 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SjlContactController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NewsletterController;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/metal/{metal}', [CatalogController::class, 'index'])->name('catalog.metal');
 Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
+
+// Route::get('/forgot', [ProfileController::class, 'forgot'])->name('forgot');
+
+Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
+// Route::post('/forgot-password', function (Request $request) {
+//     $request->validate(['email' => ['required', 'email']]);
+
+//     $status = Password::sendResetLink($request->only('email'));
+
+//     return back()->with('status', __($status));
+// })->name('password.email');
+
+// Route::get('/reset-password/{token}', function (string $token, Request $request) {
+//     return view('auth.reset-password', [
+//         'token' => $token,
+//         'email' => $request->query('email'),
+//     ]);
+// })->name('password.reset');
+
 
 
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
@@ -116,6 +138,7 @@ Route::get('/logout', function (Request $request) {
 })->name('logout');
 
 // Route for processing the account page(requires login)
+Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->middleware('auth')->name('profile.password.update');
 Route::middleware('auth')->get('/account', [ProfileController::class, 'account'])->name('account');
 Route::middleware('auth')->get('/order', [ProfileController::class, 'order'])->name('order');
 Route::middleware('auth')->get('/address', [ProfileController::class, 'address'])->name('address');

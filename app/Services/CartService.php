@@ -182,6 +182,7 @@ class CartService
 
         $extId = $it->external_id ?: $it->product_id;
 
+        $product_url       = $it->product_url;
         $title       = $it->product->title ?? 'Item';
         $frontMetal  = $it->product->metal ?? null;
         $weightG     = $it->product->weight_g ?? null;
@@ -246,6 +247,7 @@ class CartService
         $items[] = [
             'item_id'     => $it->id,
             'external_id' => $extId,
+            'product_url' => $product_url,
             'product_id'  => $it->product_id,
             'title'       => $title,
             'front_metal' => $frontMetal,
@@ -285,7 +287,7 @@ class CartService
 }
 
 
-    public function addExternal(int $externalId, int $qty = 1): void
+    public function addExternal(int $externalId, int $qty = 1, $refUrl=''): void
     {
         $cart = $this->getOrCreateCart();
 
@@ -297,6 +299,7 @@ class CartService
         } else {
             $cart->items()->create([
                 'product_id'  => $externalId, // store external id
+                'product_url'  => $refUrl, // store external id
                 'quantity'         => $qty,
             ]);
         }

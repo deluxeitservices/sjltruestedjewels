@@ -191,13 +191,69 @@
                             </div>
                         </div>
                     </div>
+                    {{-- Change Password --}}
+                    <div id="password" class="content-section mt-4">
+                        <div class="card account-form">
+                            <div class="card-body">
+                                <form id="password-form" class="needs-validation" novalidate>
+                                    @csrf
+                                    <div class="row g-3">
+                                        <div class="col-md-6 position-relative">
+                                            <div class="form-outline">
+                                                <input type="password" name="current_password" class="form-control" id="current_password" required />
+                                                <label for="current_password" class="form-label">Current Password</label>
+                                                <div class="invalid-tooltip">Current password is required</div>
+                                            </div>
+                                            <div class="common-user">
+                                                <i class="fa-solid fa-lock"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 position-relative">
+                                            <div class="form-outline">
+                                                <input type="password" name="new_password" class="form-control" id="new_password" required />
+                                                <label for="password" class="form-label">New Password</label>
+                                                <div class="invalid-tooltip">New password is required</div>
+                                            </div>
+                                            <div class="common-user">
+                                                <i class="fa-solid fa-key"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 position-relative">
+                                            <div class="form-outline">
+                                                <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required />
+                                                <label for="password_confirmation" class="form-label">Confirm New Password</label>
+                                                <div class="invalid-tooltip">Please confirm the new password</div>
+                                            </div>
+                                            <div class="common-user">
+                                                <i class="fa-solid fa-key"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div id="ajax-password-message" class="alert d-none mt-3"></div>
+                                            <button type="button" class="common-primary-btn" id="password-update-button">
+                                                Update Password
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
     </div>
 </main>
 <script>
-    var updateAccountUrl = @json(route('update.account')); 
-    var csrfToken = @json(csrf_token()); 
+    var updateAccountUrl = @json(route('update.account'));
+    var csrfToken = @json(csrf_token());
+    var updatePasswordUrl = @json(route('profile.password.update'));
+</script>
+
 </script>
 @endsection

@@ -15,6 +15,8 @@ use Illuminate\View\View;
 use App\Mail\UserRegisteredMail;
 use Illuminate\Support\Facades\Mail;
 use App\Models\UserAddress;
+use Illuminate\Validation\ValidationException;
+
 
 class RegisteredUserController extends Controller
 {
@@ -54,19 +56,44 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
 
+        
         $request->validate([
-            // 'name'        => ['required', 'string', 'max:255'],
-            // 'email'       => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'name'        => ['required', 'string', 'max:255'],
+            'email'       => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             // 'password'    => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'dob'         => ['required', 'date'], // Date of Birth
-            // 'mobile'      => ['required', 'string', 'max:15'],
-            // 'address'     => ['required', 'string', 'max:255'],
-            // 'house_no'    => ['required', 'string', 'max:50'],
-            // 'street_name' => ['required', 'string', 'max:255'],
-            // 'city'        => ['required', 'string', 'max:100'],
-            // 'postal_code' => ['required', 'string', 'max:20'],
-            // 'country'     => ['required', 'string', 'max:100'],
+            // 'password' => ['required', 'confirmed', 'min:6'],
+            'dob'         => ['required', 'date'], // Date of Birth
+            'mobile'      => ['required', 'string', 'max:15'],
+            'address'     => ['required', 'string', 'max:255'],
+            'house_no'    => ['required', 'string', 'max:50'],
+            'street_name' => ['required', 'string', 'max:255'],
+            'city'        => ['required', 'string', 'max:100'],
+            'postal_code' => ['required', 'string', 'max:20'],
+            'country'     => ['required', 'string', 'max:100'],
         ]);
+
+
+        // echo '<pre>';
+        // print_r($request->input());
+        // try {
+        //    $request->validate([
+        //     'name'        => ['required', 'string', 'max:255'],
+        //     'email'       => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+        //     // 'password'    => ['required', 'confirmed', Rules\Password::defaults()],
+        //     // 'password' => ['required', 'confirmed', 'min:6'],
+        //     'dob'         => ['required', 'date'], // Date of Birth
+        //     'mobile'      => ['required', 'string', 'max:15'],
+        //     'address'     => ['required', 'string', 'max:255'],
+        //     'house_no'    => ['required', 'string', 'max:50'],
+        //     'street_name' => ['required', 'string', 'max:255'],
+        //     'city'        => ['required', 'string', 'max:100'],
+        //     'postal_code' => ['required', 'string', 'max:20'],
+        //     'country'     => ['required', 'string', 'max:100'],
+        // ]);
+        //     // echo 'passed';
+        // } catch (ValidationException $e) {
+        //     // dd($e->errors()); // inspect which fields failed and why
+        // }
 
         // dd($request);
         // dd('dsaf');
@@ -100,11 +127,12 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
-
-
+        $previous_url = $request->session()->pull('previous_url', '/');
         // Mail::to($user->email)->send(new UserRegisteredMail($user, false)); // to user
         // Mail::to(config('mail.admin_address'))->send(new UserRegisteredMail($user, true)); // to admin
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
+        
+        return redirect()->intended($previous_url);
     }
 
 }

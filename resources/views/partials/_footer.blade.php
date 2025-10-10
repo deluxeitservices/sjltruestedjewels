@@ -531,4 +531,47 @@
       });
     });
   });
+
+
+
+  document.getElementById('password-update-button').addEventListener('click', async function () {
+    const msg = document.getElementById('ajax-password-message');
+    msg.classList.add('d-none'); msg.classList.remove('alert-success','alert-danger');
+
+    const body = {
+        current_password: document.getElementById('current_password').value,
+        password: document.getElementById('new_password').value,
+        password_confirmation: document.getElementById('password_confirmation').value,
+        _token: csrfToken,
+    };
+
+
+    try {
+        const res = await fetch(updatePasswordUrl, {
+            method: 'POST',
+            headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' },
+            body: new URLSearchParams(body)
+        });
+
+        if (res.ok) {
+            msg.textContent = 'Password updated successfully.';
+            msg.classList.remove('d-none'); msg.classList.add('alert','alert-success');
+            (document.getElementById('password-form')||{}).reset?.();
+        } else {
+            const data = await res.json();
+            let text = 'Failed to update password.';
+            if (data?.errors) {
+                text = Object.values(data.errors).flat().join(' ');
+            } else if (data?.message) {
+                text = data.message;
+            }
+            msg.textContent = text;
+            msg.classList.remove('d-none'); msg.classList.add('alert','alert-danger');
+        }
+    } catch (e) {
+        msg.textContent = 'Network error.';
+        msg.classList.remove('d-none'); msg.classList.add('alert','alert-danger');
+    }
+});
+
 </script>

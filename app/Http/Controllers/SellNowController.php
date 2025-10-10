@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Hash; // <-- ADD THIS
 use Illuminate\Validation\ValidationException;
+use App\Models\MetalMultiplier;
 
 class SellNowController extends Controller
 {
@@ -299,7 +300,7 @@ class SellNowController extends Controller
      * Buy-rate percentage (what you pay vs spot).
      * Reads config('buyrates') if present; otherwise returns 1.0 (100%).
      */
-    private function buyRate(?string $itemKey, string $metal): float
+    /*private function buyRate(?string $itemKey, string $metal): float
     {
         $items  = config('buyrates.items', []);
         $metals = config('buyrates.metals', []);
@@ -313,6 +314,35 @@ class SellNowController extends Controller
             return (float)$metals[$metal];
         }
         return $def;
+    }*/
+
+    private function buyRate(?string $itemKey, string $metal): float
+    {
+        // default from DB (fallback to 1.0 if not present)
+        $default = (float) optional(
+            MetalMultiplier::where('key', 'default')->first()
+        )->multiplier ?? 1.0;
+
+ 
+        // 1) item-specific rate (e.g. "gold_bar")
+        if (!empty($itemKey)) {
+            $row = MetalMultiplier::where('key', $itemKey)->first();
+            if ($row) {
+                return (float) $row->multiplier;
+            }
+        }
+
+        // 2) metal-level rate (e.g. "gold", "silver")
+        $metalKey = strtolower(trim($metal));
+        if ($metalKey !== '') {
+            $row = MetalMultiplier::where('key', $metalKey)->first();
+            if ($row) {
+                return (float) $row->multiplier;
+            }
+        }
+
+        // 3) fallback
+        return $default;
     }
 
 

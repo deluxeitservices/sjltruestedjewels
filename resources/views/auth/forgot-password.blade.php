@@ -40,12 +40,21 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-10 col-12">
+                            <div class="col-md-10 col-12">
                                 <button class="btn common-primary-btn" type="submit">
                                     <i class="fa-solid fa-envelope"></i> Send Link
                                 </button>
                             </div>
                         </div>
+                        <div class="row">
+                <div class="col-12" id="last-row">
+                    <div class="text-center forgot-link">
+                        <p class="password-link forgot-password-link">Remembered your credentials? <a class="p-link"
+                                href="{{ route('login') }}">Back to Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
                     </form>
 
                     <!-- <div class="text-center forgot-link mt-3">
@@ -58,15 +67,7 @@
                 
             </div>
             
-            <div class="row">
-                <div class="col-12" id="last-row">
-                    <div class="text-center forgot-link">
-                        <p class="password-link forgot-password-link">Remembered your credentials? <a class="p-link"
-                                href="{{ route('login') }}">Back to Login</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
+            
 
         </div>
     </div>

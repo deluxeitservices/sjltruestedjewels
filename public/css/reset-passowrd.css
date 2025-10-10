@@ -1,0 +1,13 @@
+@media (max-width:991px){
+    .reset-password-page .reset-password-row {
+                max-height: 400px;
+        min-height: 400px;
+    }
+}
+
+@media (max-width:767px){
+        .reset-password-page .reset-password-row {
+        max-height: 320px;
+        min-height: 320px;
+    }
+}

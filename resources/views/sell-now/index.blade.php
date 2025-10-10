@@ -165,7 +165,7 @@
                 <div class="col-md-12">
                   <div class="sell-now-main-box d-flex align-items-center justify-content-between">
                     <div class="total-price-item d-flex align-items-center gap-3">
-                      <div class="item-img"><img src="/assets/image/coin-1.png" alt=""></div>
+                      <div class="item-img"><img src="/assets/image/sell-coin.png" alt=""></div>
                       <div class="sell-product-desc d-flex flex-column">
                         <div class="totalgrams text-nowrap"><span id="totalGrams" class="totalGrams">0.00</span> gram(s)</div>
                       </div>
@@ -381,7 +381,7 @@
                       <div class="col-md-12">
                         <div class="sell-now-main-box d-flex align-items-center justify-content-between">
                           <div class="total-price-item d-flex align-items-center gap-3">
-                            <div class="item-img"><img src="/assets/image/coin-1.png" alt=""></div>
+                            <div class="item-img"><img src="/assets/image/sell-coin.png" alt=""></div>
                             <div class="sell-product-desc d-flex flex-column">
                               <div class="totalgrams text-nowrap"><span id="totalGrams" class="totalGrams">0.00</span> gram(s)</div>
                             </div>

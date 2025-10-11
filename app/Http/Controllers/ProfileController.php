@@ -311,4 +311,23 @@ class ProfileController extends Controller
             ->first();
         return view('profile.address_details', compact('userData', 'addresses'));
     }
+
+    public function updatePassword(Request $request)
+    {
+        $validated = $request->validate([
+            'current_password' => ['required', 'current_password'], // keeps it simple & safe
+            'password' => ['required', 'confirmed', 'min:6'],
+        ]);
+
+        $user = $request->user();
+        $user->forceFill([
+            'password' => Hash::make($validated['password']),
+        ])->save();
+
+        // Optional: log out other devices
+        // $request->user()->setRememberToken(Str::random(60));
+
+        // Return JSON for your AJAX
+        return response()->json(['ok' => true]);
+    }
 }

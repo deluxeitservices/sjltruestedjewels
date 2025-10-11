@@ -17,6 +17,7 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\SjlContactController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -45,6 +46,7 @@ Route::view('/forgot-password', 'auth.forgot-password')->name('password.request'
 
 
 
+Route::get('/faq', [PageController::class, 'faq'])->name('faq');
 Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
 Route::post('/contact', [SjlContactController::class, 'store'])->name('contact.store');
 Route::get('/about-us', [ProfileController::class, 'about'])->name('about');

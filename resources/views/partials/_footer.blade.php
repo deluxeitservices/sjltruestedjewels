@@ -157,6 +157,10 @@
                 class="text-decoration-none d-block ">Returns
                 Exchanges</a>
             </li>
+            <li>
+              <a href="{{route('faq')}}"
+                class="text-decoration-none d-block ">FAQ's</a>
+            </li>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 col-12">
@@ -553,6 +557,7 @@
             body: new URLSearchParams(body)
         });
 
+        console.log(res.ok);
         if (res.ok) {
             msg.textContent = 'Password updated successfully.';
             msg.classList.remove('d-none'); msg.classList.add('alert','alert-success');

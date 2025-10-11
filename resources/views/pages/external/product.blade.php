@@ -35,8 +35,8 @@
 
               <!-- gallery Viewer -->
               <div class="gallery-viewer">
-                <img id="zoom_10" src="{{ $p['image'] ?: asset('assets/images/placeholder-bar.svg') }}" data-zoom-image="{{ $p['image'] ?: asset('assets/images/placeholder-bar.svg') }}"
-                  href="{{ $p['image'] ?: asset('assets/images/placeholder-bar.svg') }}" />
+                <img id="zoom_10" src="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}" data-zoom-image="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}"
+                  href="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}" />
               </div>
             </div>
 
@@ -229,7 +229,7 @@
 
                     <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-technical"
                       type="button" role="tab" aria-controls="nav-technical" aria-selected="false">Technical</button>
-<!-- 
+                    <!-- 
                     <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-reviews"
                       type="button" role="tab" aria-controls="nav-reviews" aria-selected="false">Reviews (0)</button> -->
 
@@ -348,8 +348,16 @@
        -->
         <div class="row">
           <div class="new-arrivals-banner owl-carousel owl-theme">
-            <?php $prefix = 'bullion'; ?>
             @forelse($newArrivals as $p)
+            <?php
+                if($p['front_stock_type'] == 1){
+                  $prefix = 'buillion';
+                }else if($p['front_stock_type'] == 2){
+                  $prefix = 'preowned';                
+                }else if($p['front_stock_type'] == 3){
+                  $prefix = 'diamond';
+                }
+            ?> 
             <div class="item">
               <div class="product-card h-100" data-label="NEW">
                 <div class="product-card-container">

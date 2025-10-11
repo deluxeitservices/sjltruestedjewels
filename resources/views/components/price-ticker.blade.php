@@ -15,12 +15,12 @@
       </a>
     </div>
     <div class="pric-box">
-      <span class="price" id="xau-oz">£—</span>
+      <span class="price xau-oz">£—</span>
       <span class="weight-text">o/z</span>
     </div>
     <span class="border-right-header"></span>
     <p class="price-going">
-      <span class="price" id="xau-g">£—</span>
+      <span class="price xau-g">£—</span>
       <span class="weight-text">gm</span>
     </p>
   </li>
@@ -33,12 +33,12 @@
       </a>
     </div>
     <div class="pric-box">
-      <span class="price" id="xag-oz">£—</span>
+      <span class="price xag-oz" >£—</span>
       <span class="weight-text">o/z</span>
     </div>
     <span class="border-right-header"></span>
     <p class="price-going">
-      <span class="price" id="xag-g">£—</span>
+      <span class="price xag-g">£—</span>
       <span class="weight-text">gm</span>
     </p>
   </li>
@@ -54,8 +54,8 @@
 
   // Map metals to DOM targets
   const DOM = {
-    XAU: { g: '#xau-g', oz: '#xau-oz' },
-    XAG: { g: '#xag-g', oz: '#xag-oz' }
+    XAU: { g: '.xau-g', oz: '.xau-oz' },
+    XAG: { g: '.xag-g', oz: '.xag-oz' }
   };
 
   async function fetchQuote(metal){

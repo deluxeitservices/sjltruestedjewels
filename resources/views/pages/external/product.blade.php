@@ -11,8 +11,8 @@
               <div class="gallery_pdp_container">
                 <div id="gallery_pdp">
                   <?php foreach ($p['multiimages'] as $key => $value) { ?>
-                    <a href="#" data-image="{{ $value['url'] ?: asset('assets/images/placeholder-bar.svg') }}" data-zoom-image="{{ $value['url'] ?: asset('assets/images/placeholder-bar.svg') }}">
-                      <img id="" src="{{ $value['url'] ?: asset('assets/images/placeholder-bar.svg') }}" />
+                    <a href="#" data-image="{{ $value['url'] ?: asset('assets/images/logo-dark-product-final.svg') }}" data-zoom-image="{{ $value['url'] ?: asset('assets/images/logo-dark-product-final.svg') }}">
+                      <img id="" src="{{ $value['url'] ?: asset('assets/images/logo-dark-product-final.svg') }}" />
                     </a>
                   <?php } ?>
                   <a href="#" data-image="./assets/image/product-2.png" data-zoom-image="./assets/image/product-2.png">
@@ -35,8 +35,8 @@
 
               <!-- gallery Viewer -->
               <div class="gallery-viewer">
-                <img id="zoom_10" src="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}" data-zoom-image="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}"
-                  href="{{ $p['image'] ?: asset('assets/image/logo-dark.svg') }}" />
+                <img id="zoom_10" src="{{ $p['image'] ?: asset('assets/image/logo-dark-product-final.svg') }}" data-zoom-image="{{ $p['image'] ?: asset('assets/image/logo-dark-product-final.svg') }}"
+                  href="{{ $p['image'] ?: asset('assets/image/logo-dark-product-final.svg') }}" />
               </div>
             </div>
 
@@ -366,7 +366,7 @@
                       @if(!empty($p['image']))
                       <img src="{{ $p['image'] }}" alt="{{ $p['name'] ?? 'Product' }}" class="img-fluid">
                       @else
-                      <img src="{{ asset('assets/image/logo-dark.svg') }}" alt="No image" class="img-fluid">
+                      <img src="{{ asset('assets/image/logo-dark-product-final.svg') }}" alt="No image" class="img-fluid">
                       @endif
                     </a>
                     <!-- <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button> -->

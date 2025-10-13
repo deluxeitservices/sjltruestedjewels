@@ -169,6 +169,10 @@
                                 class="text-decoration-none d-block ">Returns
                                 Exchanges</a>
                         </li>
+                         <li>
+                            <a href="{{ route('faq') }}"
+                                class="text-decoration-none d-block ">Faq</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 col-12">

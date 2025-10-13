@@ -221,135 +221,6 @@
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-=======
-
-
-        <!-- Links -->
-        <div class="col-lg-2 col-md-6 col-12">
-          <h6>Buying</h6>
-          <ul class="list-unstyled">
-            <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'gold-bars']) }}" class=" text-decoration-none">Shop Gold</a></li>
-            <li><a href="{{ route('ext.catalog', ['category' => 'bullion','category_slug' =>'silver-bars']) }}" class="text-decoration-none d-block ">Shop
-                Silver</a></li>
-            <li><a href="{{route('vatfree.index')}}" class="text-decoration-none d-block">VAT
-                Free</a></li>
-          </ul>
-        </div>
-
-        <!-- Services -->
-        <div class="col-lg-2 col-md-6 col-12">
-          <h6>Selling</h6>
-          <ul class="list-unstyled">
-            <li> <a href="{{ route('sellgold.index') }}"
-                class="text-decoration-none d-block">Sell
-                Gold</a>
-            </li>
-            <li>
-              <a href="{{ route('sellsilver.index') }}"
-                class="text-decoration-none d-block">Sell
-                Silver</a>
-            </li>
-            <li>
-              <a href="{{ route('sellplatinum.index') }}"
-                class="text-decoration-none d-block">Sell
-                Platinum</a>
-            </li>
-            <li>
-              <a href="{{route('sellpalladium.index')}}"
-                class="text-decoration-none d-block">Sell
-                Palladium</a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Contact & Social -->
-        <div class="col-lg-2 col-md-6 col-12">
-          <h6>About Us</h6>
-          <ul class="list-unstyled">
-            <li>
-              <a href="{{route('ourshowroom.index')}}"
-                class="text-decoration-none d-block ">Our Showroom</a>
-            </li>
-            <li>
-              <a href="{{route('guidetobuying.index')}}"
-                class="text-decoration-none d-block ">Guide To Buying</a>
-            </li>
-            <li>
-              <a href="{{route('blog')}}"
-                class="text-decoration-none d-block ">Blog</a>
-            </li>
-
-            <li>
-              <a href="{{route('shippingdelivery.index')}}"
-                class="text-decoration-none d-block ">Shipping Delivery</a>
-            </li>
-            <li>
-              <a href="{{route('privacypolicy.index')}}"
-                class="text-decoration-none d-block ">Privacy
-                Policy
-              </a>
-            </li>
-            <li>
-              <a href="{{route('termsandconditions.index')}}"
-                class="text-decoration-none d-block ">Terms and
-                Conditions</a>
-            </li>
-            <li>
-              <a href="{{route('returnsexchanges.index')}}"
-                class="text-decoration-none d-block ">Returns
-                Exchanges</a>
-            </li>
-            <li>
-              <a href="{{route('faq')}}"
-                class="text-decoration-none d-block ">FAQ's</a>
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-3 col-md-6 col-12">
-          <div class="subscribe-section">
-            <h6>Join Us!</h6>
-            <p>Subscribe to our weekly newsletter for skincare tips and
-              updates.</p>
-            <form id="newsletterForm" class="d-flex flex-sm-row subscribe-div newsletter-form" novalidate>
-
-              @csrf
-              <input id="newsletterEmail" name="email" type="email" class="form-control mr-sm-2 mb-sm-0"
-                placeholder="Your Email" required />
-              <button class="btn" type="submit" id="newsletterBtn">Subscribe</button>
-            </form>
-            <div  class="newsletter-msg mt-2" style="display:none;"></div>
-
-          </div>
-          <div class="contact-info">
-            <h6>Visit Us</h6>
-            <ul class>
-              <li>
-                <a href="mailto:shivanijewellers.uk@gmail.com"><i class="fa-regular fa-envelope"></i>
-                  shivanijewellers.uk@gmail.com</a>
-              </li>
-              <li>
-                <a href="tel:+44 7477068003"><i class="fa-solid fa-phone"></i> +44 7477 068003</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="row border-top pt-3 mt-4 pb-3">
-        <div class="col-md-6">
-          <div class="text-left">
-            <small class="footer-bottom-text">© <?php echo date('Y'); ?> SJL Trusted Jewels. All
-              Rights
-              Reserved.</small>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="devlop-link">
-            <a href="https://deluxe-it-services.co.uk/" target="_blank">Develop by Deluxe IT Services</a>
-          </div>
-        </div>
-      </div>
->>>>>>> d11d617b66e9556adc485c467a36ee54f5ce51e5
     </div>
     <div class="mobile-view-footer">
         <div class="container">
@@ -699,7 +570,6 @@
                 body: new URLSearchParams(body)
             });
 
-<<<<<<< HEAD
             if (res.ok) {
                 msg.textContent = 'Password updated successfully.';
                 msg.classList.remove('d-none');
@@ -716,20 +586,6 @@
                 msg.textContent = text;
                 msg.classList.remove('d-none');
                 msg.classList.add('alert', 'alert-danger');
-=======
-        console.log(res.ok);
-        if (res.ok) {
-            msg.textContent = 'Password updated successfully.';
-            msg.classList.remove('d-none'); msg.classList.add('alert','alert-success');
-            (document.getElementById('password-form')||{}).reset?.();
-        } else {
-            const data = await res.json();
-            let text = 'Failed to update password.';
-            if (data?.errors) {
-                text = Object.values(data.errors).flat().join(' ');
-            } else if (data?.message) {
-                text = data.message;
->>>>>>> d11d617b66e9556adc485c467a36ee54f5ce51e5
             }
         } catch (e) {
             msg.textContent = 'Network error.';

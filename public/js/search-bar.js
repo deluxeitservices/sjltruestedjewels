@@ -13,3 +13,8 @@ document.querySelectorAll('.searchToggle').forEach(toggle => {
     }
   });
 });
+
+document.querySelector('#closeSearch').addEventListener('click', function () {
+  const searchBar = document.querySelector('.searchBar');
+  searchBar.classList.add('d-none');
+});

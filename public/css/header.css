@@ -372,7 +372,7 @@ header .cart-item-box {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 29px;
+    top: 32px;
     right: 6px;
 }
 
@@ -385,11 +385,12 @@ header .heart-item-box {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 29px;
-    right: 60px;
+    top: 36px;
+    right: 63px;
 }
 
-header .cart-item-box span, header .heart-item-box span {
+header .cart-item-box span,
+header .heart-item-box span {
     color: var(--white);
     font-size: 10px;
     font-weight: 700;
@@ -399,14 +400,32 @@ header .cart-item-box span, header .heart-item-box span {
 }
 
 @media (max-width:1440px) {
-.bottom-header .navbar-expand-lg .navbar-nav{
-    gap:20px;
-}
+    .bottom-header .navbar-expand-lg .navbar-nav {
+        gap: 20px;
+    }
 
 
 }
 
 @media (max-width:1280px) {
+    header .cart-item-box {
+        width: 15px;
+        height: 15px;
+        right: -6px;
+    }
+
+    header .cart-item-box span,
+    header .heart-item-box span {
+        font-size: 9px;
+    }
+
+    header .heart-item-box {
+        top: 36px;
+        right: 35px;
+        width: 15px;
+        height: 15px;
+    }
+
     .bottom-header .socil-menu li a::after {
         right: -14px;
     }
@@ -422,7 +441,7 @@ header .cart-item-box span, header .heart-item-box span {
     }
 
     .bottom-header .socil-menu {
-        gap: 24px;
+        gap: 30px;
         width: 35%;
     }
 
@@ -443,6 +462,29 @@ header .cart-item-box span, header .heart-item-box span {
     }
 }
 
+@media (max-width:1199px) {
+    .bottom-header .navbar-expand-lg .navbar-nav {
+        gap: 11px;
+    }
+
+    .bottom-header .socil-menu {
+        gap: 21px;
+        width: 55%;
+    }
+
+    .bottom-header .socil-menu li a::after {
+        right: -10px;
+    }
+
+    .bottom-header .navbar-expand-lg .navbar-nav {
+        width: 74%;
+    }
+
+    header .heart-item-box {
+        right: 31px;
+    }
+}
+
 @media (max-width:1024px) {
     .bottom-header .socil-menu li a::after {
         right: -14px;
@@ -458,12 +500,12 @@ header .cart-item-box span, header .heart-item-box span {
     }
 
     .bottom-header .socil-menu {
-        gap: 24px;
-        width: 35%;
+        gap: 21px;
+        width: 49%;
     }
 
     .bottom-header .navbar-expand-lg .navbar-nav {
-        width: 65%
+        width: 74%
     }
 
     .bottom-header .socil-menu li a {
@@ -586,11 +628,18 @@ header .cart-item-box span, header .heart-item-box span {
 
     }
 
-    header .cart-item-box, header .heart-item-box {
-        top: 15px;
+    header .cart-item-box {
+        top: 16px;
         right: 0;
-        left: 124px;
+        left: 162px;
         margin: 0 auto;
+    }
+
+    header .heart-item-box {
+        right: 0;
+        left: 82px;
+        margin: 0 auto;
+        top: 19px;
     }
 
     .header-part .static-top-header li:nth-child(2) {
@@ -686,8 +735,16 @@ header .cart-item-box span, header .heart-item-box span {
 }
 
 @media (max-width:576px) {
+    header .heart-item-box {
+        left: 85px;
+    }
 
-
+    header .cart-item-box {
+        left: 153px;
+    }
+    .bottom-header .socil-menu {
+        gap: 18px;
+    }
     .header-part .searchBar {
         max-width: 265px;
 

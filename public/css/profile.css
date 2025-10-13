@@ -262,6 +262,13 @@
         border: 1px solid var(--primary-color);
         padding: 10px 20px;
         width: 100%;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background: url('data:image/svg+xml;utf8,<svg fill="black" height="10" viewBox="0 0 10 10" width="10" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 10,0 5,5"/></svg>') no-repeat;
+        background-position: right 10px center;
+        background-size: 10px;
+        padding-right: 30px;
     }
 
 
@@ -329,8 +336,9 @@
         .profile-page .pofile-content-card .card {
             margin-bottom: 16px;
         }
-           .profile-page  div.dt-container div.dt-layout-row:not(.dt-layout-table) div.dt-layout-cell > * {
-        margin: 0;
-        text-align: left;
-    }
+
+        .profile-page div.dt-container div.dt-layout-row:not(.dt-layout-table) div.dt-layout-cell>* {
+            margin: 0;
+            text-align: left;
+        }
     }

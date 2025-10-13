@@ -385,7 +385,7 @@ header .heart-item-box {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 36px;
+    top: 32px;
     right: 63px;
 }
 
@@ -420,8 +420,8 @@ header .heart-item-box span {
     }
 
     header .heart-item-box {
-        top: 36px;
-        right: 35px;
+                top: 34px;
+        right: 38px;
         width: 15px;
         height: 15px;
     }
@@ -639,7 +639,7 @@ header .heart-item-box span {
         right: 0;
         left: 82px;
         margin: 0 auto;
-        top: 19px;
+        top: 16px;
     }
 
     .header-part .static-top-header li:nth-child(2) {
@@ -672,8 +672,6 @@ header .heart-item-box span {
     .header-part .navbar .navbar-brand img {
         width: 83px;
     }
-
-
 
 
     .header-part .static-top-header li {
@@ -736,7 +734,7 @@ header .heart-item-box span {
 
 @media (max-width:576px) {
     header .heart-item-box {
-        left: 85px;
+        left: 80px;
     }
 
     header .cart-item-box {

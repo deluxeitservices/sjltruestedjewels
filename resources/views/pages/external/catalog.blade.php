@@ -641,7 +641,7 @@
                         top: cardTop + cardHeight + 5 + 'px', 
                         left: $(this).position().left + 'px',
                         width: $(this).outerWidth(),
-                        zIndex: 10
+                        zIndex: 9999    
                     });
             });
 

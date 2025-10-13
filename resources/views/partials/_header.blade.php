@@ -54,15 +54,38 @@
                       <a href="#" class="nav-link searchToggle"><i
                           class="fa-solid fa-magnifying-glass"></i></a>
                     </li>
-                    <li>
-                      <a href="login.html" class="nav-link"><i
-                          class="fa-regular fa-user"></i></a>
-                    </li>
-                    <li>
-                      <a href="cart-listing.html" class="nav-link"><i
-                          class="fa-solid fa-basket-shopping"></i></a>
-                      <div class="cart-item-box"><span>1</span></div>
-                    </li>
+                    @auth
+                        {{-- If user is logged in --}}
+                        <li>
+                            <a href="{{ route('dashboard') }}" class="nav-link">
+                                <i class="fa-regular fa-user"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/wishlist') }}" class="nav-link">
+                                <i class="fa-regular fa-heart"></i>
+                            </a>
+                            <div class="heart-item-box"><span>{{$favoritedIdCount}}</span></div>
+                        </li>
+                        <li>
+                            <a href="{{ url('/cart') }}" class="nav-link">
+                                <i class="fa-solid fa-basket-shopping"></i>
+                            </a>
+                            <div class="cart-item-box"><span>{{ $cartCount }}</span></div>
+                        </li>
+                        
+                    @else
+                        {{-- If user is NOT logged in --}}
+                        <li>
+                          <a href="{{ route('login') }}" class="nav-link"><i
+                              class="fa-regular fa-user"></i></a>
+                        </li>
+                        <li>
+                          <a href="{{ url('/cart') }}" class="nav-link"><i
+                              class="fa-solid fa-basket-shopping"></i></a>
+                          <div class="cart-item-box"><span>{{ $cartCount }}</span></div>
+                        </li>
+                    @endauth
                   </ul>
                 </div>
                 <button class="navbar-toggler" type="button"

@@ -35,7 +35,8 @@
         border-radius: 50%;
     }
 
-    .profile-page .sidebar-menu button {
+    .profile-page .sidebar-menu button,
+    .profile-page .sidebar-menu a {
         display: block;
         width: 100%;
         text-align: left;
@@ -52,21 +53,26 @@
         font-size: 14px;
     }
 
-    .profile-page .sidebar-menu button.active {
+    .profile-page .sidebar-menu button.active,
+    .profile-page .sidebar-menu a.active {
         background: var(--primary-color);
         color: var(--white);
     }
 
-    .profile-page .sidebar-menu button i {
+    .profile-page .sidebar-menu button i,
+    .profile-page .sidebar-menu a {
         color: var(--primary-color);
     }
 
     .profile-page .sidebar-menu button.active i,
-    .profile-page .sidebar-menu button:hover i {
+    .profile-page .sidebar-menu button:hover i,
+    .profile-page .sidebar-menu a.active i,
+    .profile-page .sidebar-menu a:hover i {
         color: var(--white);
     }
 
-    .profile-page .sidebar-menu button:hover {
+    .profile-page .sidebar-menu button:hover,
+    .profile-page .sidebar-menu a:hover {
         background: var(--primary-color);
         color: var(--white);
     }
@@ -166,7 +172,7 @@
     }
 
     .profile-page div.dt-container .dt-paging .dt-paging-button:hover {
-        background: transparent;
+        /* background: transparent; */
         box-shadow: unset;
         border: 0;
     }
@@ -184,22 +190,25 @@
     }
 
     /* account-form */
-    .profile-page .account-form .choose-file-input .form-control{
-              min-height: 40px;
-    color: var(--primary-color);
-    font-size: 14px;
-    padding: 8px 12px 7px 12px;
-    border: 1px solid var(--primary-color);
+    .profile-page .account-form .choose-file-input .form-control {
+        min-height: 40px;
+        color: var(--primary-color);
+        font-size: 14px;
+        padding: 8px 12px 7px 12px;
+        border: 1px solid var(--primary-color);
 
     }
-        .profile-page .account-form .choose-file-input label{
-                color: var(--light-black);
-    font-size: 14px;
-    font-weight: 500;
-        }
-     .profile-page .account-form .choose-file-input  .form-control:focus{
+
+    .profile-page .account-form .choose-file-input label {
+        color: var(--light-black);
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .profile-page .account-form .choose-file-input .form-control:focus {
         box-shadow: unset;
-     }
+    }
+
     .profile-page .account-form .form-outline .form-control {
         margin-bottom: 10px;
         padding: 12px;
@@ -240,9 +249,72 @@
     }
 
     /* wishlist */
-    #wishlist-table .primary-view .common-primary-btn, #order-list-table .primary-view .common-primary-btn {
+    #wishlist-table .primary-view .common-primary-btn,
+    #order-list-table .primary-view .common-primary-btn {
         padding: 7px 12px;
         margin: 6px;
+    }
+
+    /* new css add */
+    .profile-page .pofile-content-card .dt-input {
+        color: var(--primary-color);
+        box-shadow: 0px 10px 10px 0px rgba(153, 153, 153, 0.2);
+        border: 1px solid var(--primary-color);
+        padding: 10px 20px;
+        width: 100%;
+    }
+
+
+    .profile-page .pofile-content-card label {
+        font-size: 14px;
+        color: var(--light-black);
+        font-weight: 500;
+    }
+
+    .profile-page div.dt-container .dt-paging .dt-paging-button.disabled {
+        background: var(--medium-gray);
+        border: 1px solid var(--medium-gray);
+        color: var(--primary-color);
+        width: 35px;
+        padding: 2px;
+    }
+
+    .profile-page .dt-column-title {
+        font-size: 14px;
+        color: var(--black);
+    }
+
+    .profile-page table .dt-empty {
+        color: var(--primary-color) !important;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .profile-page table tr td {
+        font-size: 14px;
+        color: var(--light-black);
+        font-weight: 400;
+    }
+
+    .profile-page div.dt-container .dt-paging .dt-paging-button,
+    .profile-page div.dt-container .dt-paging .dt-paging-button.current {
+        color: var(--white) !important;
+        background: var(--primary-color);
+        border: 0 !important;
+        width: 40px;
+        padding: 2px;
+        height: 32px;
+    }
+
+    .profile-page div.dt-container .dt-paging .dt-paging-button:hover,
+    .profile-page div.dt-container .dt-paging .dt-paging-button.current:hover {
+        background: var(--primary-color);
+        color: var(--white) !important;
+    }
+
+    .profile-page .dt-paging nav {
+        display: flex;
+        gap: 4px;
     }
 
     @media (max-width:991px) {
@@ -257,4 +329,8 @@
         .profile-page .pofile-content-card .card {
             margin-bottom: 16px;
         }
+           .profile-page  div.dt-container div.dt-layout-row:not(.dt-layout-table) div.dt-layout-cell > * {
+        margin: 0;
+        text-align: left;
+    }
     }

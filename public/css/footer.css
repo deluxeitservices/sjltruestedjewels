@@ -231,10 +231,12 @@
     .subscribe-div button:after {
       position: absolute;
       content: "";
-      width: 150%;
-      left: 50%;
+      width: 100%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       height: 100%;
-      transform: translateX(-50%);
+      transform: translateX(0);
       z-index: -1000;
       background-repeat: no-repeat;
     }

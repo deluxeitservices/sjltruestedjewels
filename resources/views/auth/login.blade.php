@@ -1,47 +1,117 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.app')
+@section('title', 'SJL')
+@section('content')
+    <main>
+        <div class="login-page">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="common-title">Login</h2>
+                        <p>Checkout process will be quicker if you are logged in.</p>
+                    </div>
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+                </div>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                <div class="row login-row">
+                    <div class="col-md-5 col-12">
+                        <div class="login-img"></div>
+                    </div>
+                    <div class="col-md-7 col-12">
+
+                        <form method="POST" action="{{ route('login') }}" class="needs-validation login-form" novalidate>
+                            @csrf
+                            <div class="row g-3">
+
+                                @if (session('status'))
+                                    <div class="alert alert-success mt-3">{{ session('status') }}</div>
+                                @endif
+                                <div class="col-md-10 position-relative">
+                                    @error('email')
+                                        <div class="text-danger mt-1">{{ $message }}</div>
+                                    @enderror
+                                    <div class="form-outline" data-mdb-input-init>
+                                        <input type="email" class="form-control" id="validationTooltip04" name="email"
+                                            :value="old('email')" required autocomplete="off" />
+                                        <label for="validationTooltip04" class="form-label">Email</label>
+                                        <!-- <div class="valid-tooltip">Email is required</div> -->
+                                        <div class="invalid-tooltip">Email is required</div>
+
+                                    </div>
+                                    <div class="common-user">
+                                        <i class="fa-regular fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <div class="col-md-10 position-relative">
+                                    <div class="form-outline" data-mdb-input-init>
+                                        <input type="password" id="password" name="password" class="form-control" required
+                                            autocomplete="off">
+                                        <label for="password" class="form-label">Password</label>
+                                        <div class="invalid-tooltip">Password is required</div>
+                                    </div>
+                                    <div class="input-icon"
+                                        >
+                                        <i class="fa-regular fa-eye" id="togglePassword"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-10">
+                                    <div class="login-check-input">
+                                        <div class="form-check pb-0">
+                                            <!-- <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                          <label class="form-check-label" for="invalidCheck">Remember me
+                          </label> -->
+
+                                        </div>
+                                        <div class="forgot-password-link desktop-view-forgot">
+                                            <a href="{{ url('forgot-password') }}">Forgot your password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-12">
+                                    <button class="btn common-primary-btn" type="submit" data-mdb-ripple-init>
+                                        <i class="fa-solid fa-lock"></i>Login</button>
+                                    <p class="password-link login-link">Don't have an account? <a class="p-link"
+                                            href="{{ route('register') }}">Create
+                                            an Account</a>
+                                    </p>
+                                    <div class="forgot-password-link mobile-view-forgot">
+                                        <a href="forgot.html">Forgot your password?</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="row">
+              <div class="col-12" id="last-row">
+                <div class="text-center login-link">
+                  <p class="password-link login-link">Don't have an account? <a class="p-link" href="{{ route('register') }}">Create
+                      an Account</a>
+                  </p>
+                </div>
+              </div>
+            </div> -->
+            </div>
         </div>
+    </main>
+    <button id="backToTop" class="back-to-top">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none"
+            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+    </button>
+<script>
+    const togglePassword = document.querySelector('#togglePassword');
+    const password = document.querySelector('#password');
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+    togglePassword.addEventListener('click', function () {
+        // Toggle the input type
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        // Toggle eye icon classes
+        this.classList.toggle('fa-eye');
+        this.classList.toggle('fa-eye-slash');
+    });
+</script>
+@endsection

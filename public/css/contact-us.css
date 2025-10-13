@@ -1,6 +1,5 @@
 .contact-us-page .common-banner-section {
-    /* background-image: url('../assets/image/7.png'); */
-    background-image: url('../assets/image/coins-gold-bars-scattered-table.jpg'); 
+    background-image: url('../assets/image/still-life-dollar-coins-piles.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -30,7 +29,7 @@
     background: linear-gradient(90deg, var(--primary-color), var(--primary-color));
 }
 
-/* .contact-us-form-section .card-pattern {
+.contact-us-form-section .card-pattern {
     position: absolute;
     top: 0;
     right: 0;
@@ -40,7 +39,7 @@
     background-image: radial-gradient(var(--primary-color) 2px, transparent 2px);
     background-size: 16px 16px;
     z-index: 0;
-} */
+}
 
 .contact-us-form-section .form-title {
     margin-bottom: 30px;
@@ -49,7 +48,7 @@
 
 .contact-us-form-section .form-title h3 {
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--dark-color);
     margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
@@ -71,14 +70,12 @@
     padding: 10px 12px 10px 12px;
     color: var(--white);
     font-size: 14px;
-    font-weight: 500;
 }
 
 /* contact us image */
 .contact-us-form-section .contact-us-img {
     width: 100%;
-    /* background: url('../assets/image/contact-us.png') no-repeat; */
-        background: url('../assets/image/login.jpg') no-repeat;
+    background: url('../assets/image/contact-us.png') no-repeat;
     height: 100%;
     background-size: cover;
 }

@@ -13,12 +13,15 @@ class CartController extends Controller
         {
             $cart   = $svc->getOrCreateCart();
             $totals = $svc->totalsExternal($cart, $pricing, $ext);
+            $prefix = request()->segment(1);
+
             // echo "<pre>";
             // print_r($totals); exit();
             // If your blade currently reads $cart->items, you can pass both
             return view('pages.cart', [
                 'cart'   => $cart,   // for raw relations if needed
                 'totals' => $totals, // for enriched items + totals
+                'category' => $prefix
             ]);
         }
 

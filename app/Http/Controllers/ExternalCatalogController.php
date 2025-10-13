@@ -10,6 +10,7 @@ use App\Models\ProductPrice;
 use Illuminate\Support\Str;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Services\CartService;
+use App\Services\ProductApi; // <= add this at the top with other imports
 
 class ExternalCatalogController extends Controller
 {
@@ -84,7 +85,7 @@ class ExternalCatalogController extends Controller
                 return in_array($woId, $weightIds, true);
             })->values();
         }
-
+        $prefix = request()->segment(1);
         // Create paginator that generates /ext/catalog?page=2&... links
         $products = new LengthAwarePaginator(
             $items,
@@ -92,24 +93,65 @@ class ExternalCatalogController extends Controller
             $per,
             $page,
             [
-                'path'  => route('ext.catalog'),
+                'path'  => route('ext.catalog', ['category' => $prefix]),
                 'query' => $r->query(), // keep other filters in links
             ]
         );
 
-        return view('pages.external.catalog', compact('products', 'categories', 'brands','weights'));
+        // Assuming user is authenticated
+        $favoritedIds = \App\Models\Favorite::where('user_id', auth()->id())
+            ->pluck('external_id')
+            ->toArray();
+
+
+        return view('pages.external.catalog', compact('products', 'categories', 'brands','weights','prefix','favoritedIds'));
     }
-    public function show(string $slug, ExternalProductsService $svc, PricingService $pricing)
+    public function show(string $category, string $slug, ExternalProductsService $svc, PricingService $pricing, CartService $cartData,ProductApi $api)
     {
+
+        $cart   = $cartData->getOrCreateCart();
+        $totals = $cartData->totalsExternal($cart, $pricing, $svc);
+
         $ext = $svc->findBySlug($slug);
         abort_unless($ext, 404);
 
         $mapped = $svc->mapForView($ext, $pricing);
         $price  = $mapped['display_price']; // initial render
 
+        $currentProductId = $mapped['external_id'] ?? null;
+
+        // echo $currentProductId;
+        
+        $alreadyInCart = collect($totals['items'])->contains(function ($item) use ($currentProductId) {
+            return isset($item['product_id']) && $item['product_id'] == $currentProductId;
+        });
+
+        $routeName = request()->route()->getName(); // e.g. ext.product.show.bullion
+        $url = request()->segments();
+        $prefix = isset($url[0]) ? $url[0] : '';
+
+        // Assuming user is authenticated
+        $favoritedIds = \App\Models\Favorite::where('user_id', auth()->id())
+            ->pluck('external_id')
+            ->toArray();
+
+        $arrivalsRes  = $api->latestArrivals(4, null);
+        $newArrivals  = $arrivalsRes['data'] ?? [];
+        $apiError     = $arrivalsRes['error'] ?? null;
+
+        $trendingRes  = $api->trending(4, null);
+        $newtrending  = $trendingRes['data'] ?? [];
+        $trendError     = $trendingRes['error'] ?? null;
+
         return view('pages.external.product', [
             'p'     => $mapped,
             'price' => $price,
+            'alreadyInCart' => $alreadyInCart,
+            'category' => $category,
+            'prefix' => $prefix,
+            'favoritedIds' => $favoritedIds,
+            'newArrivals'=> $newArrivals,'apiError'=> $apiError,
+            'newtrending' => $newtrending,'trendError' => $trendError
         ]);
     }
 
@@ -135,17 +177,20 @@ class ExternalCatalogController extends Controller
      */
     public function addToCart(Request $r, CartService $cartSvc)
     {
+
         $data = $r->validate([
             'external_id' => 'required|integer',
             'qty'         => 'nullable|integer|min:1',
         ]);
-
         $qty = max(1, (int)($data['qty'] ?? 1));
-
         // No local Product creation, no price rule writing.
-        // Just remember the external product id in the cart:
-        $cartSvc->addExternal((int)$data['external_id'], $qty);
+        // Just remember the ealreadyInCartxternal product id in the cart:
 
-        return redirect()->route('cart.index')->with('success', 'Added to cart');
+        $refUrl = $r->headers->get('referer');                // e.g. https://example.com/products/123
+        $cartSvc->addExternal((int)$data['external_id'], $qty,$refUrl);
+        // print_r($cartSvc);
+        // die;
+        return back()->with('success', 'Added to cart');
+        // return redirect()->route('cart.index')->with('success', 'Added to cart');
     }
 }

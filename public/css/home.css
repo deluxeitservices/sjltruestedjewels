@@ -5,6 +5,7 @@
     background-repeat: no-repeat;
     background-position: center;
 }
+
 .banner-section .banner-content {
     position: absolute;
     top: 50%;
@@ -22,7 +23,7 @@
 .banner-section .owl-carousel .owl-item img {
     height: 100%;
     object-fit: cover;
-        min-height: 450px;
+    min-height: 450px;
     height: 100%;
     max-height: 650px;
     background-size: cover;
@@ -111,7 +112,6 @@ a.cate_desc {
 .cate_desc_inner_content {
     display: block;
     text-align: center;
-    min-height: 200px;
 }
 
 .categary_list_slider a.cate_desc figure::before {
@@ -133,6 +133,8 @@ a.cate_desc {
 .common-shop-img {
     min-height: 250px;
     max-height: 250px;
+    margin-top: 14px;
+    
 }
 
 .common-shop-img img {
@@ -359,6 +361,7 @@ a.cate_desc {
     display: none;
     width: 100%;
     height: 100%;
+    background-color: #00000066;
 }
 
 .video_section .video-section-container .content .play-button img {
@@ -694,9 +697,11 @@ a.cate_desc {
 .inspire-section .buy-now-btn {
     margin-top: 20px;
 }
-.inspire-section .buy-now-btn .common-primary-btn:hover{
+
+.inspire-section .buy-now-btn .common-primary-btn:hover {
     color: var(--primary-color);
 }
+
 .inspire-section .crew-name {
     font-size: 30px;
     font-weight: 700;
@@ -1044,7 +1049,7 @@ a.cate_desc {
     }
 
     .video_section .section_ttl {
-        font-size: 60px;
+        font-size: 55px;
     }
 
     .new-home .types-card-slab-flare {
@@ -1061,11 +1066,17 @@ a.cate_desc {
     .newsroom-section .right-newsroom-colum {
         padding: 30px 60px;
     }
+    .common-shop-img img{
+        max-width: 110px;
+    }
 }
 
 @media (max-width:1199px) {
 
-
+.common-shop-img{
+    max-height: 200px;
+    min-height: 200px;
+}
     .newsroom-section span.newsroom-icon {
         width: 60px;
         height: 60px;
@@ -1230,13 +1241,15 @@ a.cate_desc {
     }
 
     .newsroom-section .left-newsroom-content {
-        padding: 0 30px;
+        padding: 0 20px;
     }
 
     .newsroom-section .right-newsroom-colum {
         padding: 40px;
     }
-
+    .video_section .section_ttl{
+        font-size: 30px;
+    }
     .video_section .video-section-container .content .play-button img {
         width: 50px;
     }
@@ -1328,6 +1341,7 @@ a.cate_desc {
 
     .newsroom-section .newsroom-left-content {
         text-align: center;
+        padding: 0;
     }
 
     .newsroom-section .newsroom-img-section {
@@ -1418,6 +1432,13 @@ a.cate_desc {
         margin-top: 16px;
     }
 
+    .new-arrivals-section .wishlist-btn {
+        font-size: 16px;
+        top: 0px;
+        right: 2px;
+        background: transparent;
+    }
+
     .new-arrivals-section .product-price {
         font-size: 12px;
     }
@@ -1460,9 +1481,6 @@ a.cate_desc {
     .common-shop-img img {
         max-width: 90px;
     }
-
-
-
 
     .video_section .video-section-container video {
         width: 100%;

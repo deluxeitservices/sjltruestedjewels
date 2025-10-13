@@ -1,6 +1,7 @@
 <?php
-
+use Illuminate\Support\Facades\Password;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\ProductController;
@@ -10,70 +11,189 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\StripeWebhookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ExternalCatalogController;
+use App\Http\Controllers\SellNowController;
+use Illuminate\Http\Request;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\SjlContactController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::get('/metal/{metal}', [CatalogController::class,'index'])->name('catalog.metal');
-Route::get('/product/{slug}', [ProductController::class,'show'])->name('product.show');
+Route::get('/metal/{metal}', [CatalogController::class, 'index'])->name('catalog.metal');
+Route::get('/product/{slug}', [ProductController::class, 'show'])->name('product.show');
 
-// External catalog (from your API)
-Route::get('/bullion', [ExternalCatalogController::class,'index'])->name('ext.catalog');
-Route::get('/bullion/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
+// Route::get('/forgot', [ProfileController::class, 'forgot'])->name('forgot');
 
-// Live price (AJAX)
-Route::get('/api/bullion/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
+Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
+// Route::post('/forgot-password', function (Request $request) {
+//     $request->validate(['email' => ['required', 'email']]);
 
-// Add to cart (external -> upsert local -> cart)
-Route::post('/bullion/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
+//     $status = Password::sendResetLink($request->only('email'));
 
-// API for live prices
-Route::get('/api/quotes/summary', [QuoteController::class,'summary']);
-Route::get('/api/products/{id}/price', [QuoteController::class,'productPrice']);
+//     return back()->with('status', __($status));
+// })->name('password.email');
 
-// Cart
-Route::get('/cart', [CartController::class,'index'])->name('cart.index');
-Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
-Route::get('/cart/add',  [CartController::class,'addFromGet'])->name('cart.add.get');//Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
-Route::post('/cart/update', [CartController::class,'update'])->name('cart.update');
-Route::get('/cart/price', [CartController::class,'price'])->name('cart.price');
-Route::post('/cart/remove', [CartController::class,'remove'])->name('cart.remove');
+// Route::get('/reset-password/{token}', function (string $token, Request $request) {
+//     return view('auth.reset-password', [
+//         'token' => $token,
+//         'email' => $request->query('email'),
+//     ]);
+// })->name('password.reset');
 
-// New AJAX endpoints for qty +/- and remove
-Route::post('/cart/item/update', [CartController::class,'updateAjax'])->name('cart.updateAjax');
-Route::post('/cart/item/remove', [CartController::class,'removeAjax'])->name('cart.removeAjax');
+
+
+Route::get('/faq', [PageController::class, 'faq'])->name('faq');
+Route::get('/contact', [ProfileController::class, 'contact'])->name('contact');
+Route::post('/contact', [SjlContactController::class, 'store'])->name('contact.store');
+Route::get('/about-us', [ProfileController::class, 'about'])->name('about');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/blog/{slug}', [BlogController::class, 'detail'])->name('blog.detail');
+
+Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe']);
+
+
+// routes/web.php
+Route::get('/orders/{order}/declaration', [OrderController::class, 'showCompulsory'])
+    ->name('orders.declaration'); // <- signed URL required
+
+Route::post('/orders/{order}/declaration', [OrderController::class, 'submitCompulsory'])
+    ->name('orders.declaration.submit');
+
+
+// routes/web.php
+
+Route::get('/orders/{order}/pdf', [OrderController::class, 'downloadPdf'])
+    ->name('orders.pdf')
+    ->middleware('auth'); // optional, but recommended
+
+
+Route::middleware('auth')->post('/checkout/address', [CheckoutController::class, 'addresStore'])
+    ->name('checkout.address.store');
 
 // Checkout (auth required)
 Route::middleware('auth')->group(function () {
-    Route::get('/checkout', [CheckoutController::class,'show'])->name('checkout.show');
-    Route::get('/checkout/success', [CheckoutController::class,'success'])->name('checkout.success');
-    Route::get('/checkout/cancel',  [CheckoutController::class,'cancel'])->name('checkout.cancel');
+    Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/checkout/cancel',  [CheckoutController::class, 'cancel'])->name('checkout.cancel');
 });
 // Checkout
 //Route::get('/checkout', [CheckoutController::class, 'show'])->middleware('auth')->name('checkout.go');
 //Route::post('/checkout', [CheckoutController::class,'checkout'])->name('checkout.go');
-Route::get('/checkout/success', [CheckoutController::class,'success'])->name('checkout.success');
+// Route::get('/checkout/success', [CheckoutController::class,'success'])->name('checkout.success');
 
 // Stripe webhook
-Route::post('/stripe/webhook', [StripeWebhookController::class,'handle'])->name('stripe.webhook');
+Route::post('/stripe/webhook', [StripeWebhookController::class, 'handle'])->name('stripe.webhook');
+
+// Cart
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/add',  [CartController::class, 'addFromGet'])->name('cart.add.get'); //Route::post('/cart/add', [CartController::class,'add'])->name('cart.add');
+Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+Route::get('/cart/price', [CartController::class, 'price'])->name('cart.price');
+Route::post('/cart/remove', [CartController::class, 'remove'])->name('cart.remove');
+
+// New AJAX endpoints for qty +/- and remove
+Route::post('/cart/item/update', [CartController::class, 'updateAjax'])->name('cart.updateAjax');
+Route::post('/cart/item/remove', [CartController::class, 'removeAjax'])->name('cart.removeAjax');
+
+// routes/web.php
+Route::view('/login', 'auth.login')->name('login');
+Route::view('/register', 'auth.register')->name('register');
+
+Route::get('/sell-gold', [SellNowController::class, 'sellgold'])->name('sellgold.index');
+Route::get('/sell-silver', [SellNowController::class, 'sellsilver'])->name('sellsilver.index');
+Route::get('/sell-platinum', [SellNowController::class, 'sellplatinum'])->name('sellplatinum.index');
+Route::get('/sell-palladium', [SellNowController::class, 'sellpalladium'])->name('sellpalladium.index');
+Route::get('/vat-free', [SellNowController::class, 'vatfree'])->name('vatfree.index');
+Route::get('/terms-and-conditions', [SellNowController::class, 'termsandconditions'])->name('termsandconditions.index');
+Route::get('/returns-exchanges', [SellNowController::class, 'returnsexchanges'])->name('returnsexchanges.index');
+Route::get('/privacy-policy', [SellNowController::class, 'privacypolicy'])->name('privacypolicy.index');
+Route::get('/shipping-delivery', [SellNowController::class, 'shippingdelivery'])->name('shippingdelivery.index');
+Route::get('/guide-to-buying', [SellNowController::class, 'guidetobuying'])->name('guidetobuying.index');
+Route::get('/our-showroom', [SellNowController::class, 'ourshowroom'])->name('ourshowroom.index');
+
+Route::get('/sell-now', [SellNowController::class, 'index'])->name('sell.index');
+Route::post('/sell-now', [SellNowController::class, 'store'])->name('sell.store');
+Route::get('/sell/thank-you', [SellNowController::class, 'thankYou'])->name('sell.thankyou');
+
+Route::post('/checkSell', [SellNowController::class, 'checkStore'])->name('check.sell.form');
+// AJAX: price calculator (live price x purity x weight x qty)
+Route::post('/sell-now/calc', [SellNowController::class, 'calc'])->name('sell.calc');
+
+Route::post('/favorites/unfav/{id}', [FavoriteController::class, 'unfav'])->name('favorites.unfav');
+Route::middleware('auth')->group(function () {
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites/toggle', [FavoriteController::class, 'toggle'])->name('favorites.toggle');
+    Route::delete('/favorites/{externalId}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
+});
+
+Route::get('/logout', function (Request $request) {
+    auth()->logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+    return redirect('/'); // Redirect to homepage or login page after logout
+})->name('logout');
+
+// Route for processing the account page(requires login)
+Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->middleware('auth')->name('profile.password.update');
+Route::middleware('auth')->get('/account', [ProfileController::class, 'account'])->name('account');
+Route::middleware('auth')->get('/order', [ProfileController::class, 'order'])->name('order');
+Route::middleware('auth')->get('/address', [ProfileController::class, 'address'])->name('address');
+Route::middleware('auth')->get('/address/{id}', [ProfileController::class, 'addressDetail'])->name('address.details');
+Route::middleware('auth')->get('/order/{id}', [ProfileController::class, 'orderDetail'])->name('order.details');
+
+Route::middleware('auth')->get('/wishlist', [ProfileController::class, 'wishlist'])->name('wishlist');
+Route::middleware('auth')->get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
+
+// Route for processing the user address update page(requires login)
+Route::middleware('auth')->post('/update-address', [ProfileController::class, 'addressUpdate'])->name('update.address');
+Route::middleware('auth')->post('/update-account', [ProfileController::class, 'accountUpdate'])->name('update.account');
+Route::post('/wishlist/toggle', [ExternalCatalogController::class, 'toggle'])->name('wishlist.toggle');
+
+
+
+
+// External catalog (from your API)
+Route::get('/{category}', [ExternalCatalogController::class, 'index'])->name('ext.catalog');
+// Route::get('/bullion', [ExternalCatalogController::class,'index'])->name('ext.catalog');
+// Route::get('/preowned', [ExternalCatalogController::class,'index'])->name('ext.catalog');
+// Route::get('/diamond', [ExternalCatalogController::class,'index'])->name('ext.catalog');
+Route::get('/{category}/product/{slug}', [ExternalCatalogController::class, 'show'])->name('ext.product');
+// Route::get('/preowned/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
+// Route::get('/diamond/product/{slug}', [ExternalCatalogController::class,'show'])->name('ext.product');
+
+// Live price (AJAX)
+Route::get('/api/{category}/products/{id}/price', [ExternalCatalogController::class, 'livePrice'])->name('ext.product.price');
+// Route::get('/api/preowned/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
+// Route::get('/api/diamond/products/{id}/price', [ExternalCatalogController::class,'livePrice'])->name('ext.product.price');
+
+// Add to cart (external -> upsert local -> cart)
+Route::post('/{category}/cart/add', [ExternalCatalogController::class, 'addToCart'])->name('ext.cart.add');
+// Route::post('/preowned/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
+// Route::post('/diamond/cart/add', [ExternalCatalogController::class,'addToCart'])->name('ext.cart.add');
+
+// API for live prices
+Route::get('/api/quotes/summary', [QuoteController::class, 'summary']);
+Route::get('/api/products/{id}/price', [QuoteController::class, 'productPrice']);
+
+
 
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// routes/web.php
-Route::view('/login', 'auth.login')->name('login');
-Route::view('/register', 'auth.register')->name('register');
-
-
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';

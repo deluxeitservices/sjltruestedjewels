@@ -138,9 +138,9 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid var(--primary-color);
-    margin-top: 10px;
-    padding-top: 10px;
+    /* border-top: 1px solid var(--primary-color); */
+    /* margin-top: 10px;
+    padding-top: 10px; */
 }
 
 .pyement-page .total-shipping-cart p,
@@ -189,9 +189,9 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid var(--primary-color);
-    margin-top: 10px;
-    padding-top: 10px;
+    /* border-top: 1px solid var(--primary-color); */
+    /* margin-top: 10px;
+    padding-top: 10px; */
 }
 
 .pyement-page .total-shipping-cart p,

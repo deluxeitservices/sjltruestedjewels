@@ -6,10 +6,13 @@ function initZoom(width, height) {
     $.removeData('#zoom_10', 'elevateZoom');
     $('.zoomContainer').remove();
     $('.zoomWindowContainer').remove();
+      if ($(window).width() <= 1024) {
+        return; 
+    }
     $("#zoom_10").elevateZoom({
         responsive: true,
         tint: true,
-        tintColour: '#E84C3C',
+        tintColour: '#000',
         tintOpacity: 0.5,
         easing: true,
         borderSize: 0,
@@ -68,7 +71,9 @@ $(document).ready(function() {
     
     /* Init Product zoom */
     initZoom(500, 475);
-
+      if ($(window).width() > 1024) {
+        initZoom(500, 475);
+    }
     $("#ui-carousel-prev").click(function() {
         initZoom(500, 475);
     });
@@ -97,6 +102,9 @@ $(window).resize(function() {
         $.removeData('#zoom_10', 'elevateZoom');
         $('.zoomContainer').remove();
         $('.zoomWindowContainer').remove();
+        if ($(window).width() <= 1024) {
+        return; 
+    }
         $("#zoom_10").elevateZoom({
             responsive: true,
             tint: false,
@@ -112,6 +120,7 @@ $(window).resize(function() {
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 500,
             lensFadeIn: 500,
+        
             lensFadeOut: 500,
             cursor: "https://icodefy.com/Tools/iZoom/images/zoom-out.png",
         });

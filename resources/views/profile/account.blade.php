@@ -250,9 +250,9 @@
     </div>
 </main>
 <script>
-    var updateAccountUrl = @json(route('update.account'));
+    var updateAccountUrl = @json(url('update-account'));
     var csrfToken = @json(csrf_token());
-    var updatePasswordUrl = @json(route('profile.password.update'));
+    var updatePasswordUrl = @json(url('/profile/password'));
 </script>
 
 </script>

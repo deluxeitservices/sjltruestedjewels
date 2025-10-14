@@ -154,7 +154,7 @@
     </div>
 </main>
 <script>
-    var updateAddressUrl = @json(url('update-address'));
+    var updateAddressUrl = @json(route('update.address'));
     var csrfToken = @json(csrf_token());
 </script>
 @endsection

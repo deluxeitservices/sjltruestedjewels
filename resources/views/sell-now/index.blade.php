@@ -457,7 +457,7 @@
 
 @push('scripts')
 <script>
-  var checkSellForm = @json(url('checkSell'));
+  var checkSellForm = @json(route('check.sell.form'));
 </script>
 <script>
   (function() {
@@ -772,7 +772,7 @@
       setLoading(tr, true);
 
       try {
-        const resp = await fetch(@json(url('sell-now/calc')), {
+        const resp = await fetch(@json(route('sell.calc')), {
           method: 'POST',
           headers: {
             'X-CSRF-TOKEN': @json(csrf_token()),

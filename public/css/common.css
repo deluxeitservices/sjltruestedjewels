@@ -1208,7 +1208,9 @@ table.tblPrice td {
   color: var(--primary-color);
   font-weight: 500;
 }
-
+.contact-us-section h6 a{
+  color: var(--primary-color);
+}
 .contact-us-section {
   /* background: url('../assets/image/contact-us-bck.jpg') no-repeat center; */
   background: url('../assets/image/contact-us-bg.svg')no-repeat center;

@@ -74,7 +74,6 @@ $("#user-address-button").click(function (event) {
 
 
 $("#user-account-button").click(function (event) {
-    alert(updateAccountUrl);
     let isValid = true;
     // Clear previous validation messages
     $("#user-account-form").find('.form-control').removeClass('is-invalid');

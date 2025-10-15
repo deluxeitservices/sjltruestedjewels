@@ -420,7 +420,7 @@ header .heart-item-box span {
     }
 
     header .heart-item-box {
-                top: 34px;
+        top: 34px;
         right: 38px;
         width: 15px;
         height: 15px;
@@ -522,8 +522,19 @@ header .heart-item-box span {
 }
 
 @media (max-width:991px) {
+    .bottom-header .navbar-nav li {
+        position: relative !important;
+        width: 100%;
+        text-align: center;
+
+    }
+
     .bottom-header .navbar-nav li .nav-link {
         padding: 4px 0;
+    }
+
+    .header-part .navbar-nav .dropdown-menu {
+        top: 90%
     }
 
     /* .header-part .navbar-nav .dropdown-menu {
@@ -740,9 +751,11 @@ header .heart-item-box span {
     header .cart-item-box {
         left: 153px;
     }
+
     .bottom-header .socil-menu {
         gap: 18px;
     }
+
     .header-part .searchBar {
         max-width: 265px;
 

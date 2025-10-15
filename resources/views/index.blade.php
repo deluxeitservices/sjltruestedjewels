@@ -434,13 +434,13 @@
                 <h2 class="section_ttl">Explore the art of minting precious
                   metals</h2>
               </div>
-              <div class="play-btn-div">
+              <!-- <div class="play-btn-div">
                 <a href="javascript:void(0)" class="play-button">
                   <img
                     src="./assets/image/play-button.png"
                     alt="play-button" />
                 </a>
-              </div>
+              </div> -->
             </div>
 
             @if($resulthome && $resulthome->image != "")

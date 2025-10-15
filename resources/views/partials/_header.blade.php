@@ -392,10 +392,10 @@
                                 <h6>Sell With Confidence</h6>
                                 <h5 class="common-title">Sell Your Gold, Jewellery</h5>
                                 <p>Free instant valuation at live market rates. No fees, no pressure — same-day bank transfer.</p>
-                                 <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}" aria-label="Shop gold bars at live market rates">
+                                 <a href="{{ url('sell-now') }}" aria-label="Shop gold bars at live market rates">
                                        <button
                                     class="common-primary-btn">
-                                      Buy Now
+                                      Sell Now
                                     </button>
                                     </a>
                               </div>

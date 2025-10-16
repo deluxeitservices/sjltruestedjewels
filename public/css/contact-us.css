@@ -68,7 +68,7 @@
 
 .contact-us-form-section .form-outline .form-control {
     padding: 10px 12px 10px 12px;
-    color: var(--white);
+    /* color: var(--white); */
     font-size: 14px;
 }
 

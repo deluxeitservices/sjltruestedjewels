@@ -173,7 +173,16 @@ class ExternalProductsService
     /** Fetch categories for filters */
     public function fetchCategories(int $page = 1, int $per = 100): array
     {
+        $slug = Str::lower(request()->segment(1) ?? '');
+        $cat = '';
+        if($slug == 'bullion'){
+            $cat = 1;
+
+        }else if($slug == 'diamond' || $slug == 'preowned'){
+            $cat = 2;
+        }
         $q = [
+            'cat_type'        => $cat,
             'domain_id'        => env('ISTOCK_DOMAIN_ID'),
             'rental_user_id'   => env('ISTOCK_RENTAL_USER_ID'),
             'page'             => $page,

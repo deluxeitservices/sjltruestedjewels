@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Mail\OrderPlaced;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 
 
 
@@ -148,9 +149,9 @@ class CheckoutController extends Controller
             ->where('id', $cart->address_id)
             ->first();
 
-            // echo '<pre>';
-            // print_r($savedCartAddress);
-            // die;
+        // echo '<pre>';
+        // print_r($savedCartAddress);
+        // die;
         return view('checkout.show', [
             'savedCartAddress'   => $savedCartAddress,
             'cart_id'   => $cart->id,
@@ -186,19 +187,17 @@ class CheckoutController extends Controller
         }
 
         $addressId = $request->input('address_id');
-        if($addressId){
+        if ($addressId) {
             $billingAddressId = UserAddress::where('user_id', auth()->id())
-                        ->where('id', $addressId)
-                        ->value('id');
-
-        }else{
+                ->where('id', $addressId)
+                ->value('id');
+        } else {
             $billingAddressId = UserAddress::where('user_id', auth()->id())
-                        ->where('default_address', true)
-                        ->value('id');
-
+                ->where('default_address', true)
+                ->value('id');
         }
 
-        
+
 
         // Totals & items from cart
         $cart   = $carts->getOrCreateCart();
@@ -250,6 +249,7 @@ class CheckoutController extends Controller
         // Close cart
         $cart->status = 'completed';
         $cart->save();
+
         // Optionally: $cart->items()->delete();
 
         session()->forget(['pi_id', 'cart_id']);
@@ -267,6 +267,50 @@ class CheckoutController extends Controller
         // Admin notification
         Mail::to($adminEmail)->send(new OrderPlaced($order, toAdmin: true, attachPdf: false));
 
+        $payload = [
+            'order' => [
+                'id'          => $order->id,
+                'order_no'    => $order->order_no,
+                'status'      => $order->status,
+                'currency'    => $order->currency,
+                'subtotal'    => $order->subtotal_gbp,
+                'vat'         => $order->vat_gbp,
+                'total'       => $order->total_gbp,
+                'paid_at'     => optional($order->paid_at)->toIso8601String(),
+                'payment_intent_id' => $order->payment_intent_id,
+                'domain_id'    => 20,
+                'rental_id'    => 36,
+            ],
+            'customer' => [
+                'id'         => $order->user_id,
+                'name'       => $order->customer_name,
+                'email'      => $order->customer_email,
+                'address_id' => $order->customer_address_id,
+            ],
+            'items' => $order->items->map(function ($it) {
+                return [
+                    'product_id'   => $it->product_id,
+                    'external_id'  => $it->external_id,
+                    'product_url'  => $it->product_url,
+                    'title'        => $it->title,
+                    'qty'          => (int) $it->qty,
+                    'unit_gbp'     => (float) $it->unit_gbp,
+                    'line_gbp'     => (float) $it->line_gbp,
+                    'unit_net_gbp' => (float) $it->unit_net_gbp,
+                    'unit_vat_gbp' => (float) $it->unit_vat_gbp,
+                    'line_net_gbp' => (float) $it->line_net_gbp,
+                    'line_vat_gbp' => (float) $it->line_vat_gbp,
+                    'image_url'    => $it->image_url,
+                ];
+            })->values()->all(),
+        ];
+
+        $base     = env('ISTOCK_API_BASE');                          
+        $endpoint = Str::finish($base, '/') . 'create_invoice.php';  
+        // POST JSON to your PHP script
+        $resp = Http::timeout(15)->post($endpoint, $payload);
+        $data = $resp->json();
+        // dd($data);
         return view('checkout.success', [
             'order'  => $order,
             'totals' => $totals,
@@ -309,7 +353,7 @@ class CheckoutController extends Controller
             // $address->update($data);
             $mode = 'updated';
         } else {
-             UserAddress::where('user_id', $userId)->update(['default_address' => false]);
+            UserAddress::where('user_id', $userId)->update(['default_address' => false]);
             // CREATE new address
             $address = UserAddress::create($data + [
                 'user_id'          => $userId,
@@ -321,7 +365,8 @@ class CheckoutController extends Controller
             [
                 'address_id' => $address->id,
                 'order_note' => $order_note
-            ]);
+            ]
+        );
 
         // UserAddress::where('user_id', $userId)->update(['default_address' => false]);
 

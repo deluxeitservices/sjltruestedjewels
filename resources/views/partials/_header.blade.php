@@ -124,7 +124,7 @@
                             $svc = app(\App\Services\ExternalProductsService::class);
                             $pricing = app(\App\Services\PricingService::class);
 
-                            $cats = getCategories($svc, $pricing);
+                            $cats = getCategories($svc, $pricing,'header');
                             ?>
                             @php
                               // $cats is coming from your helper: $cats = getCategories($svc, $pricing);

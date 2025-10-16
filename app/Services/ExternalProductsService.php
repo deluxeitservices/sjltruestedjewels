@@ -171,8 +171,9 @@ class ExternalProductsService
 
 
     /** Fetch categories for filters */
-    public function fetchCategories(int $page = 1, int $per = 100): array
+    public function fetchCategories(?int $page = 1, ?int $per = 100, ?string $section = null): array
     {
+
         $slug = Str::lower(request()->segment(1) ?? '');
         $cat = '';
         if($slug == 'bullion'){
@@ -182,6 +183,7 @@ class ExternalProductsService
             $cat = 2;
         }
         $q = [
+            'section'        => $section,
             'cat_type'        => $cat,
             'domain_id'        => env('ISTOCK_DOMAIN_ID'),
             'rental_user_id'   => env('ISTOCK_RENTAL_USER_ID'),

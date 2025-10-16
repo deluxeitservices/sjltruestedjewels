@@ -28,8 +28,8 @@ if (! function_exists('catalog_url')) {
 }
 
 if (! function_exists('getCategories')) {
-    function getCategories(\App\Services\ExternalProductsService $svc, \App\Services\PricingService $pricing) {
-        return $svc->fetchCategories();
+    function getCategories(\App\Services\ExternalProductsService $svc, \App\Services\PricingService $pricing,$section = '') {
+        return $svc->fetchCategories(null,null, $section);
     }
 }
 

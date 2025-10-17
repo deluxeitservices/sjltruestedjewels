@@ -140,7 +140,9 @@
                     <h6 class="product-title">WG:{{ number_format($p['weight_g'] ?? 0,3) }} g</h6>
                     <small>{{ $p['brand'] }} | SKU: {{ $p['sku'] }}</small>
                     <div class="stock-box">
-                      <h6 class="product-title">{{ $p['title'] ?? '—' }}</h6>
+                      <h6 class="product-title">
+                        {{ \Illuminate\Support\Str::limit($p['title'] ?? '—', 15) }}
+                      </h6>
                       @if($p['availability'] === 'pre_order')
                       <p><img src="/assets/image/awaiting_stock.svg">Pre Order</p>
                       @elseif($p['availability'] === 'in_stock')
@@ -310,7 +312,9 @@
                     </small>
 
                     <div class="stock-box">
-                      <h6 class="product-title">{{ $p['title'] ?? 'Untitled' }}</h6>
+                      <h6 class="product-title">
+                        {{ \Illuminate\Support\Str::limit($p['title'] ?? 'Untitled', 12) }}
+                      </h6>
                       <p>
                         @if(isset($p['in_stock']) && $p['in_stock'])
                         <img src="{{ asset('assets/image/in_stock.svg') }}" alt="">

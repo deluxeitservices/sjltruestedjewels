@@ -56,7 +56,7 @@
             <!-- <a href="{{ route('dashboard') }}" class="btn btn-light">
               Go to Dashboard
             </a> -->
-             <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+             <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button class="common-primary-btn"><i
                         class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
           </div>
 

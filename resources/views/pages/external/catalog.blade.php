@@ -388,7 +388,7 @@
                                                     <small>{{ $p['brand'] }} | SKU:
                                                         {{ $p['sku'] }}</small>
                                                     <div class="stock-box">
-                                                        <h6 class="product-title testhover">
+                                                        <h6 class="product-title testhover" title="{{$p['title']}}">
                                                             {{ \Illuminate\Support\Str::limit($p['title'], 12) }}
                                                         </h6>
                                                         @if ($p['availability'] === 'pre_order')

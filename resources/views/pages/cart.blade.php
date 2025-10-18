@@ -27,7 +27,7 @@
                         </div>
 
                         <p>Looks like you haven't added any products to your basket yet.</p>
-                        <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+                        <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button class="common-primary-btn"><i
                               class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
                       </div>
                     </div>
@@ -161,7 +161,7 @@
                       <!-- <a href="{{ route('ext.catalog', ['category' => $category]) }}" class="common-primary-btn mt-2 w-100 text-center d-block">
                         <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
                       </a> -->
-                      <a href="{{ url('/') }}"><button class="common-primary-btn mt-2">
+                      <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button class="common-primary-btn mt-2">
                         <i class="fa-solid fa-bag-shopping"></i> Continue Shopping
                       </button></a>
                       

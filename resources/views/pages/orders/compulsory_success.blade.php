@@ -35,7 +35,7 @@
           </p> -->
 
           <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <a href="{{ url('/') }}" class="common-primary-btn gap-3"><i
+            <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}" class="common-primary-btn gap-3"><i
                         class="fa-solid fa-bag-shopping"></i>
               Continue Shopping
             </a>

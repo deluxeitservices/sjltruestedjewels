@@ -27,7 +27,7 @@
             <a href="{{ route('sell.index') }}" class="btn common-primary-btn">
               Sell now
             </a>
-            <a href="{{ url('/') }}" class="btn common-secondary-btn">
+            <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}" class="btn common-secondary-btn">
               Continue shopping
             </a>
           </div>

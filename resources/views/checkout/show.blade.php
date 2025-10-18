@@ -2,6 +2,14 @@
 @extends('layouts.app')
 @section('title','Checkout')
 @section('content')
+<style>
+  .pyement-continue-btn .common-primary-btn{
+    max-width: 230px;
+    min-width: 230px;
+    height: 45px;
+    font-size: 16px;
+  }
+</style>
 <main>
   <div class="common-form-page h-100 h-custom pyement-page">
     <div class="container">
@@ -105,9 +113,9 @@
 
                     <input type="hidden" name="address_id" id="address_id" value="{{$savedCartAddress->id ?? 0}}">
                     <input type="hidden" name="cart_id" id="cart_id" value="{{$cart_id}}">
-                    <div class="mt-3">
-                      <button type="button" id="continue-to-payment" class="btn btn-dark" disabled>
-                        Continue to payment
+                    <div class="mt-3 pyement-continue-btn">
+                      <button type="button" id="continue-to-payment" class="btn btn-dark common-primary-btn" disabled>
+                        Go to payment
                       </button>
                     </div>
                   </form>

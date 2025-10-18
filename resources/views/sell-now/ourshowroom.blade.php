@@ -131,6 +131,7 @@
             </div>
             <div class="col-lg-4 col-md-12 col-12">
               <div class="card">
+                <!-- <img src="./assets/image/ourshowroom.jpeg" class="card-img-top" alt="showroom" /> -->
                 <img src="./assets/image/our-showroom-1.svg"
                   class="card-img-top" alt="showroom" />
                   <div class="middle">

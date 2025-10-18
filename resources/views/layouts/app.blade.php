@@ -31,7 +31,7 @@
 </body>
 <script>
   new DataTable('#order-list-table', {
-
+    order: [[2, 'desc']],
     columnDefs: [{
       className: "dt-left",
       targets: "_all"

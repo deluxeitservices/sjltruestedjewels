@@ -263,9 +263,9 @@ class CheckoutController extends Controller
         $declarationUrl = route('orders.declaration', ['order' => $order->id]);
 
         // Customer (attach PDF optional: true/false)
-        Mail::to($order->customer_email)->send(new OrderPlaced($order, toAdmin: false, attachPdf: false, declarationUrl: $declarationUrl));
-        // Admin notification
-        Mail::to($adminEmail)->send(new OrderPlaced($order, toAdmin: true, attachPdf: false));
+        // Mail::to($order->customer_email)->send(new OrderPlaced($order, toAdmin: false, attachPdf: false, declarationUrl: $declarationUrl));
+        // // Admin notification
+        // Mail::to($adminEmail)->send(new OrderPlaced($order, toAdmin: true, attachPdf: false));
 
         $payload = [
             'order' => [

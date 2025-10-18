@@ -109,7 +109,7 @@ html {
   padding-top: 80px;
 }
 
-.common-primary-btn {
+.common-primary-btn, .header-common-primary-btn {
   background-color: var(--primary-color);
   border-radius: 5px;
   color: var(--white);
@@ -123,14 +123,38 @@ html {
   position: relative;
 }
 
-.common-primary-btn:hover {
+.header-sell-btn-box{
+ text-align: center;
+}
+
+.header-common-primary-btn {
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  margin: 0 auto;
+  max-width: 110px;
+  min-width: 110px;
+  border: 1px solid var(--primary-color);
+  transition: all 0.90s ease;
+  position: relative;
+}
+
+.common-primary-btn:hover, .header-common-primary-btn:hover {
   background-color: transparent;
   border: 1px solid var(--primary-color);
   transform: scale(0.96);
   color: var(--primary-color);
 }
 
-.common-primary-btn:hover:before {
+
+.video-text-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .25s ease;
+}
+
+.common-primary-btn:hover:before, .header-common-primary-btn:hover:before {
   top: -70%;
   background-image: radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
     radial-gradient(circle, transparent 20%, var(--primary-color) 20%, transparent 30%),
@@ -165,7 +189,7 @@ html {
   }
 }
 
-.common-primary-btn:hover::after {
+.common-primary-btn:hover::after, .header-common-primary-btn:hover:after {
   bottom: -70%;
   background-image: radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
     radial-gradient(circle, var(--primary-color) 20%, transparent 20%),
@@ -197,12 +221,15 @@ html {
   }
 }
 
-.common-primary-btn:active {
+.common-primary-btn:active, .header-common-primary-btn:active {
   transform: scale(0.96);
 }
 
 .common-primary-btn:before,
-.common-primary-btn:after {
+.common-primary-btn:after,
+.header-common-primary-btn:before,
+.header-common-primary-btn:after
+ {
   position: absolute;
   content: "";
   width: 100%;

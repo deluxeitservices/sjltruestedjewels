@@ -81,12 +81,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -98,12 +98,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-2.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -115,12 +115,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-3.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -128,12 +128,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -141,12 +141,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -154,12 +154,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -167,12 +167,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -180,12 +180,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -193,12 +193,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>
@@ -206,12 +206,12 @@
                                 <div class="main-leading-box slider-down-load">
                                     <div class="leading-img-box">
                                         <img src="./assets/image/coin-1.png">
-                                        <a href="#">
+                                        <a href="{{ route('sell.index') }}">
                                             Gold Sovereign Queen Elizabeth II Fifth Head (2016-2022)
                                         </a>
                                     </div>
                                     <div class="leadong-value">
-                                        <a href="#">£576.77</a>
+                                        <a href="{{ route('sell.index') }}">£576.77</a>
                                     </div>
                                 </div>
                             </div>

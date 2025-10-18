@@ -8,6 +8,6 @@
   @if($order->paid_at)
     <p>Paid at: {{ $order->paid_at->format('d M Y H:i') }}</p>
   @endif
-  <a href="{{ url('/') }}" class="inline-block mt-4 px-4 py-2 bg-black text-white rounded">Continue shopping</a>
+  <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}" class="inline-block mt-4 px-4 py-2 bg-black text-white rounded">Continue shopping</a>
 </div>
 @endsection

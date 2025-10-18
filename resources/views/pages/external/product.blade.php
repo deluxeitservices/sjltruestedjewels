@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('title', $p['title'])
 @section('content')
+<style>
+  .info-price{
+    background: transparent;
+    border: 0;;
+  }
+  </style>
 <main>
     <div class="product-details1 common-section">
       <div class="container">
@@ -168,8 +174,18 @@
                         <div class="qtyplus cursor-pointer select-none">+</div>
                       </div>
 
+                     
 
-                      <div class="price-proudct">
+
+
+                      <div class="price-proudct d-flex gap-1">
+                         <button type="button"
+        class="info-price"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Calcualted with the live price">
+  <i class="fa-solid fa-circle-info"></i>
+</button>
                         <input type="hidden" id="price-pruct" value="1296.52" placeholder="value">
                         <p class=" text-3xl font-bold">£<span id="livePrice">{{ number_format($price ?? 0,2) }}</span></p>
                       </div>
@@ -394,7 +410,7 @@
                     <h6 class="product-title">WG:{{ number_format($p['weight_g'] ?? 0,3) }} g</h6>
                     <small>{{ $p['brand'] }} | SKU: {{ $p['sku'] }}</small>
                     <div class="stock-box">
-                      <h6 class="product-title">
+                      <h6 class="product-title" title="{{$p['title']}}">
                         {{ \Illuminate\Support\Str::limit($p['title'] ?? '-', 12) }}
                       </h6>
                       @if($p['availability'] === 'pre_order')
@@ -513,5 +529,12 @@ document.querySelector('input[name="qty"]').addEventListener('input', () => {
   refreshPrice();
 });
 </script>
+<script>
+// Enable tooltips globally
+document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  .forEach(el => new bootstrap.Tooltip(el));
+</script>
+
 @endpush
 @endsection
+

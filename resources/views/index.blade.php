@@ -90,19 +90,19 @@
         <div class="row">
           <div class="new-arrivals-banner owl-carousel owl-theme">
             <?php
-              // echo '<pre>';
-              // print_r($newArrivals);
-            
+            // echo '<pre>';
+            // print_r($newArrivals);
+
             ?>
             @forelse($newArrivals as $p)
             <?php
-              if($p['front_stock_type'] == 1){
-                $prefix = 'buillion';
-              }else if($p['front_stock_type'] == 2){
-                $prefix = 'preowned';                
-              }else if($p['front_stock_type'] == 3){
-                $prefix = 'diamond';
-              }
+            if ($p['front_stock_type'] == 1) {
+              $prefix = 'buillion';
+            } else if ($p['front_stock_type'] == 2) {
+              $prefix = 'preowned';
+            } else if ($p['front_stock_type'] == 3) {
+              $prefix = 'diamond';
+            }
             ?>
             <div class="item">
               <div class="product-card h-100" data-label="NEW">
@@ -140,7 +140,7 @@
                     <h6 class="product-title">WG:{{ number_format($p['weight_g'] ?? 0,3) }} g</h6>
                     <small>{{ $p['brand'] }} | SKU: {{ $p['sku'] }}</small>
                     <div class="stock-box">
-                      <h6 class="product-title">
+                      <h6 class="product-title" title="{{$p['title']}}">
                         {{ \Illuminate\Support\Str::limit($p['title'] ?? '—', 15) }}
                       </h6>
                       @if($p['availability'] === 'pre_order')
@@ -257,7 +257,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <div class="sell-btn"><a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button
+            <div class="sell-btn"><a href="{{ url('sell-now') }}"><button
                   class="common-primary-btn">Sell Now</button></a></div>
           </div>
         </div>
@@ -282,14 +282,14 @@
 
               @foreach ($newtrending as $p)
               <?php
-                  if($p['front_stock_type'] == 1){
-                    $prefix = 'buillion';
-                  }else if($p['front_stock_type'] == 2){
-                    $prefix = 'preowned';                
-                  }else if($p['front_stock_type'] == 3){
-                    $prefix = 'diamond';
-                  }
-              ?> 
+              if ($p['front_stock_type'] == 1) {
+                $prefix = 'buillion';
+              } else if ($p['front_stock_type'] == 2) {
+                $prefix = 'preowned';
+              } else if ($p['front_stock_type'] == 3) {
+                $prefix = 'diamond';
+              }
+              ?>
               <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-6">
                 <div class="product-card h-100"
                   @if(!empty($p['label'])) data-label="{{ e($p['label']) }}" @endif>
@@ -306,13 +306,14 @@
                   </div>
 
                   <div class="product-info">
+                    <h6 class="product-title">WG:{{ number_format($p['weight_g'] ?? 0,3) }} g</h6>
                     <small>
                       {{ $p['brand'] ?? Str::title($p['metal'] ?? '') ?: '—' }}
                       &nbsp; | &nbsp; SKU: {{ $p['sku'] ?? '—' }}
                     </small>
 
                     <div class="stock-box">
-                      <h6 class="product-title">
+                      <h6 class="product-title" title="{{$p['title']}}">
                         {{ \Illuminate\Support\Str::limit($p['title'] ?? 'Untitled', 12) }}
                       </h6>
                       <p>
@@ -431,7 +432,7 @@
         <div class="container video_section_content">
           <div
             class="d-flex flex-grow-1 align-items-center justify-content-center flex-column">
-            <div class="content">
+            <div class="content" id="videoTextBlock">
               <div class="video_section_titles">
                 <h6 class="section_sub_ttl">Dive into the enchanting world of
                   gold</h6>
@@ -448,9 +449,9 @@
             </div>
 
             @if($resulthome && $resulthome->image != "")
-            <video width="1920" height="1080" id="ID"
-              poster="{{ asset($base . 'upload/process/' . $resulthome->image2) }}" controls>
-              <source src="{{ asset($base . 'upload/process/' . $resulthome->image) }}" type="video/mp4">
+            <video width="1920" height="1080" id="homeVideo"
+              poster="{{ asset($base . '/upload/process/' . $resulthome->image2) }}" controls>
+              <source src="{{ asset($base . '/upload/process/' . $resulthome->image) }}" type="video/mp4">
               Your browser does not support the video tag.
             </video>
             @else
@@ -485,10 +486,8 @@
                       class="fa-solid fa-users"></i></span>
                 </div>
                 <div class="newsroom-left-content">
-                  <h6>Market Commentary</h6>
-                  <p>Our regular market reports provide commentary and outlook
-                    on the issues that matter for bullion
-                    investors.</p>
+                  <h6><?php echo $testimonial->author_name; ?></h6>
+                  <p><?php echo $testimonial->text; ?></p>
                   <!-- <div class="read-more-btn"><a href="#">Read More</a></div> -->
                 </div>
               </div>
@@ -497,35 +496,52 @@
           </div>
           <div class="col-xl-6 col-lg-6 col-md-12 right-newsroom-colum">
             <h6>Latest Market Comment</h6>
-            <div class="newsroom-content">
 
-              <span>Is silver’s pent-up bullishness ready to be
-                unleashed?</span>
-              <p>12 June 2025As US President Donald Trump plays havoc with
-                global trade there is a risk that other
-                countries stand up to Trump and the currently dire situation
-                deteriorates</p>
-            </div>
             <div class="newsroom-content">
-              <span>Is silver’s pent-up bullishness ready to be
-                unleashed?</span>
-              <p>12 June 2025As US President Donald Trump plays havoc with
-                global trade there is a risk that other
-                countries stand up to Trump and the currently dire situation
-                deteriorates</p>
+              <span>Weekly Gold & Silver Outlook</span>
+              <p>Spot gold held firm on light volumes while silver saw brief intraday spikes. Our desk expects range-bound trade near-term with dips met by retail demand. </p>
             </div>
+
             <div class="newsroom-content">
-              <span>Is silver’s pent-up bullishness ready to be
-                unleashed?</span>
-              <p>12 June 2025As US President Donald Trump plays havoc with
-                global trade there is a risk that other
-                countries stand up to Trump and the currently dire situation
-                deteriorates</p>
+              <span>Understanding UK Hallmarking</span>
+              <p>A quick refresher on Assay Office hallmarks, carat stamps and fineness marks—what they mean for valuations when selling jewellery with SJL Trusted Jewels.</p>
+            </div>
+
+            <div class="newsroom-content">
+              <span>How SJL Values Your Pieces</span>
+              <p>Our transparent process: metal purity testing, gemstone assessment and live market pricing to ensure a fair, fast and trusted offer for your items.</p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
   </main>
+
+  <script>
+    (function() {
+      const video = document.getElementById('homeVideo'); // your video id
+      const text = document.getElementById('videoTextBlock'); // the text container
+
+      if (!video || !text) return;
+
+      // Hide text when video starts/resumes
+      const hideText = () => text.classList.add('video-text-hidden');
+      // Show text when video is paused/ended
+      const showText = () => text.classList.remove('video-text-hidden');
+
+      // Events that mean "video is playing"
+      video.addEventListener('play', hideText);
+      video.addEventListener('playing', hideText);
+
+      // Events that mean "video is not playing"
+      video.addEventListener('pause', showText);
+      video.addEventListener('ended', showText);
+      video.addEventListener('waiting', showText); // buffering
+
+      // Initial state on load (in case of autoplay or restored position)
+      if (!video.paused && !video.ended) hideText();
+    })();
+  </script>
   @endsection

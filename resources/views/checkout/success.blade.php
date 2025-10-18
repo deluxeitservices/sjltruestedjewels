@@ -111,7 +111,7 @@
 
         <!-- Continue Shopping Button -->
         <div class="text-center empty-card-section">
-           <a href="{{ url('/') }}"><button class="common-primary-btn"><i
+           <a href="{{ route('ext.catalog', ['category' => 'bullion']) }}"><button class="common-primary-btn"><i
                               class="fa-solid fa-bag-shopping"></i> Continue Shopping</button></a>
         </div>
     </section>
